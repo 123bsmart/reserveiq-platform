@@ -22,11 +22,12 @@ import {
   Upload,
   ArrowRight,
   Info,
-  PieChart
+  PieChart,
+  Eye
 } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, LineChart, Line, PieChart as RechartsPieChart, Cell } from 'recharts';
 
-const AssessmentCalculator = () => {
+const AssessmentCalculatorDemo = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [calculatorInputs, setCalculatorInputs] = useState({
     totalUnits: 156,
@@ -188,7 +189,7 @@ const AssessmentCalculator = () => {
           <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
             <Home className="w-5 h-5 text-white" />
           </div>
-          <span className="text-xl font-bold text-gray-900">CondoIQ</span>
+          <span className="text-xl font-bold text-gray-900">ReserveIQ</span>
         </div>
         <button 
           onClick={() => setSidebarOpen(false)}
@@ -219,98 +220,6 @@ const AssessmentCalculator = () => {
           Calculator
         </a>
       </nav>
-    </div>
-  );
-
-  const InputSection = () => (
-    <div className="bg-white p-6 rounded-lg border shadow-sm mb-8">
-      <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-        <Calculator className="w-5 h-5" />
-        Assessment Calculator Inputs
-      </h3>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Project Name
-          </label>
-          <input
-            type="text"
-            value={calculatorInputs.projectName}
-            onChange={(e) => setCalculatorInputs({...calculatorInputs, projectName: e.target.value})}
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-        
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Total Units
-          </label>
-          <input
-            type="number"
-            value={calculatorInputs.totalUnits}
-            onChange={(e) => setCalculatorInputs({...calculatorInputs, totalUnits: parseInt(e.target.value)})}
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Current Monthly Fee
-          </label>
-          <div className="relative">
-            <DollarSign className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="number"
-              value={calculatorInputs.currentMonthlyFee}
-              onChange={(e) => setCalculatorInputs({...calculatorInputs, currentMonthlyFee: parseInt(e.target.value)})}
-              className="w-full pl-9 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Current Reserve Fund
-          </label>
-          <div className="relative">
-            <DollarSign className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="number"
-              value={calculatorInputs.currentReserve}
-              onChange={(e) => setCalculatorInputs({...calculatorInputs, currentReserve: parseInt(e.target.value)})}
-              className="w-full pl-9 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Major Expense Cost
-          </label>
-          <div className="relative">
-            <DollarSign className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            <input
-              type="number"
-              value={calculatorInputs.majorExpense}
-              onChange={(e) => setCalculatorInputs({...calculatorInputs, majorExpense: parseInt(e.target.value)})}
-              className="w-full pl-9 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">
-            Timeline (months)
-          </label>
-          <input
-            type="number"
-            value={calculatorInputs.expenseTimeline}
-            onChange={(e) => setCalculatorInputs({...calculatorInputs, expenseTimeline: parseInt(e.target.value)})}
-            className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-      </div>
     </div>
   );
 
@@ -407,6 +316,25 @@ const AssessmentCalculator = () => {
       )}
 
       <div className="flex-1 flex flex-col">
+        {/* Demo Banner */}
+        <div className="bg-gradient-to-r from-blue-600 to-green-600 text-white px-6 py-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center">
+                <span className="text-blue-900 text-sm font-bold">✨</span>
+              </div>
+              <div>
+                <span className="font-semibold">Interactive Demo</span>
+                <span className="ml-2 opacity-90">You're viewing sample data from Maple Heights Condominiums</span>
+              </div>
+            </div>
+            <button className="flex items-center gap-2 px-4 py-2 bg-white bg-opacity-20 text-white rounded-lg hover:bg-opacity-30 transition-colors">
+              <Users className="w-4 h-4" />
+              Join Beta for YOUR Documents
+            </button>
+          </div>
+        </div>
+
         {/* Header */}
         <header className="bg-white border-b px-6 py-4">
           <div className="flex items-center justify-between">
@@ -418,18 +346,18 @@ const AssessmentCalculator = () => {
                 <Menu className="w-5 h-5" />
               </button>
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Special Assessment Calculator</h1>
-                <p className="text-gray-600">Compare funding strategies and show owners the real cost impact</p>
+                <h1 className="text-2xl font-bold text-gray-900">Assessment Calculator Demo</h1>
+                <p className="text-gray-600">See how ReserveIQ compares funding strategies and shows owners real cost impact</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
-              <button className="flex items-center gap-2 px-4 py-2 border rounded-lg hover:bg-gray-50">
-                <Share className="w-4 h-4" />
-                Share Results
-              </button>
+              <div className="hidden md:flex items-center gap-2 px-3 py-2 bg-green-50 text-green-700 rounded-lg text-sm">
+                <CheckCircle className="w-4 h-4" />
+                <span>Try changing the inputs below</span>
+              </div>
               <button className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
                 <Download className="w-4 h-4" />
-                Export Report
+                Export Demo Report
               </button>
             </div>
           </div>
@@ -438,7 +366,101 @@ const AssessmentCalculator = () => {
         {/* Main Content */}
         <main className="flex-1 p-6">
           {/* Input Section */}
-          <InputSection />
+          <div className="bg-white p-6 rounded-lg border shadow-sm mb-8">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                <Calculator className="w-5 h-5" />
+                Demo: Assessment Calculator Inputs
+              </h3>
+              <div className="flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-700 rounded-lg text-sm">
+                <Info className="w-4 h-4" />
+                <span>Try modifying these values</span>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Project Name
+                </label>
+                <input
+                  type="text"
+                  value={calculatorInputs.projectName}
+                  onChange={(e) => setCalculatorInputs({...calculatorInputs, projectName: e.target.value})}
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Total Units
+                </label>
+                <input
+                  type="number"
+                  value={calculatorInputs.totalUnits}
+                  onChange={(e) => setCalculatorInputs({...calculatorInputs, totalUnits: parseInt(e.target.value)})}
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Current Monthly Fee
+                </label>
+                <div className="relative">
+                  <DollarSign className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  <input
+                    type="number"
+                    value={calculatorInputs.currentMonthlyFee}
+                    onChange={(e) => setCalculatorInputs({...calculatorInputs, currentMonthlyFee: parseInt(e.target.value)})}
+                    className="w-full pl-9 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Current Reserve Fund
+                </label>
+                <div className="relative">
+                  <DollarSign className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  <input
+                    type="number"
+                    value={calculatorInputs.currentReserve}
+                    onChange={(e) => setCalculatorInputs({...calculatorInputs, currentReserve: parseInt(e.target.value)})}
+                    className="w-full pl-9 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Major Expense Cost
+                </label>
+                <div className="relative">
+                  <DollarSign className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  <input
+                    type="number"
+                    value={calculatorInputs.majorExpense}
+                    onChange={(e) => setCalculatorInputs({...calculatorInputs, majorExpense: parseInt(e.target.value)})}
+                    className="w-full pl-9 pr-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Timeline (months)
+                </label>
+                <input
+                  type="number"
+                  value={calculatorInputs.expenseTimeline}
+                  onChange={(e) => setCalculatorInputs({...calculatorInputs, expenseTimeline: parseInt(e.target.value)})}
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+            </div>
+          </div>
 
           {/* Summary Card */}
           {calculationResults && (
@@ -515,90 +537,39 @@ const AssessmentCalculator = () => {
                   </ResponsiveContainer>
                 </div>
               </div>
+            </>
+          )}
 
-              {/* Detailed Breakdown for Selected Scenario */}
-              {selectedScenario && (
-                <div className="bg-white rounded-lg border shadow-sm">
-                  <div className="p-6 border-b">
-                    <h3 className="text-lg font-semibold text-gray-900">
-                      Detailed Breakdown: {scenarios.find(s => s.id === selectedScenario)?.title}
-                    </h3>
-                  </div>
-                  <div className="p-6">
-                    {selectedScenario === 'increase' && (
-                      <div className="space-y-4">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                          <div className="p-4 bg-green-50 rounded-lg">
-                            <div className="text-sm text-green-600">Monthly Fee Increase</div>
-                            <div className="text-2xl font-bold text-green-900">+${calculationResults.monthlyIncrease.perUnitIncrease}</div>
-                            <div className="text-sm text-green-600">per unit per month</div>
-                          </div>
-                          <div className="p-4 bg-blue-50 rounded-lg">
-                            <div className="text-sm text-blue-600">New Monthly Fee</div>
-                            <div className="text-2xl font-bold text-blue-900">${calculationResults.monthlyIncrease.newMonthlyFee}</div>
-                            <div className="text-sm text-blue-600">per unit</div>
-                          </div>
-                          <div className="p-4 bg-purple-50 rounded-lg">
-                            <div className="text-sm text-purple-600">Total per Unit</div>
-                            <div className="text-2xl font-bold text-purple-900">${calculationResults.monthlyIncrease.totalCostPerUnit}</div>
-                            <div className="text-sm text-purple-600">over {calculatorInputs.expenseTimeline} months</div>
-                          </div>
-                        </div>
-                        <div className="p-4 bg-gray-50 rounded-lg">
-                          <h4 className="font-medium text-gray-900 mb-2">Owner Communication Points:</h4>
-                          <ul className="text-sm text-gray-700 space-y-1">
-                            <li>• Small monthly increase of ${calculationResults.monthlyIncrease.perUnitIncrease} prevents large assessment</li>
-                            <li>• Builds reserve fund for future unexpected expenses</li>
-                            <li>• More affordable than ${calculationResults.specialAssessment.perUnit} special assessment</li>
-                            <li>• Protects property values by maintaining building condition</li>
-                          </ul>
-                        </div>
-                      </div>
-                    )}
+          {/* Demo CTA Section */}
+          <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-lg border-2 border-blue-200 p-8 text-center mb-8">
+            <div className="max-w-2xl mx-auto">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Zap className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">Impressed by the Demo?</h3>
+              <p className="text-lg text-gray-700 mb-6">
+                This is just one feature of ReserveIQ. Imagine uploading YOUR reserve study, budgets, and meeting minutes, 
+                then asking questions like <em>"What are our biggest financial risks?"</em> or <em>"Which vendors were discussed in the last board meeting?"</em>
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button className="flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                  <Users className="w-5 h-5" />
+                  Join Document Upload Beta
+                </button>
+                <button className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors">
+                  <Eye className="w-5 h-5" />
+                  See More Features
+                </button>
+              </div>
+              <p className="text-sm text-gray-600 mt-4">
+                ✓ Beta includes 1-on-1 setup • ✓ Early access pricing • ✓ Upload unlimited documents
+              </p>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
 
-                    {selectedScenario === 'assessment' && (
-                      <div className="space-y-4">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          <div className="p-4 bg-yellow-50 rounded-lg">
-                            <div className="text-sm text-yellow-600">Special Assessment</div>
-                            <div className="text-2xl font-bold text-yellow-900">${calculationResults.specialAssessment.perUnit}</div>
-                            <div className="text-sm text-yellow-600">per unit (one-time)</div>
-                          </div>
-                          <div className="p-4 bg-orange-50 rounded-lg">
-                            <div className="text-sm text-orange-600">Total Amount</div>
-                            <div className="text-2xl font-bold text-orange-900">${calculationResults.specialAssessment.total.toLocaleString()}</div>
-                            <div className="text-sm text-orange-600">from all units</div>
-                          </div>
-                        </div>
-                        <div className="p-4 bg-red-50 rounded-lg border border-red-200">
-                          <h4 className="font-medium text-red-900 mb-2">⚠️ Consider These Risks:</h4>
-                          <ul className="text-sm text-red-800 space-y-1">
-                            <li>• Large upfront payment may cause financial hardship for some owners</li>
-                            <li>• No reserve building for future unexpected expenses</li>
-                            <li>• Potential for owner complaints and board conflicts</li>
-                            <li>• May impact property marketability during assessment period</li>
-                          </ul>
-                        </div>
-                      </div>
-                    )}
-
-                    {selectedScenario === 'delayed' && (
-                      <div className="space-y-4">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                          <div className="p-4 bg-red-50 rounded-lg">
-                            <div className="text-sm text-red-600">Crisis Assessment</div>
-                            <div className="text-2xl font-bold text-red-900">${calculationResults.delayed.perUnit}</div>
-                            <div className="text-sm text-red-600">per unit (emergency)</div>
-                          </div>
-                          <div className="p-4 bg-red-50 rounded-lg">
-                            <div className="text-sm text-red-600">Cost Penalty</div>
-                            <div className="text-2xl font-bold text-red-900">+${calculationResults.delayed.penalty}</div>
-                            <div className="text-sm text-red-600">per unit vs. planned</div>
-                          </div>
-                          <div className="p-4 bg-red-50 rounded-lg">
-                            <div className="text-sm text-red-600">Additional Costs</div>
-                            <div className="text-2xl font-bold text-red-900">25%</div>
-                            <div className="text-sm text-red-600">emergency premium</div>
-                          </div>
-                        </div>
-                        
+export default AssessmentCalculatorDemo;
