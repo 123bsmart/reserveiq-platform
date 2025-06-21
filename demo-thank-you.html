@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Requested - Thank You | ReserveIQ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1e2a78 0%, #1e3a8a 100%);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+    
+    .logo-icon {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .logo-text {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+    
+    .logo-text .reserve {
+      color: white;
+    }
+    
+    .logo-text .iq {
+      color: #10b981;
+    }
+    
+    .logo-tagline {
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      font-weight: 400;
+      margin-top: 5px;
+      letter-spacing: 0.5px;
+    }
+    
+    .success-container {
+      background: white;
+      color: #1f2937;
+      border-radius: 16px;
+      padding: 50px 40px;
+      max-width: 600px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      margin-bottom: 30px;
+    }
+    
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: #10b981;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      font-size: 40px;
+    }
+    
+    .success-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1f2937;
+    }
+    
+    .success-message {
+      font-size: 1.1rem;
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    
+    .next-steps {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+    
+    .next-steps h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1f2937;
+    }
+    
+    .steps-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .steps-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: #4b5563;
+    }
+    
+    .step-number {
+      background: #3b82f6;
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    
+    .contact-info {
+      background: #eff6ff;
+      border: 1px solid #dbeafe;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .contact-info h4 {
+      color: #1e40af;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .contact-info p {
+      color: #3730a3;
+      margin: 0;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background: #3b82f6;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: #3b82f6;
+      border: 2px solid #3b82f6;
+    }
+    
+    .btn-secondary:hover {
+      background: #3b82f6;
+      color: white;
+    }
+    
+    .footer-links {
+      margin-top: 40px;
+    }
+    
+    .footer-links a {
+      color: #93c5fd;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    /* Animation */
+    .success-container {
+      animation: slideUp 0.6s ease-out;
+    }
+    
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .success-icon {
+      animation: scaleIn 0.8s ease-out 0.3s both;
+    }
+    
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .success-container {
+        padding: 40px 25px;
+        margin: 0 10px 30px;
+      }
+      
+      .success-title {
+        font-size: 1.75rem;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+      }
+      
+      .footer-links a {
+        display: block;
+        margin: 10px 0;
+      }
+      
+      .logo-text {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Logo -->
+  <div class="logo">
+    <svg class="logo-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <!-- Shield background -->
+      <path d="M30 5 L45 10 L45 30 C45 42 30 52 30 52 C30 52 15 42 15 30 L15 10 Z" 
+            fill="#3b82f6" stroke="none"/>
+      
+      <!-- Building elements -->
+      <rect x="20" y="18" width="4" height="12" fill="white" opacity="0.9"/>
+      <rect x="26" y="16" width="4" height="14" fill="white" opacity="0.9"/>
+      <rect x="32" y="19" width="4" height="11" fill="white" opacity="0.9"/>
+      <rect x="38" y="17" width="4" height="13" fill="white" opacity="0.9"/>
+      
+      <!-- AI symbol -->
+      <circle cx="30" cy="38" r="8" fill="#10b981"/>
+      <circle cx="30" cy="38" r="3" fill="white"/>
+      <circle cx="26" cy="35" r="1.5" fill="white"/>
+      <circle cx="34" cy="35" r="1.5" fill="white"/>
+      <circle cx="26" cy="41" r="1.5" fill="white"/>
+      <circle cx="34" cy="41" r="1.5" fill="white"/>
+      
+      <!-- Connection lines -->
+      <line x1="26" y1="35" x2="30" y2="38" stroke="white" stroke-width="1"/>
+      <line x1="34" y1="35" x2="30" y2="38" stroke="white" stroke-width="1"/>
+      <line x1="26" y1="41" x2="30" y2="38" stroke="white" stroke-width="1"/>
+      <line x1="34" y1="41" x2="30" y2="38" stroke="white" stroke-width="1"/>
+    </svg>
+    
+    <div>
+      <div class="logo-text">
+        <span class="reserve">Reserve</span><span class="iq">IQ</span>
+      </div>
+      <div class="logo-tagline">AI-Powered Portfolio Intelligence Platform</div>
+    </div>
+  </div>
+  
+  <div class="success-container">
+    <div class="success-icon">
+      ✓
+    </div>
+    
+    <h1 class="success-title">Demo Request Received!</h1>
+    
+    <p class="success-message">
+      Thank you for your interest in ReserveIQ. We've received your demo request and will contact you within 24 hours to schedule your personalized demonstration.
+    </p>
+    
+    <div class="next-steps">
+      <h3>What happens next?</h3>
+      <ul class="steps-list">
+        <li>
+          <span class="step-number">1</span>
+          <span>We'll review your information and portfolio details</span>
+        </li>
+        <li>
+          <span class="step-number">2</span>
+          <span>Our team will contact you within 24 hours to schedule your demo</span>
+        </li>
+        <li>
+          <span class="step-number">3</span>
+          <span>We'll customize the demo to show you exactly how ReserveIQ solves your specific challenges</span>
+        </li>
+        <li>
+          <span class="step-number">4</span>
+          <span>You'll see firsthand how we prevent reserve fund crises and give you competitive advantages</span>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="contact-info">
+      <h4>Need immediate assistance?</h4>
+      <p>Contact us directly at <strong>demo@reserveiq.com</strong> or call <strong>(555) 123-4567</strong></p>
+    </div>
+    
+    <div class="action-buttons">
+      <a href="/" class="btn btn-primary">Return to Homepage</a>
+      <a href="/assessment" class="btn btn-secondary">Start Free Assessment</a>
+    </div>
+  </div>
+  
+  <div class="footer-links">
+    <a href="/boards">For Board Members</a>
+    <a href="/contact">Contact Us</a>
+    <a href="/privacy">Privacy Policy</a>
+  </div>
+  
+  <script>
+    // Get email from URL parameter if available
+    const urlParams = new URLSearchParams(window.location.search);
+    const email = urlParams.get('email');
+    
+    if (email) {
+      // Could customize message based on email or other parameters
+      console.log('Demo requested for:', email);
+    }
+    
+    // Analytics tracking
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'demo_request_completed', {
+        'event_category': 'Lead Generation',
+        'event_label': 'Property Manager Demo'
+      });
+    }
+    
+    // Optional: Auto-redirect after a delay
+    // setTimeout(() => {
+    //   window.location.href = '/';
+    // }, 30000); // Redirect after 30 seconds
+  </script>
+</body>
+</html>
