@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Your Free Reserve Fund Assessment - ReserveIQ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1e2a78 0%, #1e3a8a 100%);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 40px 20px 20px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .logo-icon {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .logo-text {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+    
+    .logo-text .reserve {
+      color: white;
+    }
+    
+    .logo-text .iq {
+      color: #10b981;
+    }
+    
+    .logo-tagline {
+      color: rgba(255,255,255,0.7);
+      font-size: 13px;
+      font-weight: 400;
+      margin-top: 5px;
+      letter-spacing: 0.5px;
+    }
+    
+    .header h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      font-size: 1rem;
+      color: #cbd5e1;
+      margin-bottom: 20px;
+    }
+    
+    .value-proposition {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 600px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .value-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      list-style: none;
+      margin-top: 15px;
+    }
+    
+    .value-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+    }
+    
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      padding: 0 20px 40px;
+    }
+    
+    .form-container {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      max-width: 700px;
+      width: 100%;
+      color: #1f2937;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+    }
+    
+    .form-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #1f2937;
+    }
+    
+    .form-subtitle {
+      color: #6b7280;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+    
+    .section-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #374151;
+      margin: 30px 0 15px 0;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e5e7eb;
+    }
+    
+    .section-title:first-of-type {
+      margin-top: 0;
+    }
+    
+    .form-group {
+      margin-bottom: 24px;
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    
+    .form-row-thirds {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 15px;
+    }
+    
+    label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #374151;
+      font-size: 0.9rem;
+    }
+    
+    .required {
+      color: #ef4444;
+    }
+    
+    .help-text {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+    
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      background: white;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+    
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    
+    .file-upload {
+      border: 2px dashed #d1d5db;
+      border-radius: 8px;
+      padding: 40px 20px;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
+      background: #f9fafb;
+    }
+    
+    .file-upload:hover {
+      border-color: #3b82f6;
+      background: #f0f9ff;
+    }
+    
+    .file-upload.dragover {
+      border-color: #10b981;
+      background: #ecfdf5;
+    }
+    
+    .file-upload input[type="file"] {
+      display: none;
+    }
+    
+    .upload-icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #6b7280;
+    }
+    
+    .upload-text {
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #374151;
+    }
+    
+    .upload-subtext {
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+    
+    .file-info {
+      margin-top: 15px;
+      padding: 10px;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 6px;
+      display: none;
+    }
+    
+    .checkbox-group {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    
+    .checkbox-group input[type="checkbox"] {
+      width: auto;
+      margin-top: 2px;
+    }
+    
+    .checkbox-group label {
+      margin-bottom: 0;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    
+    .submit-btn {
+      background: #10b981;
+      color: white;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      width: 100%;
+    }
+    
+    .submit-btn:hover {
+      background: #059669;
+      transform: translateY(-2px);
+    }
+    
+    .submit-btn:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #60a5fa;
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 20px;
+      transition: color 0.3s;
+    }
+    
+    .back-link:hover {
+      color: #93c5fd;
+    }
+    
+    .security-note {
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-top: 15px;
+      text-align: center;
+    }
+    
+    .highlight-box {
+      background: #ecfdf5;
+      border: 1px solid #d1fae5;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    .highlight-box h4 {
+      color: #065f46;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    
+    .highlight-box ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #047857;
+    }
+    
+    .highlight-box li {
+      margin-bottom: 5px;
+    }
+    
+    /* Loading State */
+    .loading {
+      position: relative;
+    }
+    
+    .loading::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      border: 2px solid transparent;
+      border-top: 2px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      transform: translate(-50%, -50%);
+    }
+    
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .form-container {
+        padding: 30px 20px;
+        margin: 0 10px;
+      }
+      
+      .form-row, .form-row-thirds {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+      
+      .header h1 {
+        font-size: 1.75rem;
+      }
+      
+      .logo-text {
+        font-size: 24px;
+      }
+      
+      .value-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <!-- Logo -->
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+        <!-- Shield background -->
+        <path d="M25 2 L40 6 L40 22 C40 32 25 45 25 45 C25 45 10 32 10 22 L10 6 Z" 
+              fill="#3b82f6" stroke="none"/>
+        
+        <!-- Building elements -->
+        <rect x="16" y="12" width="3" height="10" fill="white" opacity="0.9"/>
+        <rect x="21" y="10" width="3" height="12" fill="white" opacity="0.9"/>
+        <rect x="26" y="13" width="3" height="9" fill="white" opacity="0.9"/>
+        <rect x="31" y="11" width="3" height="11" fill="white" opacity="0.9"/>
+        
+        <!-- AI symbol -->
+        <circle cx="25" cy="32" r="6" fill="#10b981"/>
+        <circle cx="25" cy="32" r="2" fill="white"/>
+        <circle cx="22" cy="30" r="1" fill="white"/>
+        <circle cx="28" cy="30" r="1" fill="white"/>
+        <circle cx="22" cy="34" r="1" fill="white"/>
+        <circle cx="28" cy="34" r="1" fill="white"/>
+        
+        <!-- Connection lines -->
+        <line x1="22" y1="30" x2="25" y2="32" stroke="white" stroke-width="0.5"/>
+        <line x1="28" y1="30" x2="25" y2="32" stroke="white" stroke-width="0.5"/>
+        <line x1="22" y1="34" x2="25" y2="32" stroke="white" stroke-width="0.5"/>
+        <line x1="28" y1="34" x2="25" y2="32" stroke="white" stroke-width="0.5"/>
+      </svg>
+      
+      <div>
+        <div class="logo-text">
+          <span class="reserve">Reserve</span><span class="iq">IQ</span>
+        </div>
+        <div class="logo-tagline">AI-Powered Portfolio Intelligence Platform</div>
+      </div>
+    </div>
+    
+    <h1>Get Your Free Reserve Fund Assessment</h1>
+    <p>Upload your reserve study and get instant AI-powered insights in under 30 seconds</p>
+    
+    <div class="value-proposition">
+      <h3 style="margin-bottom: 15px;">🎯 What You'll Get (Completely Free):</h3>
+      <ul class="value-list">
+        <li>📊 Reserve Health Score (0-100%)</li>
+        <li>🚨 Critical Risk Alerts</li>
+        <li>💰 Cost Scenario Analysis</li>
+        <li>📋 Board-Ready Summary</li>
+        <li>⏰ Timeline Recommendations</li>
+        <li>🤖 AI-Powered Insights</li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="main-content">
+    <div class="form-container">
+      <a href="/boards" class="back-link">
+        ← Back to Board Resources
+      </a>
+      
+      <h2 class="form-title">Free Reserve Fund Assessment</h2>
+      <p class="form-subtitle">
+        Upload your reserve study and building information to get instant AI analysis of your reserve fund health and actionable recommendations.
+      </p>
+      
+      <form id="assessmentForm" action="/api/assessment-request" method="POST" enctype="multipart/form-data">
+        
+        <!-- Contact Information -->
+        <h3 class="section-title">📞 Contact Information</h3>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name <span class="required">*</span></label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="lastName">Last Name <span class="required">*</span></label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" name="email" required>
+            <div class="help-text">We'll send your assessment results here</div>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="role">Your Role <span class="required">*</span></label>
+          <select id="role" name="role" required>
+            <option value="">Select your role</option>
+            <option value="board-president">Board President</option>
+            <option value="board-member">Board Member</option>
+            <option value="property-manager">Property Manager</option>
+            <option value="owner">Unit Owner</option>
+            <option value="treasurer">Treasurer</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <!-- Building Information -->
+        <h3 class="section-title">🏢 Building Information</h3>
+        
+        <div class="form-group">
+          <label for="buildingName">Building/Condo Name <span class="required">*</span></label>
+          <input type="text" id="buildingName" name="buildingName" required placeholder="e.g., Maple Heights Condominiums">
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" id="address" name="address" placeholder="123 Main Street, City, Province">
+          </div>
+          
+          <div class="form-group">
+            <label for="units">Number of Units <span class="required">*</span></label>
+            <input type="number" id="units" name="units" min="1" required>
+          </div>
+        </div>
+        
+        <div class="form-row-thirds">
+          <div class="form-group">
+            <label for="yearBuilt">Year Built</label>
+            <input type="number" id="yearBuilt" name="yearBuilt" min="1900" max="2025" placeholder="1995">
+          </div>
+          
+          <div class="form-group">
+            <label for="currentReserves">Current Reserve Balance</label>
+            <input type="text" id="currentReserves" name="currentReserves" placeholder="$125,000">
+            <div class="help-text">Approximate amount</div>
+          </div>
+          
+          <div class="form-group">
+            <label for="monthlyContribution">Monthly Contribution</label>
+            <input type="text" id="monthlyContribution" name="monthlyContribution" placeholder="$8,500">
+            <div class="help-text">Total monthly reserves</div>
+          </div>
+        </div>
+        
+        <!-- Reserve Study Upload -->
+        <h3 class="section-title">📄 Reserve Study Upload</h3>
+        
+        <div class="form-group">
+          <label for="reserveStudy">Upload Your Reserve Study</label>
+          <div class="file-upload" onclick="document.getElementById('reserveStudy').click()">
+            <div class="upload-icon">📁</div>
+            <div class="upload-text">Click to upload or drag and drop</div>
+            <div class="upload-subtext">PDF, Excel, or Word files (max 10MB)</div>
+            <input type="file" id="reserveStudy" name="reserveStudy" accept=".pdf,.xlsx,.xls,.docx,.doc" />
+          </div>
+          <div class="file-info" id="fileInfo"></div>
+          <div class="help-text">Optional: Upload your latest reserve study for detailed AI analysis</div>
+        </div>
+        
+        <!-- Current Challenges -->
+        <h3 class="section-title">⚠️ Current Situation</h3>
+        
+        <div class="form-group">
+          <label for="upcomingExpenses">Known Upcoming Major Expenses</label>
+          <textarea id="upcomingExpenses" name="upcomingExpenses" placeholder="e.g., Roof replacement needed in 2026 ($85,000), HVAC system aging..."></textarea>
+          <div class="help-text">List any major repairs or replacements you're planning</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="concerns">Current Reserve Fund Concerns</label>
+          <textarea id="concerns" name="concerns" placeholder="e.g., Worried about insufficient funds, recent special assessment, board disagreements about funding..."></textarea>
+          <div class="help-text">What keeps you up at night about your reserve fund?</div>
+        </div>
+        
+        <div class="highlight-box">
+          <h4>🤖 AI Analysis Will Include:</h4>
+          <ul>
+            <li>Reserve fund health score and risk assessment</li>
+            <li>Comparison to similar buildings in your area</li>
+            <li>Funding gap analysis for upcoming expenses</li>
+            <li>Monthly contribution vs. special assessment scenarios</li>
+            <li>Board presentation recommendations</li>
+            <li>Timeline for action items</li>
+          </ul>
+        </div>
+        
+        <div class="checkbox-group">
+          <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+          <label for="newsletter">
+            I'd like to receive ReserveIQ updates and reserve fund management tips
+          </label>
+        </div>
+        
+        <button type="submit" class="submit-btn" id="submitBtn">
+          🚀 Get My Free Assessment
+        </button>
+        
+        <p class="security-note">
+          🔒 Your information and documents are secure and confidential. We never share your data.
+        </p>
+      </form>
+    </div>
+  </div>
+  
+  <script>
+    // File upload handling
+    const fileUpload = document.querySelector('.file-upload');
+    const fileInput = document.getElementById('reserveStudy');
+    const fileInfo = document.getElementById('fileInfo');
+    
+    fileInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        fileInfo.style.display = 'block';
+        fileInfo.innerHTML = `
+          <strong>Selected file:</strong> ${file.name}<br>
+          <strong>Size:</strong> ${(file.size / 1024 / 1024).toFixed(2)} MB<br>
+          <strong>Type:</strong> ${file.type || 'Unknown'}
+        `;
+      }
+    });
+    
+    // Drag and drop
+    fileUpload.addEventListener('dragover', function(e) {
+      e.preventDefault();
+      fileUpload.classList.add('dragover');
+    });
+    
+    fileUpload.addEventListener('dragleave', function(e) {
+      e.preventDefault();
+      fileUpload.classList.remove('dragover');
+    });
+    
+    fileUpload.addEventListener('drop', function(e) {
+      e.preventDefault();
+      fileUpload.classList.remove('dragover');
+      
+      const files = e.dataTransfer.files;
+      if (files.length > 0) {
+        fileInput.files = files;
+        fileInput.dispatchEvent(new Event('change'));
+      }
+    });
+    
+    // Form submission
+    document.getElementById('assessmentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const originalText = submitBtn.textContent;
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = '🤖 Analyzing...';
+      submitBtn.classList.add('loading');
+      
+      // Collect form data
+      const formData = new FormData(this);
+      
+      // Add timestamp
+      formData.append('submittedAt', new Date().toISOString());
+      formData.append('source', 'board-member-assessment');
+      
+      // Simulate API call (replace with actual endpoint)
+      fetch('/api/assessment-request', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Submission failed');
+        }
+      })
+      .then(result => {
+        // Redirect to results page
+        window.location.href = '/assessment-results?email=' + encodeURIComponent(formData.get('email'));
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error submitting your assessment. Please try again or contact us directly at support@reserveiq.com');
+        
+        // Reset button
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        submitBtn.classList.remove('loading');
+      });
+    });
+    
+    // Form validation enhancements
+    document.querySelectorAll('input[required], select[required]').forEach(field => {
+      field.addEventListener('blur', function() {
+        if (this.value.trim() === '') {
+          this.style.borderColor = '#ef4444';
+        } else {
+          this.style.borderColor = '#10b981';
+        }
+      });
+      
+      field.addEventListener('input', function() {
+        if (this.value.trim() !== '') {
+          this.style.borderColor = '#10b981';
+        }
+      });
+    });
+    
+    // Email validation
+    document.getElementById('email').addEventListener('blur', function() {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(this.value)) {
+        this.style.borderColor = '#ef4444';
+      } else {
+        this.style.borderColor = '#10b981';
+      }
+    });
+    
+    // Currency formatting
+    document.querySelectorAll('#currentReserves, #monthlyContribution').forEach(field => {
+      field.addEventListener('blur', function() {
+        let value = this.value.replace(/[^\d]/g, '');
+        if (value) {
+          this.value = '$' + parseInt(value).toLocaleString();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
