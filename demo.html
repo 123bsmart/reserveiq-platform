@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReserveIQ Demo - Portfolio Intelligence Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8fafc;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+    
+    /* Header */
+    .header {
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .logo-text {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1f2937;
+    }
+    
+    .logo-text .iq {
+      color: #10b981;
+    }
+    
+    .demo-badge {
+      background: #3b82f6;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    
+    .header-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    .btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+    }
+    
+    .btn-primary {
+      background: #3b82f6;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #2563eb;
+    }
+    
+    .btn-secondary {
+      background: #f3f4f6;
+      color: #374151;
+    }
+    
+    .btn-secondary:hover {
+      background: #e5e7eb;
+    }
+    
+    /* Main Content */
+    .main-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .dashboard-header {
+      margin-bottom: 2rem;
+    }
+    
+    .dashboard-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .dashboard-subtitle {
+      color: #6b7280;
+      font-size: 1.1rem;
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .stat-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border: 1px solid #e5e7eb;
+    }
+    
+    .stat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    
+    .stat-title {
+      font-size: 0.9rem;
+      color: #6b7280;
+      font-weight: 500;
+    }
+    
+    .stat-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+    
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-change {
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    .positive { color: #10b981; }
+    .negative { color: #ef4444; }
+    .warning { color: #f59e0b; }
+    
+    .icon-blue { background: #dbeafe; color: #3b82f6; }
+    .icon-green { background: #d1fae5; color: #10b981; }
+    .icon-red { background: #fee2e2; color: #ef4444; }
+    .icon-yellow { background: #fef3c7; color: #f59e0b; }
+    
+    /* Buildings Table */
+    .buildings-section {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border: 1px solid #e5e7eb;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    
+    .section-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+    
+    .buildings-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .buildings-table th {
+      background: #f9fafb;
+      padding: 1rem 1.5rem;
+      text-align: left;
+      font-weight: 600;
+      color: #374151;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .buildings-table td {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: middle;
+    }
+    
+    .buildings-table tr:hover {
+      background: #f9fafb;
+      cursor: pointer;
+    }
+    
+    .building-name {
+      font-weight: 600;
+      color: #1f2937;
+    }
+    
+    .building-address {
+      color: #6b7280;
+      font-size: 0.85rem;
+      margin-top: 2px;
+    }
+    
+    .health-score {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .health-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    
+    .health-excellent { background: #10b981; }
+    .health-good { background: #84cc16; }
+    .health-warning { background: #f59e0b; }
+    .health-critical { background: #ef4444; }
+    
+    .alert-badge {
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .alert-low { background: #d1fae5; color: #065f46; }
+    .alert-medium { background: #fef3c7; color: #92400e; }
+    .alert-high { background: #fee2e2; color: #991b1b; }
+    
+    /* Charts Section */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .chart-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border: 1px solid #e5e7eb;
+      padding: 1.5rem;
+    }
+    
+    .chart-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .chart-placeholder {
+      height: 300px;
+      background: #f9fafb;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6b7280;
+      border: 2px dashed #d1d5db;
+    }
+    
+    /* AI Insights */
+    .ai-insights {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border: 1px solid #e5e7eb;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .ai-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .ai-icon {
+      width: 24px;
+      height: 24px;
+      background: #10b981;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+    }
+    
+    .insight-item {
+      padding: 1rem;
+      background: #f0fdf4;
+      border-radius: 8px;
+      border-left: 4px solid #10b981;
+      margin-bottom: 1rem;
+    }
+    
+    .insight-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .insight-title {
+      font-weight: 600;
+      color: #065f46;
+      margin-bottom: 0.5rem;
+    }
+    
+    .insight-description {
+      color: #166534;
+      font-size: 0.9rem;
+    }
+    
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+    
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #6b7280;
+    }
+    
+    .close-btn:hover {
+      color: #374151;
+    }
+    
+    /* Floating CTA */
+    .floating-cta {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 50px;
+      box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      z-index: 200;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      max-width: 280px;
+      animation: pulse 2s infinite;
+    }
+    
+    .floating-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(59, 130, 246, 0.5);
+    }
+    
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4); }
+      50% { box-shadow: 0 8px 35px rgba(59, 130, 246, 0.6); }
+    }
+    
+    /* CTA Modal */
+    .cta-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 1001;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .cta-modal-content {
+      background: white;
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    }
+    
+    .cta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .cta-form input, .cta-form textarea {
+      padding: 12px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
+    }
+    
+    .cta-form input:focus, .cta-form textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+    }
+    
+    .form-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    /* Expandable Insight */
+    .insight-expandable {
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .insight-expandable:hover {
+      background: #ecfdf5;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+    }
+    
+    .insight-expanded {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: white;
+      border-radius: 8px;
+      border: 1px solid #d1fae5;
+      display: none;
+    }
+    
+    .source-document {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 1rem;
+      margin: 1rem 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      color: #374151;
+    }
+    
+    .ai-analysis {
+      background: #f0f9ff;
+      border-left: 4px solid #3b82f6;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 0 6px 6px 0;
+    }
+    
+    /* PDF Download Button */
+    .pdf-download {
+      margin-left: 1rem;
+      background: #059669;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .pdf-download:hover {
+      background: #047857;
+      transform: translateY(-1px);
+    }
+    
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .charts-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .main-content {
+        padding: 1rem;
+      }
+      
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .floating-cta {
+        bottom: 20px;
+        right: 20px;
+        padding: 14px 20px;
+        font-size: 0.9rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .buildings-table {
+        font-size: 0.85rem;
+      }
+      
+      .buildings-table th,
+      .buildings-table td {
+        padding: 0.75rem;
+      }
+      
+      .floating-cta {
+        bottom: 15px;
+        right: 15px;
+        padding: 12px 18px;
+        max-width: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <div class="header">
+    <div class="header-content">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+          <!-- Shield background -->
+          <path d="M25 2 L40 6 L40 22 C40 32 25 45 25 45 C25 45 10 32 10 22 L10 6 Z" 
+                fill="#3b82f6" stroke="none"/>
+          
+          <!-- Building elements -->
+          <rect x="16" y="12" width="3" height="10" fill="white" opacity="0.9"/>
+          <rect x="21" y="10" width="3" height="12" fill="white" opacity="0.9"/>
+          <rect x="26" y="13" width="3" height="9" fill="white" opacity="0.9"/>
+          <rect x="31" y="11" width="3" height="11" fill="white" opacity="0.9"/>
+          
+          <!-- AI symbol -->
+          <circle cx="25" cy="32" r="6" fill="#10b981"/>
+          <circle cx="25" cy="32" r="2" fill="white"/>
+          <circle cx="22" cy="30" r="1" fill="white"/>
+          <circle cx="28" cy="30" r="1" fill="white"/>
+          <circle cx="22" cy="34" r="1" fill="white"/>
+          <circle cx="28" cy="34" r="1" fill="white"/>
+          
+          <!-- Connection lines -->
+          <line x1="22" y1="30" x2="25" y2="32" stroke="white" stroke-width="0.5"/>
+          <line x1="28" y1="30" x2="25" y2="32" stroke="white" stroke-width="0.5"/>
+          <line x1="22" y1="34" x2="25" y2="32" stroke="white" stroke-width="0.5"/>
+          <line x1="28" y1="34" x2="25" y2="32" stroke="white" stroke-width="0.5"/>
+        </svg>
+        
+        <div>
+          <div class="logo-text">Reserve<span class="iq">IQ</span></div>
+        </div>
+        
+        <div class="demo-badge">DEMO</div>
+      </div>
+      
+      <div class="header-actions">
+        <button class="btn btn-secondary" onclick="showUploadDemo()">Upload Document</button>
+        <button class="btn btn-primary" onclick="window.open('mailto:demo@reserveiq.com?subject=Schedule Real Demo')">Schedule Real Demo</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Dashboard Header -->
+    <div class="dashboard-header">
+      <h1 class="dashboard-title">Portfolio Overview</h1>
+      <p class="dashboard-subtitle">
+        Metro Property Solutions • 8 Buildings • Last updated: Today at 9:45 AM
+      </p>
+    </div>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-header">
+          <span class="stat-title">Total Portfolio Value</span>
+          <div class="stat-icon icon-blue">🏢</div>
+        </div>
+        <div class="stat-value">$47.2M</div>
+        <div class="stat-change positive">+2.3% from last quarter</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-header">
+          <span class="stat-title">Reserve Fund Health</span>
+          <div class="stat-icon icon-yellow">⚠️</div>
+        </div>
+        <div class="stat-value warning">64%</div>
+        <div class="stat-change negative">3 buildings need attention</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-header">
+          <span class="stat-title">Critical Alerts</span>
+          <div class="stat-icon icon-red">🚨</div>
+        </div>
+        <div class="stat-value negative">5</div>
+        <div class="stat-change negative">2 urgent, 3 upcoming</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-header">
+          <span class="stat-title">Potential Savings</span>
+          <div class="stat-icon icon-green">💰</div>
+        </div>
+        <div class="stat-value positive">$1.8M</div>
+        <div class="stat-change positive">Through proactive planning</div>
+      </div>
+    </div>
+
+    <!-- Buildings Table -->
+    <div class="buildings-section">
+      <div class="section-header">
+        <h2 class="section-title">Building Portfolio</h2>
+        <div>
+          <button class="pdf-download" onclick="downloadSampleReport()">
+            📄 Download Sample Report
+          </button>
+          <button class="btn btn-secondary">Export Report</button>
+        </div>
+      </div>
+      
+      <table class="buildings-table">
+        <thead>
+          <tr>
+            <th>Building</th>
+            <th>Reserve Health</th>
+            <th>Next Major Expense</th>
+            <th>Alert Level</th>
+            <th>Projected Cost</th>
+            <th>Action Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr onclick="openBuildingDetails('Maple Estates')">
+            <td>
+              <div class="building-name">Maple Estates</div>
+              <div class="building-address">123 Maple St, Toronto, ON</div>
+            </td>
+            <td>
+              <div class="health-score">
+                <div class="health-dot health-good"></div>
+                <span>78%</span>
+              </div>
+            </td>
+            <td>Roof Replacement (2027)</td>
+            <td><span class="alert-badge alert-low">Low</span></td>
+            <td>$235,000</td>
+            <td>Schedule assessment</td>
+          </tr>
+          
+          <tr onclick="openBuildingDetails('Park Towers')">
+            <td>
+              <div class="building-name">Park Towers</div>
+              <div class="building-address">456 Park Ave, Toronto, ON</div>
+            </td>
+            <td>
+              <div class="health-score">
+                <div class="health-dot health-warning"></div>
+                <span>52%</span>
+              </div>
+            </td>
+            <td>HVAC System (2025)</td>
+            <td><span class="alert-badge alert-high">High</span></td>
+            <td>$180,000</td>
+            <td>Immediate planning</td>
+          </tr>
+          
+          <tr onclick="openBuildingDetails('Lakeside Manor')">
+            <td>
+              <div class="building-name">Lakeside Manor</div>
+              <div class="building-address">789 Lake Dr, Mississauga, ON</div>
+            </td>
+            <td>
+              <div class="health-score">
+                <div class="health-dot health-critical"></div>
+                <span>31%</span>
+              </div>
+            </td>
+            <td>Elevator Modernization (2025)</td>
+            <td><span class="alert-badge alert-high">High</span></td>
+            <td>$320,000</td>
+            <td>Crisis prevention plan</td>
+          </tr>
+          
+          <tr onclick="openBuildingDetails('Sunset Place')">
+            <td>
+              <div class="building-name">Sunset Place</div>
+              <div class="building-address">321 Sunset Blvd, Toronto, ON</div>
+            </td>
+            <td>
+              <div class="health-score">
+                <div class="health-dot health-excellent"></div>
+                <span>89%</span>
+              </div>
+            </td>
+            <td>Balcony Repairs (2028)</td>
+            <td><span class="alert-badge alert-low">Low</span></td>
+            <td>$95,000</td>
+            <td>Continue monitoring</td>
+          </tr>
+          
+          <tr onclick="openBuildingDetails('River View')">
+            <td>
+              <div class="building-name">River View Condos</div>
+              <div class="building-address">654 River St, Toronto, ON</div>
+            </td>
+            <td>
+              <div class="health-score">
+                <div class="health-dot health-warning"></div>
+                <span>58%</span>
+              </div>
+            </td>
+            <td>Windows & Caulking (2026)</td>
+            <td><span class="alert-badge alert-medium">Medium</span></td>
+            <td>$475,000</td>
+            <td>Board presentation needed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Charts Grid -->
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h3 class="chart-title">Reserve Fund Trends</h3>
+        <div class="chart-placeholder">
+          📈 Interactive Chart: 5-Year Reserve Fund Projections<br>
+          <small style="margin-top: 10px; display: block;">Shows current trajectory vs. optimal funding levels</small>
+        </div>
+      </div>
+      
+      <div class="chart-card">
+        <h3 class="chart-title">Risk Distribution</h3>
+        <div class="chart-placeholder">
+          🥧 Portfolio Risk Breakdown<br>
+          <small style="margin-top: 10px; display: block;">Visual risk assessment across all properties</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI Insights -->
+    <div class="ai-insights">
+      <div class="ai-header">
+        <div class="ai-icon">🤖</div>
+        <h3 class="chart-title">AI-Powered Insights</h3>
+      </div>
+      
+      <div class="insight-item insight-expandable" onclick="toggleInsightExpansion(this)">
+        <div class="insight-title">🚨 Immediate Action Required</div>
+        <div class="insight-description">
+          Lakeside Manor's reserve fund will be insufficient for planned elevator modernization. Recommend monthly increase of $89/unit starting next month to avoid $4,200/unit special assessment.
+          <span style="color: #3b82f6; font-weight: 600; margin-left: 8px;">← Click to see AI analysis</span>
+        </div>
+        <div class="insight-expanded">
+          <h4 style="color: #374151; margin-bottom: 0.5rem;">📋 Source Document Analysis</h4>
+          <div class="source-document">
+            <strong>Reserve Fund Study 2024 - Page 23</strong><br>
+            "Component: Elevator System (2 cars)<br>
+            Remaining Useful Life: 12 months<br>
+            Replacement Cost: $320,000<br>
+            Current Reserve Allocation: $98,000<br>
+            Funding Status: CRITICAL SHORTFALL"
+          </div>
+          <div class="ai-analysis">
+            <h4 style="color: #1e40af; margin-bottom: 0.5rem;">🤖 AI-Generated Analysis</h4>
+            <p>Our AI has identified a critical funding gap. With only $98,000 in reserves against a $320,000 elevator replacement cost due in 12 months, the building faces a $222,000 shortfall. The recommended monthly increase of $89/unit would generate $166,644 annually (156 units × $89 × 12), which combined with current reserves would cover the expense while maintaining a healthy reserve buffer.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="insight-item">
+        <div class="insight-title">💰 Cost Optimization Opportunity</div>
+        <div class="insight-description">
+          Bundling Park Towers HVAC and River View window projects could save $47,000 through contractor economies of scale. Optimal timing: Q2 2025.
+        </div>
+      </div>
+      
+      <div class="insight-item">
+        <div class="insight-title">📊 Portfolio Performance</div>
+        <div class="insight-description">
+          Your portfolio's reserve health (64%) is above industry average (52%). Sunset Place and Maple Estates are excellent examples of proactive reserve management.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating CTA -->
+  <div class="floating-cta" onclick="openCTAModal()">
+    🧪 Try Demo on Your Building
+  </div>
+
+  <!-- CTA Modal -->
+  <div id="ctaModal" class="cta-modal">
+    <div class="cta-modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Get ReserveIQ Demo for Your Building</h2>
+        <button class="close-btn" onclick="closeCTAModal()">&times;</button>
+      </div>
+      <p style="color: #6b7280; margin-bottom: 1.5rem;">
+        See how ReserveIQ can analyze your building's reserve health and prevent costly surprises.
+      </p>
+      <form class="cta-form" onsubmit="submitCTAForm(event)">
+        <input type="text" placeholder="Your Name *" required>
+        <input type="email" placeholder="Email Address *" required>
+        <input type="text" placeholder="Property Management Company">
+        <input type="text" placeholder="Building/Condo Name *" required>
+        <input type="number" placeholder="Number of Units" min="1">
+        <textarea placeholder="Current reserve fund challenges (optional)" rows="3"></textarea>
+        <div class="form-buttons">
+          <button type="submit" class="btn btn-primary" style="flex: 1;">Get My Building Demo</button>
+          <button type="button" class="btn btn-secondary" onclick="closeCTAModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Building Details Modal -->
+  <div id="buildingModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Building Details</h2>
+        <button class="close-btn" onclick="closeBuildingDetails()">&times;</button>
+      </div>
+      <div id="modalBody">
+        <!-- Content will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Sample building data
+    const buildingData = {
+      'Maple Estates': {
+        address: '123 Maple St, Toronto, ON',
+        units: 127,
+        built: 1998,
+        reserveBalance: '$890,000',
+        monthlyContribution: '$12,700',
+        nextMajorExpense: 'Roof Replacement (2027)',
+        estimatedCost: '$235,000',
+        riskLevel: 'Low',
+        healthScore: 78,
+        recommendations: [
+          'Schedule roof inspection by Q3 2024',
+          'Consider increasing monthly contributions by $85/unit',
+          'Plan reserve study update for 2025'
+        ]
+      },
+      'Park Towers': {
+        address: '456 Park Ave, Toronto, ON',
+        units: 89,
+        built: 2003,
+        reserveBalance: '$145,000',
+        monthlyContribution: '$8,900',
+        nextMajorExpense: 'HVAC System Replacement (2025)',
+        estimatedCost: '$180,000',
+        riskLevel: 'High',
+        healthScore: 52,
+        recommendations: [
+          'URGENT: Increase monthly contributions immediately',
+          'Consider special assessment of $1,800/unit',
+          'Schedule emergency board meeting',
+          'Explore financing options'
+        ]
+      },
+      'Lakeside Manor': {
+        address: '789 Lake Dr, Mississauga, ON',
+        units: 156,
+        built: 1995,
+        reserveBalance: '$98,000',
+        monthlyContribution: '$15,600',
+        nextMajorExpense: 'Elevator Modernization (2025)',
+        estimatedCost: '$320,000',
+        riskLevel: 'Critical',
+        healthScore: 31,
+        recommendations: [
+          'CRISIS ALERT: Immediate action required',
+          'Monthly increase: $89/unit to avoid assessment',
+          'Alternative: $4,200/unit special assessment',
+          'Consider loan financing for major work'
+        ]
+      }
+    };
+
+    function openBuildingDetails(buildingName) {
+      const building = buildingData[buildingName];
+      if (!building) return;
+
+      document.getElementById('modalTitle').textContent = buildingName;
+      
+      const modalBody = document.getElementById('modalBody');
+      modalBody.innerHTML = `
+        <div style="margin-bottom: 1.5rem;">
+          <h4 style="margin-bottom: 0.5rem;">Building Information</h4>
+          <p><strong>Address:</strong> ${building.address}</p>
+          <p><strong>Units:</strong> ${building.units}</p>
+          <p><strong>Built:</strong> ${building.built}</p>
+        </div>
+        
+        <div style="margin-bottom: 1.5rem;">
+          <h4 style="margin-bottom: 0.5rem;">Financial Status</h4>
+          <p><strong>Reserve Balance:</strong> ${building.reserveBalance}</p>
+          <p><strong>Monthly Contribution:</strong> ${building.monthlyContribution}</p>
+          <p><strong>Reserve Health Score:</strong> <span style="color: ${building.healthScore > 70 ? '#10b981' : building.healthScore > 50 ? '#f59e0b' : '#ef4444'};">${building.healthScore}%</span></p>
+        </div>
+        
+        <div style="margin-bottom: 1.5rem;">
+          <h4 style="margin-bottom: 0.5rem;">Upcoming Expenses</h4>
+          <p><strong>Next Major:</strong> ${building.nextMajorExpense}</p>
+          <p><strong>Estimated Cost:</strong> ${building.estimatedCost}</p>
+          <p><strong>Risk Level:</strong> <span style="color: ${building.riskLevel === 'Low' ? '#10b981' : building.riskLevel === 'Medium' ? '#f59e0b' : '#ef4444'};">${building.riskLevel}</span></p>
+        </div>
+        
+        <div>
+          <h4 style="margin-bottom: 0.5rem;">AI Recommendations</h4>
+          <ul style="margin: 0; padding-left: 1.2rem;">
+            ${building.recommendations.map(rec => `<li style="margin-bottom: 0.5rem;">${rec}</li>`).join('')}
+          </ul>
+        </div>
+        
+        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #e5e7eb;">
+          <button class="btn btn-primary" onclick="alert('In the full version, this would generate a detailed report for this building.')">Generate Detailed Report</button>
+          <button class="btn btn-secondary" onclick="alert('In the full version, this would show cost scenarios and funding options.')">Show Cost Scenarios</button>
+        </div>
+      `;
+      
+      document.getElementById('buildingModal').style.display = 'flex';
+    }
+
+    function closeBuildingDetails() {
+      document.getElementById('buildingModal').style.display = 'none';
+    }
+
+    function showUploadDemo() {
+      alert('🚀 DEMO FEATURE:\n\nIn the full ReserveIQ platform, you would:\n\n• Upload reserve study PDFs\n• Get AI analysis in 30 seconds\n• See risk assessments and recommendations\n• Generate board-ready presentations\n\nWant to see this in action? Schedule a real demo!');
+    }
+
+    function downloadSampleReport() {
+      // Get the button element correctly
+      const button = document.querySelector('.pdf-download');
+      const originalText = button.innerHTML;
+      
+      // Show generating message first (adds drama and professionalism)
+      button.innerHTML = '⏳ Generating Report...';
+      button.disabled = true;
+      
+      setTimeout(() => {
+        // Reset button
+        button.innerHTML = originalText;
+        button.disabled = false;
+        
+        // Create HTML content that mimics a professional report
+        const reportHTML = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+          <title>ReserveIQ Sample Report - Lakeside Manor</title>
+          <style>
+            body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+            .header { text-align: center; border-bottom: 3px solid #3b82f6; padding-bottom: 20px; margin-bottom: 30px; }
+            .logo { color: #3b82f6; font-size: 24px; font-weight: bold; }
+            .critical { color: #ef4444; font-weight: bold; }
+            .warning { color: #f59e0b; font-weight: bold; }
+            .good { color: #10b981; font-weight: bold; }
+            .section { margin: 30px 0; padding: 20px; border-left: 4px solid #e5e7eb; }
+            .highlight { background: #fef3c7; padding: 15px; border-radius: 8px; margin: 15px 0; }
+            table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+            th, td { padding: 12px; text-align: left; border-bottom: 1px solid #e5e7eb; }
+            th { background: #f9fafb; font-weight: bold; }
+          </style>
+        </head>
+        <body>
+          <div class="header">
+            <div class="logo">ReserveIQ</div>
+            <h1>Reserve Fund Analysis Report</h1>
+            <p><strong>Building:</strong> Lakeside Manor | <strong>Date:</strong> ${new Date().toLocaleDateString()}</p>
+          </div>
+          
+          <div class="section">
+            <h2>🚨 Executive Summary</h2>
+            <p><strong>Reserve Health Score:</strong> <span class="critical">31% - CRITICAL</span></p>
+            <div class="highlight">
+              <strong>Immediate Action Required:</strong> Your building faces a $222,000 funding shortfall for upcoming elevator modernization. Without action, owners will face a $4,200/unit special assessment.
+            </div>
+          </div>
+          
+          <div class="section">
+            <h2>📊 Building Overview</h2>
+            <table>
+              <tr><th>Property</th><td>Lakeside Manor</td></tr>
+              <tr><th>Address</th><td>789 Lake Dr, Mississauga, ON</td></tr>
+              <tr><th>Units</th><td>156 units</td></tr>
+              <tr><th>Built</th><td>1995</td></tr>
+              <tr><th>Current Reserve Balance</th><td>$98,000</td></tr>
+              <tr><th>Monthly Contributions</th><td>$15,600</td></tr>
+            </table>
+          </div>
+          
+          <div class="section">
+            <h2>⚠️ Critical Findings</h2>
+            <h3>Elevator System Replacement</h3>
+            <ul>
+              <li><strong>Timeline:</strong> 12 months remaining</li>
+              <li><strong>Estimated Cost:</strong> $320,000</li>
+              <li><strong>Current Reserves:</strong> $98,000</li>
+              <li><strong>Funding Gap:</strong> <span class="critical">$222,000</span></li>
+            </ul>
+          </div>
+          
+          <div class="section">
+            <h2>✅ ReserveIQ Recommendations</h2>
+            <div class="highlight">
+              <h3>Recommended Action: Monthly Fee Increase</h3>
+              <p><strong>Increase:</strong> $89/unit per month</p>
+              <p><strong>Total Monthly:</strong> $13,884 additional</p>
+              <p><strong>Result:</strong> Avoid $4,200/unit special assessment</p>
+              <p><strong>Timeline:</strong> Start immediately</p>
+            </div>
+            
+            <h3>Alternative Options:</h3>
+            <ol>
+              <li><strong>Special Assessment:</strong> $4,200/unit (not recommended)</li>
+              <li><strong>Loan Financing:</strong> Spread cost over 5-10 years</li>
+              <li><strong>Phased Approach:</strong> Replace one elevator at a time</li>
+            </ol>
+          </div>
+          
+          <div class="section">
+            <h2>📈 30-Year Projection</h2>
+            <p>With the recommended monthly increase, your building will maintain healthy reserves and avoid future crisis assessments.</p>
+          </div>
+          
+          <div class="header" style="border-top: 2px solid #3b82f6; border-bottom: none; margin-top: 50px;">
+            <p><strong>Generated by ReserveIQ</strong> - AI-Powered Reserve Fund Intelligence</p>
+            <p>Contact us: demo@reserveiq.com | Schedule a demo: <a href="mailto:demo@reserveiq.com">demo@reserveiq.com</a></p>
+          </div>
+        </body>
+        </html>`;
+        
+        // Convert HTML to PDF simulation by opening in new window
+        const printWindow = window.open('', '_blank');
+        printWindow.document.write(reportHTML);
+        printWindow.document.close();
+        
+        // Trigger print dialog (user can save as PDF)
+        setTimeout(() => {
+          printWindow.print();
+        }, 500);
+        
+        // Show success message
+        alert('📄 Sample report generated!\n\nThe report opened in a new window. Use your browser\'s "Save as PDF" option to download.\n\nIn the full ReserveIQ platform, this would be an automatic PDF download with your building\'s actual data.');
+        
+      }, 1500); // 1.5 second delay for dramatic effect
+    }
+
+    function openCTAModal() {
+      document.getElementById('ctaModal').style.display = 'flex';
+    }
+
+    function closeCTAModal() {
+      document.getElementById('ctaModal').style.display = 'none';
+    }
+
+    function submitCTAForm(event) {
+      event.preventDefault();
+      
+      // Simulate form submission
+      const formData = new FormData(event.target);
+      
+      // In production, this would send to your backend
+      console.log('CTA Form Submitted:', Object.fromEntries(formData));
+      
+      // Show success message
+      alert('🎉 Thank you! We\'ll analyze your building and send you a personalized demo within 24 hours.\n\nCheck your email for next steps!');
+      
+      closeCTAModal();
+      event.target.reset();
+    }
+
+    function toggleInsightExpansion(element) {
+      const expanded = element.querySelector('.insight-expanded');
+      const isVisible = expanded.style.display === 'block';
+      
+      if (isVisible) {
+        expanded.style.display = 'none';
+        element.style.transform = '';
+        element.style.boxShadow = '';
+      } else {
+        expanded.style.display = 'block';
+        element.style.transform = 'translateY(-2px)';
+        element.style.boxShadow = '0 4px 12px rgba(16, 185, 129, 0.15)';
+      }
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const buildingModal = document.getElementById('buildingModal');
+      const ctaModal = document.getElementById('ctaModal');
+      
+      if (event.target === buildingModal) {
+        closeBuildingDetails();
+      }
+      if (event.target === ctaModal) {
+        closeCTAModal();
+      }
+    }
+
+    // Demo interaction hints
+    setTimeout(() => {
+      console.log('🎯 DEMO TIPS:\n• Click on any building row to see detailed analysis\n• Try the "Upload Document" button\n• Click "Schedule Real Demo" to book a live session');
+    }, 2000);
+  </script>
+</body>
+</html>
