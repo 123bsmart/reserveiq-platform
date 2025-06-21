@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assessment Processing - ReserveIQ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1e2a78 0%, #1e3a8a 100%);
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+    
+    .logo-icon {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .logo-text {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+    
+    .logo-text .reserve {
+      color: white;
+    }
+    
+    .logo-text .iq {
+      color: #10b981;
+    }
+    
+    .logo-tagline {
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+      font-weight: 400;
+      margin-top: 5px;
+      letter-spacing: 0.5px;
+    }
+    
+    .success-container {
+      background: white;
+      color: #1f2937;
+      border-radius: 16px;
+      padding: 50px 40px;
+      max-width: 600px;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+      margin-bottom: 30px;
+    }
+    
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: #10b981;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 30px;
+      font-size: 40px;
+      animation: scaleIn 0.8s ease-out;
+    }
+    
+    .success-title {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1f2937;
+    }
+    
+    .success-message {
+      font-size: 1.1rem;
+      color: #6b7280;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    
+    .processing-steps {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      text-align: left;
+    }
+    
+    .processing-steps h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1f2937;
+    }
+    
+    .steps-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .steps-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      color: #4b5563;
+    }
+    
+    .step-icon {
+      background: #3b82f6;
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    
+    .timeline-box {
+      background: #ecfdf5;
+      border: 1px solid #d1fae5;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .timeline-box h4 {
+      color: #065f46;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .timeline-box p {
+      color: #047857;
+      margin: 0;
+    }
+    
+    .action-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    
+    .btn-primary {
+      background: #10b981;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #059669;
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: #3b82f6;
+      border: 2px solid #3b82f6;
+    }
+    
+    .btn-secondary:hover {
+      background: #3b82f6;
+      color: white;
+    }
+    
+    .footer-links {
+      margin-top: 40px;
+    }
+    
+    .footer-links a {
+      color: #93c5fd;
+      text-decoration: none;
+      margin: 0 20px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .success-container {
+        padding: 40px 25px;
+        margin: 0 10px 30px;
+      }
+      
+      .success-title {
+        font-size: 1.75rem;
+      }
+      
+      .action-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+      }
+      
+      .footer-links a {
+        display: block;
+        margin: 10px 0;
+      }
+      
+      .logo-text {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Logo -->
+  <div class="logo">
+    <svg class="logo-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <!-- Shield background -->
+      <path d="M30 5 L45 10 L45 30 C45 42 30 52 30 52 C30 52 15 42 15 30 L15 10 Z" 
+            fill="#3b82f6" stroke="none"/>
+      
+      <!-- Building elements -->
+      <rect x="20" y="18" width="4" height="12" fill="white" opacity="0.9"/>
+      <rect x="26" y="16" width="4" height="14" fill="white" opacity="0.9"/>
+      <rect x="32" y="19" width="4" height="11" fill="white" opacity="0.9"/>
+      <rect x="38" y="17" width="4" height="13" fill="white" opacity="0.9"/>
+      
+      <!-- AI symbol -->
+      <circle cx="30" cy="38" r="8" fill="#10b981"/>
+      <circle cx="30" cy="38" r="3" fill="white"/>
+      <circle cx="26" cy="35" r="1.5" fill="white"/>
+      <circle cx="34" cy="35" r="1.5" fill="white"/>
+      <circle cx="26" cy="41" r="1.5" fill="white"/>
+      <circle cx="34" cy="41" r="1.5" fill="white"/>
+      
+      <!-- Connection lines -->
+      <line x1="26" y1="35" x2="30" y2="38" stroke="white" stroke-width="1"/>
+      <line x1="34" y1="35" x2="30" y2="38" stroke="white" stroke-width="1"/>
+      <line x1="26" y1="41" x2="30" y2="38" stroke="white" stroke-width="1"/>
+      <line x1="34" y1="41" x2="30" y2="38" stroke="white" stroke-width="1"/>
+    </svg>
+    
+    <div>
+      <div class="logo-text">
+        <span class="reserve">Reserve</span><span class="iq">IQ</span>
+      </div>
+      <div class="logo-tagline">AI-Powered Portfolio Intelligence Platform</div>
+    </div>
+  </div>
+  
+  <div class="success-container">
+    <div class="success-icon">
+      🤖
+    </div>
+    
+    <h1 class="success-title">Assessment Processing!</h1>
+    
+    <p class="success-message">
+      Thank you for submitting your building information. Our AI is now analyzing your reserve fund health and will deliver your personalized assessment report within 24 hours.
+    </p>
+    
+    <div class="processing-steps">
+      <h3>🔄 What's happening now:</h3>
+      <ul class="steps-list">
+        <li>
+          <span class="step-icon">1</span>
+          <span>AI analyzing your building data and uploaded documents</span>
+        </li>
+        <li>
+          <span class="step-icon">2</span>
+          <span>Comparing against similar buildings in your area</span>
+        </li>
+        <li>
+          <span class="step-icon">3</span>
+          <span>Generating risk assessment and funding recommendations</span>
+        </li>
+        <li>
+          <span class="step-icon">4</span>
+          <span>Creating board-ready presentation materials</span>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="timeline-box">
+      <h4>📧 Your Assessment Report Will Include:</h4>
+      <p>• Reserve health score (0-100%) with risk level<br>
+      • Upcoming expense timeline and cost projections<br>
+      • Monthly increase vs. special assessment scenarios<br>
+      • Board presentation slides with key recommendations<br>
+      • Comparison to similar buildings in your region</p>
+    </div>
+    
+    <div class="action-buttons">
+      <a href="/demo" class="btn btn-primary">Explore Interactive Demo</a>
+      <a href="/boards" class="btn btn-secondary">Learn More</a>
+    </div>
+  </div>
+  
+  <div class="footer-links">
+    <a href="/demo-request">Book a Demo</a>
+    <a href="/trial">Start Free Trial</a>
+    <a href="/contact">Contact Us</a>
+  </div>
+  
+  <script>
+    // Get building name from URL parameter if available
+    const urlParams = new URLSearchParams(window.location.search);
+    const buildingName = urlParams.get('building');
+    const email = urlParams.get('email');
+    
+    if (buildingName) {
+      document.querySelector('.success-title').textContent = `Assessment Processing for ${buildingName}!`;
+    }
+    
+    // Analytics tracking
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'assessment_submitted', {
+        'event_category': 'Lead Generation',
+        'event_label': 'Board Member Assessment'
+      });
+    }
+  </script>
+</body>
+</html>
