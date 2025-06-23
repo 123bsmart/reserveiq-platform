@@ -42,9 +42,8 @@ The project follows a feature-based architecture with shared code organized in d
 src/
 ├── app/         # App Router components and routes
 ├── features/    # Feature-specific modules
-├── pages/       # Pages Router components and routes
 └── shared/      # Shared code across features
-    ├── components/  # Reusable UI components
+    ├── ui/          # Reusable UI components
     ├── config/      # Application configuration
     ├── hooks/       # Custom React hooks
     ├── lib/         # Utility libraries
