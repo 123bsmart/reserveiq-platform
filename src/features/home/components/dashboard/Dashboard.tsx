@@ -9,6 +9,7 @@ import {
 } from '@/shared/utils/building-health';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import { useAnalytics } from '@/shared/hooks/useAnalytics';
 
 type BuildingData = {
   name: string;
@@ -18,8 +19,10 @@ type BuildingData = {
 
 export const Dashboard: React.FC = () => {
   const router = useRouter();
+  const { trackDemoClick } = useAnalytics();
 
   const handleRowClick = (link: string): void => {
+    trackDemoClick('building_table_row');
     router.push(link);
   };
 
@@ -51,7 +54,12 @@ export const Dashboard: React.FC = () => {
 
   return (
     <Card animate={false} className="max-w-[600px] mx-auto p-[30px]">
-      <Table columns={columns} data={buildingsData} headerClassName="text-[#374151]" />
+      <Table
+        columns={columns}
+        data={buildingsData}
+        headerClassName="text-[#374151]"
+        onRowClick={({ link }) => handleRowClick(link)}
+      />
       <div className="text-center mt-[15px] text-[#6b7280] text-[0.9rem]">
         <strong>👆 Click any building to explore the full dashboard</strong>
       </div>
