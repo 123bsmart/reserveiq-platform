@@ -42,6 +42,7 @@ The project follows a feature-based architecture with shared code organized in d
 src/
 ├── app/         # App Router components and routes
 ├── features/    # Feature-specific modules
+├── legacy/      # Original HTML/CSS/JS files (pre-migration)
 └── shared/      # Shared code across features
     ├── ui/          # Reusable UI components
     ├── config/      # Application configuration
@@ -52,6 +53,36 @@ src/
     ├── types/       # TypeScript type definitions
     └── utils/       # Utility functions
 ```
+
+## Legacy Frontend
+
+### Overview
+
+The `legacy` directory contains the original HTML, CSS, and JavaScript files that were part of the initial implementation before the migration to Next.js. These files are preserved for reference and to ensure backward compatibility during the migration process.
+
+### Migration Status
+
+We are progressively migrating the legacy frontend to the modern Next.js architecture. The following components have been migrated:
+
+- ✅ Home page (Landing page)
+- ✅ Dashboard preview
+
+Components pending migration:
+
+- ⏳ Demo page
+- ⏳ Demo request form
+- ⏳ Full dashboard
+
+### Working with Legacy Code
+
+If you need to make changes to features that haven't been migrated yet:
+
+1. Locate the relevant files in the `legacy` directory
+2. Make your changes in the legacy files
+3. Test thoroughly to ensure compatibility
+4. Document your changes in the migration plan
+
+**Note:** Avoid adding new features to the legacy codebase. Instead, prioritize migrating that section to the new architecture first.
 
 ## Getting Started
 
