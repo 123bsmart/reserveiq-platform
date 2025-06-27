@@ -2,10 +2,10 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import Dashboard from '../dashboard/Dashboard';
-import DemoHint from '../demo-hint/DemoHint';
 import { Button, Logo } from '@/shared/ui';
 import { useAnalytics } from '@/shared/hooks/useAnalytics';
+import Dashboard from '@/features/home/components/dashboard/Dashboard';
+import DemoHint from '@/features/home/components/demo-hint/DemoHint';
 
 export const Header: React.FC = () => {
   const router = useRouter();

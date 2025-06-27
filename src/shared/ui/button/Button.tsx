@@ -10,6 +10,8 @@ const buttonVariants = cva(
       variant: {
         default: 'bg-[#3b82f6] hover:bg-[#2563eb] hover:-translate-y-[2px] border-none',
         outline: 'bg-transparent border border-[#cbd5e1] hover:bg-white/10 hover:bg-[#ffffff1a]',
+        secondary:
+          'bg-green text-white border-none rounded-lg text-[1.1rem] font-semibold py-4 px-8 w-full hover:bg-green-dark',
       },
       size: {
         default: 'py-[12px] px-[20px]',
@@ -40,6 +42,7 @@ export interface ButtonProps
  * ```tsx
  * <Button variant="default" size="large">Click me</Button>
  * <Button variant="outline" fullWidth>Cancel</Button>
+ * <Button variant="secondary" fullWidth>Submit</Button>
  * ```
  */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
