@@ -9,6 +9,7 @@ import { CurrentSituationSection } from './CurrentSituation';
 import { AIAnalysisSummary } from './AIAnalysisSummary';
 import { assessmentDefaultValues, assessmentFormSchema } from '@/features/assessment/form/schema';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { ComingSoonWrapper } from '@/shared/components/ComingSoonWrapper';
 
 const CalculatorFormHeder: React.FC = () => {
   return (
@@ -40,7 +41,7 @@ export const CalculatorForm: React.FC = () => {
   const form = useForm({
     defaultValues: assessmentDefaultValues,
     resolver: zodResolver(assessmentFormSchema),
-    mode: 'onChange'
+    mode: 'onChange',
   });
   return (
     <Form
@@ -61,7 +62,9 @@ export const CalculatorForm: React.FC = () => {
           <Form.Checkbox {...field} label="I'd like to receive ReserveIQ updates and reserve fund management tips" />
         )}
       />
-      <Form.Button className="w-full">🚀 Get My Free Assessment</Form.Button>
+      <ComingSoonWrapper className='w-full'>
+        <Form.Button className="w-full">🚀 Get My Free Assessment</Form.Button>
+      </ComingSoonWrapper>
     </Form>
   );
 };

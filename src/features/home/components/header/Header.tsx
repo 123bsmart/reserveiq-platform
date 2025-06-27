@@ -6,6 +6,7 @@ import { Button, Logo } from '@/shared/ui';
 import { useAnalytics } from '@/shared/hooks/useAnalytics';
 import Dashboard from '@/features/home/components/dashboard/Dashboard';
 import DemoHint from '@/features/home/components/demo-hint/DemoHint';
+import { ComingSoonWrapper } from '@/shared/components/ComingSoonWrapper';
 
 export const Header: React.FC = () => {
   const router = useRouter();
@@ -36,12 +37,16 @@ export const Header: React.FC = () => {
           competitors.
         </p>
         <div className="flex flex-col md:flex-row justify-center items-center gap-[16px] mb-[42px] mt-[30px] ">
-          <Button onClick={handleDemoRequest} className="w-[290px] font-[600]">
-            Book a 15-min Demo
-          </Button>
-          <Button variant="outline" onClick={handleExploreRiskDashboard} className="w-[290px] font-[600]">
-            Explore Risk Dashboard
-          </Button>
+          <ComingSoonWrapper>
+            <Button onClick={handleDemoRequest} className="w-[290px] font-[600]">
+              Book a 15-min Demo
+            </Button>
+          </ComingSoonWrapper>
+          <ComingSoonWrapper>
+            <Button variant="outline" onClick={handleExploreRiskDashboard} className="w-[290px] font-[600]">
+              Explore Risk Dashboard
+            </Button>
+          </ComingSoonWrapper>
         </div>
       </div>
 

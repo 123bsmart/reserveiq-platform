@@ -10,6 +10,7 @@ import {
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useAnalytics } from '@/shared/hooks/useAnalytics';
+import { ComingSoonWrapper } from '@/shared/components/ComingSoonWrapper';
 
 type BuildingData = {
   name: string;
@@ -31,9 +32,11 @@ export const Dashboard: React.FC = () => {
       key: 'name',
       header: 'Buildings Monitored',
       render: (item: BuildingData) => (
-        <strong className="font-[600]" onClick={() => handleRowClick(item.link)}>
-          {item.name}
-        </strong>
+        <ComingSoonWrapper>
+          <strong className="font-[600]" onClick={() => handleRowClick(item.link)}>
+            {item.name}
+          </strong>
+        </ComingSoonWrapper>
       ),
     },
     {
@@ -42,7 +45,7 @@ export const Dashboard: React.FC = () => {
       render: (item: BuildingData) => `${item.healthPercent}% ${getHealthTextByPercent(item.healthPercent)}`,
     },
     {
-      key: 'healthPercent',
+      key: 'link',
       header: 'Alerts',
       render: (item: BuildingData) => (
         <span style={{ color: getAlertColorByHealthPercent(item.healthPercent) }}>
@@ -58,7 +61,7 @@ export const Dashboard: React.FC = () => {
         columns={columns}
         data={buildingsData}
         headerClassName="text-[#374151]"
-        onRowClick={({ link }) => handleRowClick(link)}
+        // onRowClick={({ link }) => handleRowClick(link)}
       />
       <div className="text-center mt-[15px] text-[#6b7280] text-[0.9rem]">
         <strong>👆 Click any building to explore the full dashboard</strong>

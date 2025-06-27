@@ -4,3 +4,4 @@ export * from './logo';
 export * from './card';
 export * from './table';
 export * from './form';
+export * from './tooltip';
