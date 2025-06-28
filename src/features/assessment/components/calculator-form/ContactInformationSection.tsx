@@ -10,11 +10,13 @@ export const ContactInformationSection: React.FC = () => {
           name="firstName"
           label="First Name"
           render={({ field }) => <Form.Input {...field} />}
+          required
         />
         <Form.Field
           name="lastName"
           label="Last Name"
           render={({ field }) => <Form.Input {...field} />}
+          required
         />
       </Form.Row>
 
@@ -23,6 +25,7 @@ export const ContactInformationSection: React.FC = () => {
           name="email"
           label="Email Address"
           render={({ field }) => <Form.Input type="email" {...field} />}
+          required
         />
         <Form.Field
           name="phoneNumber"
@@ -34,6 +37,7 @@ export const ContactInformationSection: React.FC = () => {
       <Form.Field
         name="role"
         label="Your Role"
+        required
         render={({ field }) => (
           <Form.Select {...field}>
             <option value="">Select your role</option>

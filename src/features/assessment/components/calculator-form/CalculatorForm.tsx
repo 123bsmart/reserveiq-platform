@@ -11,12 +11,12 @@ import { assessmentDefaultValues, assessmentFormSchema } from '@/features/assess
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ComingSoonWrapper } from '@/shared/components/ComingSoonWrapper';
 
-const CalculatorFormHeder: React.FC = () => {
+const CalculatorFormHeader: React.FC = () => {
   return (
     <section className="mb-[30px]">
       <Link
         href="/"
-        className="text-blue-accent no-underline font-semibold transition-colors duration-300 hover:text-blue-accent-hover mb-5 block"
+        className="text-blue-accent no-underline font-medium transition-colors duration-300 hover:text-blue-accent-hover mb-5 block"
       >
         ← Back to Board Resources
       </Link>
@@ -41,30 +41,32 @@ export const CalculatorForm: React.FC = () => {
   const form = useForm({
     defaultValues: assessmentDefaultValues,
     resolver: zodResolver(assessmentFormSchema),
-    mode: 'onChange',
+    mode: 'all',
   });
   return (
-    <Form
-      {...form}
-      onSubmit={() => {}}
-      containerClassName="max-w-[700px] mt-10"
-      renderHeader={() => <CalculatorFormHeder />}
-      renderFooter={() => <CalculatorFormFooter />}
-    >
-      <ContactInformationSection />
-      <BuildingInformationSection />
-      <ReserveStudyUploadSection />
-      <CurrentSituationSection />
-      <AIAnalysisSummary />
-      <Form.Field
-        name="newsletter"
-        render={({ field }) => (
-          <Form.Checkbox {...field} label="I'd like to receive ReserveIQ updates and reserve fund management tips" />
-        )}
-      />
-      <ComingSoonWrapper className='w-full'>
-        <Form.Button className="w-full">🚀 Get My Free Assessment</Form.Button>
-      </ComingSoonWrapper>
-    </Form>
+    <div className="px-[10px]">
+      <Form
+        {...form}
+        onSubmit={() => {}}
+        containerClassName="max-w-[700px] mt-10"
+        renderHeader={() => <CalculatorFormHeader />}
+        renderFooter={() => <CalculatorFormFooter />}
+      >
+        <ContactInformationSection />
+        <BuildingInformationSection />
+        <ReserveStudyUploadSection />
+        <CurrentSituationSection />
+        <AIAnalysisSummary />
+        <Form.Field
+          name="newsletter"
+          render={({ field }) => (
+            <Form.Checkbox {...field} label="I'd like to receive ReserveIQ updates and reserve fund management tips" />
+          )}
+        />
+        <ComingSoonWrapper className="w-full">
+          <Form.Button className="w-full">🚀 Get My Free Assessment</Form.Button>
+        </ComingSoonWrapper>
+      </Form>
+    </div>
   );
 };

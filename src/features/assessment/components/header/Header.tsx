@@ -10,7 +10,7 @@ export const Header: React.FC = () => {
       </div>
 
       <div className="mx-auto">
-        <h1 className="text-white text-[1.75rem] md:text-[2rem] font-bold text-center leading-[1.2]">
+        <h1 className="text-white text-[1.75rem] md:text-[2rem] font-semibold text-center leading-[1.2]">
           Get Your Free Reserve Fund Assessment
         </h1>
         <p className="text-gray-lighter text-base mt-[10px]">

@@ -64,16 +64,12 @@ export const FormUploadInput = React.forwardRef<HTMLInputElement, FormUploadProp
         </div>
 
         {file && (
-          <div className="file-info mt-3 p-3 bg-blue-50 border border-blue-200 rounded text-sm">
-            <div>
+          <div className="file-info mt-3 p-3 bg-blue-50 border border-blue-200 rounded text-base/[1.2]">
               <strong>Selected file:</strong> {file.name}
-            </div>
-            <div>
+              <br />
               <strong>Size:</strong> {(file.size / 1024 / 1024).toFixed(2)} MB
-            </div>
-            <div>
+              <br />
               <strong>Type:</strong> {file.type || 'Unknown'}
-            </div>
           </div>
         )}
       </>

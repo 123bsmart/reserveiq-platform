@@ -7,6 +7,7 @@ import React from 'react';
 export type FormFieldProps<TFieldValues extends FieldValues = FieldValues> = {
   label?: string;
   htmlFor?: string;
+  required?: boolean;
   text?: string;
 } & ControllerProps<TFieldValues>;
 
@@ -15,6 +16,7 @@ export function FormField<TFieldValues extends FieldValues = FieldValues>({
   htmlFor,
   text,
   render,
+  required = false,
   ...props
 }: FormFieldProps<TFieldValues>): React.ReactElement {
   return (
@@ -30,7 +32,7 @@ export function FormField<TFieldValues extends FieldValues = FieldValues>({
         >
           {label && (
             <label htmlFor={htmlFor ?? props.name} className="text-gray-light text-[0.9rem] font-medium mb-0.5">
-              {label}
+              {label} {required ? <span className='text-error'>*</span> : null}
             </label>
           )}
           {render({ field, fieldState, formState })}

@@ -8,6 +8,7 @@ export const BuildingInformationSection: React.FC = () => {
         name="buildingName"
         label="Building/Condo Name"
         render={({ field }) => <Form.Input {...field} placeholder="e.g., Maple Heights Condominiums" />}
+        required
       />
 
       <Form.Row>
@@ -20,6 +21,7 @@ export const BuildingInformationSection: React.FC = () => {
           name="numberOfUnits"
           label="Number of Units"
           render={({ field }) => <Form.Input {...field} type="number" min={1} inputMode="numeric" />}
+          required
         />
       </Form.Row>
 
