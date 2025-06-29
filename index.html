@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ReserveIQ - Save Time Daily + Prevent $50K+ Crisis Assessments | Property Manager AI Platform</title>
-    <meta name="description" content="Dual-power AI platform: Generate professional emails in 30 seconds + predict reserve fund crises 2-3 years early. Transform your property management business.">
+    <meta name="description" content="Dual-power AI platform: Generate professional communications instantly + predict reserve fund crises years early. Transform your property management business.">
     <style>
         * {
             margin: 0;
@@ -107,7 +107,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         
-        /* Hero Section - UPDATED FOR EMAIL TEMPLATES */
+        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #10b981 100%);
             color: white;
@@ -222,10 +222,10 @@
             color: #1e3a8a;
         }
         
-        /* Email Templates Showcase Section - NEW */
-        .email-showcase {
+        /* Dual Power Section */
+        .dual-power {
             padding: 80px 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            background: white;
         }
         
         .section-header {
@@ -247,14 +247,112 @@
             margin: 0 auto;
         }
         
-        .templates-grid {
+        .power-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+        
+        .power-card {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            border: 2px solid #3b82f6;
+        }
+        
+        .power-card.prevention {
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border-color: #10b981;
+        }
+        
+        .power-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .power-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 1rem;
+        }
+        
+        .power-subtitle {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 1rem;
+        }
+        
+        .power-card.prevention .power-subtitle {
+            color: #059669;
+        }
+        
+        .power-description {
+            color: #64748b;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .power-stats {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            text-align: center;
+        }
+        
+        .stat-item {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+        
+        .power-card.prevention .stat-item {
+            color: #059669;
+        }
+        
+        .stat-item-label {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .power-cta {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .power-card.prevention .power-cta {
+            background: #10b981;
+        }
+        
+        /* Communication Tools Section */
+        .communication-tools {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+        
+        .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
         
-        .template-card {
+        .tool-card {
             background: white;
             border-radius: 12px;
             padding: 2rem;
@@ -263,41 +361,41 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .template-card:hover {
+        .tool-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
         
-        .template-icon {
+        .tool-icon {
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
         
-        .template-title {
+        .tool-title {
             font-size: 1.3rem;
             font-weight: 600;
             color: #1e3a8a;
             margin-bottom: 1rem;
         }
         
-        .template-description {
+        .tool-description {
             color: #64748b;
             margin-bottom: 1.5rem;
             line-height: 1.6;
         }
         
-        .template-features {
+        .tool-features {
             list-style: none;
         }
         
-        .template-features li {
+        .tool-features li {
             color: #059669;
             margin-bottom: 0.5rem;
             position: relative;
             padding-left: 1.5rem;
         }
         
-        .template-features li::before {
+        .tool-features li::before {
             content: '✓';
             position: absolute;
             left: 0;
@@ -331,29 +429,51 @@
             line-height: 1.7;
         }
         
-        .value-stats {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-        }
-        
-        .value-stat {
-            text-align: center;
-            padding: 1.5rem;
+        .value-comparison {
             background: #f8fafc;
-            border-radius: 8px;
+            border-radius: 12px;
+            padding: 2rem;
+            border-left: 4px solid #10b981;
         }
         
-        .value-stat-number {
-            font-size: 2rem;
-            font-weight: 700;
+        .comparison-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .comparison-section h4 {
+            color: #1e3a8a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .comparison-section ul {
+            list-style: none;
+            margin: 0;
+        }
+        
+        .comparison-section li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .comparison-section.before li::before {
+            content: '❌';
+            position: absolute;
+            left: 0;
+        }
+        
+        .comparison-section.after li::before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+        }
+        
+        .comparison-section.before li {
+            color: #ef4444;
+        }
+        
+        .comparison-section.after li {
             color: #059669;
-            display: block;
-        }
-        
-        .value-stat-label {
-            color: #64748b;
-            font-size: 0.9rem;
         }
         
         /* Crisis Prevention Section */
@@ -412,32 +532,74 @@
             color: #64748b;
         }
         
-        /* White Label Section */
-        .white-label {
+        /* Partner Program Section */
+        .partner-program {
             padding: 80px 0;
             background: linear-gradient(135deg, #1e3a8a 0%, #10b981 100%);
             color: white;
         }
         
-        .white-label-content {
+        .partner-content {
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
         }
         
-        .white-label h2 {
+        .partner-program h2 {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 1.5rem;
         }
         
-        .white-label p {
+        .partner-program p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
         }
         
-        .revenue-example {
+        .partner-tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .tier-card {
+            background: white;
+            color: #1e3a8a;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .tier-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .tier-card.featured {
+            border: 3px solid #fbbf24;
+            box-shadow: 0 8px 30px rgba(251, 191, 36, 0.3);
+        }
+        
+        .tier-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .tier-card h3 {
+            color: #1e3a8a;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        
+        .tier-card p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        .revenue-highlight {
             background: white;
             color: #1e3a8a;
             border-radius: 12px;
@@ -452,7 +614,7 @@
             margin-bottom: 1rem;
         }
         
-        .revenue-calc {
+        .revenue-example {
             font-family: 'Courier New', monospace;
             background: #f8fafc;
             padding: 1rem;
@@ -528,44 +690,13 @@
                 gap: 2rem;
             }
             
-            .templates-grid {
+            .tools-grid {
                 grid-template-columns: 1fr;
             }
             
-            /* Two Pillars Mobile */
-            section[style*="grid-template-columns: 1fr 1fr"] {
-                display: block !important;
-            }
-            
-            section[style*="grid-template-columns: 1fr 1fr"] > div {
-                margin-bottom: 2rem !important;
-            }
-            
-            /* Pricing grid mobile */
-            div[style*="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))"] {
-                grid-template-columns: 1fr !important;
-            }
-            
-            div[style*="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))"] {
-                grid-template-columns: 1fr !important;
-            }
-            
-            /* Logo mobile adjustments */
-            .logo {
-                font-size: 1.4rem;
-            }
-            
-            .logo-icon {
-                width: 32px;
-                height: 32px;
-            }
-            
-            .logo div:first-child {
-                font-size: 1.4rem !important;
-            }
-            
-            .logo div:last-child {
-                font-size: 0.7rem !important;
+            .power-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
             .nav-links {
@@ -586,22 +717,21 @@
                 </div>
             </div>
             <ul class="nav-links">
-                <li><a href="#email-templates">Email Templates</a></li>
+                <li><a href="#communication-tools">Communication Tools</a></li>
                 <li><a href="#crisis-prevention">Crisis Prevention</a></li>
-                <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#partner-program">Partner Program</a></li>
-                <li><a href="#" class="cta-button">Try Demo</a></li>
+                <li><a href="mailto:demo@reserveiq.dev" class="cta-button">Get Demo</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section - UPDATED FOR EMAIL TEMPLATES -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
                 <h1>Transform Your Property Management Business</h1>
                 <p class="hero-subtitle">Save time daily + Prevent $50K+ crisis assessments</p>
-                <p class="hero-description">The only platform that handles your daily email stress AND predicts financial disasters years before they hit.</p>
+                <p class="hero-description">The only platform that handles your daily communication stress AND predicts financial disasters years before they hit.</p>
                 
                 <div class="hero-stats">
                     <div class="stat">
@@ -619,196 +749,90 @@
                 </div>
                 
                 <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary">🎯 Book Your ROI Demo (See Pricing)</a>
-                    <a href="#" class="btn btn-secondary">📊 Compare vs Traditional Platforms</a>
+                    <a href="mailto:demo@reserveiq.dev" class="btn btn-primary">🎯 Book Your ROI Demo</a>
+                    <a href="#communication-tools" class="btn btn-secondary">📊 See Platform Overview</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Two Pillars Section - NEW -->
-    <section style="padding: 80px 0; background: white;">
+    <!-- Dual Power Strategy -->
+    <section class="dual-power">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Two Ways We Transform Your Property Management Business</h2>
                 <p class="section-subtitle">Handle daily stress + Prevent financial disasters. No other platform does both.</p>
             </div>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem;">
+            <div class="power-grid">
                 <!-- Daily Operations Pillar -->
-                <div style="background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%); border-radius: 16px; padding: 3rem; text-align: center; border: 2px solid #3b82f6;">
-                    <div style="font-size: 4rem; margin-bottom: 1.5rem;">📧</div>
-                    <h3 style="font-size: 2rem; font-weight: 700; color: #1e3a8a; margin-bottom: 1rem;">Daily Operations</h3>
-                    <p style="font-size: 1.5rem; font-weight: 600; color: #3b82f6; margin-bottom: 1rem;">Save 5-10 Hours Every Week</p>
-                    <p style="color: #64748b; margin-bottom: 2rem; line-height: 1.6;">AI-powered email templates that make you look like a communication genius. Professional board emails in 30 seconds.</p>
+                <div class="power-card">
+                    <div class="power-icon">📧</div>
+                    <h3 class="power-title">Daily Operations</h3>
+                    <p class="power-subtitle">Save 5-10 Hours Every Week</p>
+                    <p class="power-description">AI-powered communication tools that make you look like a professional genius. Generate board-ready content in seconds.</p>
                     
-                    <div style="background: white; border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center;">
+                    <div class="power-stats">
+                        <div class="stats-grid">
                             <div>
-                                <div style="font-size: 1.5rem; font-weight: 700; color: #3b82f6;">12</div>
-                                <div style="font-size: 0.9rem; color: #64748b;">Professional Templates</div>
+                                <div class="stat-item">Professional</div>
+                                <div class="stat-item-label">Template Library</div>
                             </div>
                             <div>
-                                <div style="font-size: 1.5rem; font-weight: 700; color: #3b82f6;">30</div>
-                                <div style="font-size: 0.9rem; color: #64748b;">Seconds to Generate</div>
+                                <div class="stat-item">30 Sec</div>
+                                <div class="stat-item-label">Generation Time</div>
                             </div>
                         </div>
                     </div>
                     
-                    <a href="#email-templates" style="display: inline-block; background: #3b82f6; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600;">See Email Templates</a>
+                    <a href="#communication-tools" class="power-cta">See Communication Tools</a>
                 </div>
                 
                 <!-- Crisis Prevention Pillar -->
-                <div style="background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%); border-radius: 16px; padding: 3rem; text-align: center; border: 2px solid #10b981;">
-                    <div style="font-size: 4rem; margin-bottom: 1.5rem;">🎯</div>
-                    <h3 style="font-size: 2rem; font-weight: 700; color: #1e3a8a; margin-bottom: 1rem;">Crisis Prevention</h3>
-                    <p style="font-size: 1.5rem; font-weight: 600; color: #059669; margin-bottom: 1rem;">Prevent $50,000+ Emergency Assessments</p>
-                    <p style="color: #64748b; margin-bottom: 2rem; line-height: 1.6;">AI predicts reserve fund crises 2-3 years before they devastate owners. No other platform offers this protection.</p>
+                <div class="power-card prevention">
+                    <div class="power-icon">🎯</div>
+                    <h3 class="power-title">Crisis Prevention</h3>
+                    <p class="power-subtitle">Prevent $50,000+ Emergency Assessments</p>
+                    <p class="power-description">AI predicts reserve fund crises 2-3 years before they devastate owners. No other platform offers this protection.</p>
                     
-                    <div style="background: white; border-radius: 8px; padding: 1.5rem; margin-bottom: 2rem;">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; text-align: center;">
+                    <div class="power-stats">
+                        <div class="stats-grid">
                             <div>
-                                <div style="font-size: 1.5rem; font-weight: 700; color: #059669;">2-3</div>
-                                <div style="font-size: 0.9rem; color: #64748b;">Years Early Warning</div>
+                                <div class="stat-item">2-3</div>
+                                <div class="stat-item-label">Years Early Warning</div>
                             </div>
                             <div>
-                                <div style="font-size: 1.5rem; font-weight: 700; color: #059669;">92%</div>
-                                <div style="font-size: 0.9rem; color: #64748b;">Prediction Accuracy</div>
+                                <div class="stat-item">92%</div>
+                                <div class="stat-item-label">Prediction Accuracy</div>
                             </div>
                         </div>
                     </div>
                     
-                    <a href="#crisis-prevention" style="display: inline-block; background: #10b981; color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600;">See Crisis Prevention</a>
+                    <a href="#crisis-prevention" class="power-cta">See Crisis Prevention</a>
                 </div>
             </div>
             
             <div style="text-align: center; margin-top: 3rem; padding: 2rem; background: #f8fafc; border-radius: 12px;">
                 <h4 style="color: #1e3a8a; font-size: 1.3rem; margin-bottom: 1rem;">Why This Combination Is Unbeatable</h4>
-                <p style="color: #64748b; font-size: 1.1rem;">Email templates get you immediate results. Crisis prevention creates unbreakable client loyalty. Together, they make you irreplaceable.</p>
-            </div>
-            
-            <!-- Mid-Page CTA after Two Pillars -->
-            <div style="text-align: center; margin-top: 3rem; padding: 3rem 2rem; background: linear-gradient(135deg, #1e3a8a 0%, #10b981 100%); border-radius: 16px; color: white;">
-                <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: white;">Ready to Transform Your Property Management Business?</h3>
-                <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">See exactly how ReserveIQ saves you time and prevents crises with a personalized demo.</p>
-                <a href="#" style="display: inline-block; background: white; color: #1e3a8a; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; margin-right: 1rem; transform: none; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">🎯 Book Your ROI Demo Now</a>
-                <a href="#pricing" style="color: white; text-decoration: underline; font-weight: 500;">Or see pricing →</a>
+                <p style="color: #64748b; font-size: 1.1rem;">Communication tools get you immediate results. Crisis prevention creates unbreakable client loyalty. Together, they make you irreplaceable.</p>
             </div>
         </div>
     </section>
 
-    <!-- Competitor Comparison Section - NEW -->
-    <section style="padding: 80px 0; background: white;" id="comparison">
+    <!-- Communication Tools Showcase -->
+    <section id="communication-tools" class="communication-tools">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Why Choose ReserveIQ Over Traditional Platforms?</h2>
-                <p class="section-subtitle">See how we compare to Yardi, Buildium, and other property management systems you already know.</p>
+                <h2 class="section-title">Professional Communication Tools: Never Stress About Board Communications Again</h2>
+                <p class="section-subtitle">AI-powered template library that makes you look like a communication expert. Generate professional content in seconds.</p>
             </div>
             
-            <div style="background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 8px 30px rgba(0,0,0,0.08); border: 2px solid #e2e8f0; overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
-                    <thead>
-                        <tr style="background: linear-gradient(135deg, #1e3a8a 0%, #10b981 100%); color: white;">
-                            <th style="padding: 1.5rem 1rem; text-align: left; border-radius: 8px 0 0 0;">Feature</th>
-                            <th style="padding: 1.5rem 1rem; text-align: center; font-weight: 700;">ReserveIQ</th>
-                            <th style="padding: 1.5rem 1rem; text-align: center;">Yardi</th>
-                            <th style="padding: 1.5rem 1rem; text-align: center;">Buildium</th>
-                            <th style="padding: 1.5rem 1rem; text-align: center; border-radius: 0 8px 0 0;">Condo Control</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="border-bottom: 1px solid #e2e8f0;">
-                            <td style="padding: 1rem; font-weight: 600; color: #1e3a8a;">AI Email Templates</td>
-                            <td style="padding: 1rem; text-align: center; background: #f0fdf4;"><span style="color: #059669; font-size: 1.5rem; font-weight: bold;">✅</span><br><span style="font-size: 0.8rem; color: #059669;">12 Professional Templates</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #ef4444; font-size: 1.5rem;">❌</span><br><span style="font-size: 0.8rem; color: #64748b;">Manual Only</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #ef4444; font-size: 1.5rem;">❌</span><br><span style="font-size: 0.8rem; color: #64748b;">Basic Templates</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #ef4444; font-size: 1.5rem;">❌</span><br><span style="font-size: 0.8rem; color: #64748b;">Manual Only</span></td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
-                            <td style="padding: 1rem; font-weight: 600; color: #1e3a8a;">Predictive Crisis Analysis</td>
-                            <td style="padding: 1rem; text-align: center; background: #f0fdf4;"><span style="color: #059669; font-size: 1.5rem; font-weight: bold;">✅</span><br><span style="font-size: 0.8rem; color: #059669;">2-3 Years Early Warning</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #ef4444; font-size: 1.5rem;">❌</span><br><span style="font-size: 0.8rem; color: #64748b;">Reactive Only</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #ef4444; font-size: 1.5rem;">❌</span><br><span style="font-size: 0.8rem; color: #64748b;">Basic Reports</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #ef4444; font-size: 1.5rem;">❌</span><br><span style="font-size: 0.8rem; color: #64748b;">Static Analysis</span></td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e2e8f0;">
-                            <td style="padding: 1rem; font-weight: 600; color: #1e3a8a;">Multi-Jurisdiction Compliance</td>
-                            <td style="padding: 1rem; text-align: center; background: #f0fdf4;"><span style="color: #059669; font-size: 1.5rem; font-weight: bold;">✅</span><br><span style="font-size: 0.8rem; color: #059669;">ON, BC, FL, TX</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #f59e0b; font-size: 1.5rem;">⚠️</span><br><span style="font-size: 0.8rem; color: #64748b;">Basic Tracking</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #f59e0b; font-size: 1.5rem;">⚠️</span><br><span style="font-size: 0.8rem; color: #64748b;">US Only</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #059669; font-size: 1.5rem;">✅</span><br><span style="font-size: 0.8rem; color: #059669;">Canada Focus</span></td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e2e8f0; background: #f8fafc;">
-                            <td style="padding: 1rem; font-weight: 600; color: #1e3a8a;">AI Document Analysis</td>
-                            <td style="padding: 1rem; text-align: center; background: #f0fdf4;"><span style="color: #059669; font-size: 1.5rem; font-weight: bold;">✅</span><br><span style="font-size: 0.8rem; color: #059669;">Instant PDF Processing</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #ef4444; font-size: 1.5rem;">❌</span><br><span style="font-size: 0.8rem; color: #64748b;">Manual Upload</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #ef4444; font-size: 1.5rem;">❌</span><br><span style="font-size: 0.8rem; color: #64748b;">File Storage Only</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #ef4444; font-size: 1.5rem;">❌</span><br><span style="font-size: 0.8rem; color: #64748b;">Basic Upload</span></td>
-                        </tr>
-                        <tr style="border-bottom: 1px solid #e2e8f0;">
-                            <td style="padding: 1rem; font-weight: 600; color: #1e3a8a;">Special Assessment Calculator</td>
-                            <td style="padding: 1rem; text-align: center; background: #f0fdf4;"><span style="color: #059669; font-size: 1.5rem; font-weight: bold;">✅</span><br><span style="font-size: 0.8rem; color: #059669;">AI-Powered Scenarios</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #f59e0b; font-size: 1.5rem;">⚠️</span><br><span style="font-size: 0.8rem; color: #64748b;">Basic Calculator</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #ef4444; font-size: 1.5rem;">❌</span><br><span style="font-size: 0.8rem; color: #64748b;">Manual Calculations</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #f59e0b; font-size: 1.5rem;">⚠️</span><br><span style="font-size: 0.8rem; color: #64748b;">Basic Tools</span></td>
-                        </tr>
-                        <tr style="background: #f8fafc;">
-                            <td style="padding: 1rem; font-weight: 600; color: #1e3a8a;">Partner Revenue Share</td>
-                            <td style="padding: 1rem; text-align: center; background: #f0fdf4;"><span style="color: #059669; font-size: 1.5rem; font-weight: bold;">✅</span><br><span style="font-size: 0.8rem; color: #059669;">$20-30/building/month</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #ef4444; font-size: 1.5rem;">❌</span><br><span style="font-size: 0.8rem; color: #64748b;">No Revenue Share</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #ef4444; font-size: 1.5rem;">❌</span><br><span style="font-size: 0.8rem; color: #64748b;">No Revenue Share</span></td>
-                            <td style="padding: 1rem; text-align: center;"><span style="color: #ef4444; font-size: 1.5rem;">❌</span><br><span style="font-size: 0.8rem; color: #64748b;">No Revenue Share</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div style="text-align: center; margin-top: 2rem; padding: 2rem; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 12px; border: 2px solid #10b981;">
-                <h3 style="color: #059669; font-size: 1.3rem; margin-bottom: 1rem;">🏆 Only ReserveIQ Offers Complete AI-Powered Solution</h3>
-                <p style="color: #166534; font-size: 1.1rem;">Stop using 3-4 different platforms. Get everything in one intelligent system.</p>
-            </div>
-            
-            <!-- Mid-Page CTA after Comparison -->
-            <div style="text-align: center; margin-top: 3rem; padding: 2.5rem 2rem; background: white; border-radius: 16px; border: 2px solid #e2e8f0; box-shadow: 0 8px 30px rgba(0,0,0,0.08);">
-                <h3 style="color: #1e3a8a; font-size: 1.4rem; margin-bottom: 1rem;">Convinced ReserveIQ Is Different?</h3>
-                <p style="color: #64748b; font-size: 1rem; margin-bottom: 2rem;">See how our dual-power platform works with your actual portfolio data in a 15-minute demo.</p>
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="#" style="display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #1e3a8a 0%, #10b981 100%); color: white; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: transform 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">📊 Book Demo & See Pricing</a>
-                    <a href="#email-templates" style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: #1e3a8a; padding: 1rem 2rem; border: 2px solid #1e3a8a; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease;" onmouseover="this.style.background='#1e3a8a'; this.style.color='white'" onmouseout="this.style.background='transparent'; this.style.color='#1e3a8a'">📧 Try Email Templates</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Email Templates Showcase -->
-    <section class="email-showcase" id="email-templates">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Professional Email Templates: Never Stress About Board Communications Again</h2>
-                <p class="section-subtitle">12 AI-powered templates that make you look like a communication expert. Generate professional emails in 30 seconds.</p>
-            </div>
-            
-            <div class="templates-grid">
-                <div class="template-card">
-                    <div style="position: relative; margin-bottom: 1.5rem;">
-                        <div class="template-icon">📊</div>
-                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; margin-top: 1rem; font-size: 0.8rem; color: #64748b; font-family: monospace;">
-                            <div style="background: #3b82f6; height: 4px; width: 100%; margin-bottom: 0.5rem; border-radius: 2px;"></div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <span>To: board@mapleheights.ca</span>
-                                <span>📎 Reserve_Report.pdf</span>
-                            </div>
-                            <div style="border-top: 1px solid #e2e8f0; padding-top: 0.5rem;">
-                                <strong>Monthly Reserve Fund Update - Nov 2024</strong><br>
-                                Current Reserve Balance: $145,230<br>
-                                Variance from Budget: +2.3%<br>
-                                AI Recommendation: Increase monthly...
-                            </div>
-                        </div>
-                    </div>
-                    <h3 class="template-title">Monthly Board Financial Update</h3>
-                    <p class="template-description">Auto-filled with reserve data, variance analysis, and AI recommendations. Impress your board with data-driven insights.</p>
-                    <ul class="template-features">
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h3 class="tool-title">Board Financial Updates</h3>
+                    <p class="tool-description">Auto-filled with reserve data, variance analysis, and AI recommendations. Impress your board with data-driven insights.</p>
+                    <ul class="tool-features">
                         <li>Live financial data integration</li>
                         <li>Professional charts and graphs</li>
                         <li>Variance analysis included</li>
@@ -816,26 +840,11 @@
                     </ul>
                 </div>
                 
-                <div class="template-card">
-                    <div style="position: relative; margin-bottom: 1.5rem;">
-                        <div class="template-icon">⚠️</div>
-                        <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 8px; padding: 1rem; margin-top: 1rem; font-size: 0.8rem; color: #64748b; font-family: monospace;">
-                            <div style="background: #ef4444; height: 4px; width: 100%; margin-bottom: 0.5rem; border-radius: 2px;"></div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <span>To: board@mapleheights.ca</span>
-                                <span>🚨 URGENT</span>
-                            </div>
-                            <div style="border-top: 1px solid #fecaca; padding-top: 0.5rem;">
-                                <strong>COMPLIANCE DEADLINE: Form 15 Due Jan 31</strong><br>
-                                Penalty if missed: $5,000<br>
-                                Documents needed: Financial statements...<br>
-                                Action required: Board resolution by...
-                            </div>
-                        </div>
-                    </div>
-                    <h3 class="template-title">Compliance Deadline Reminders</h3>
-                    <p class="template-description">Jurisdiction-specific warnings with penalty calculations. Never miss another deadline again.</p>
-                    <ul class="template-features">
+                <div class="tool-card">
+                    <div class="tool-icon">⚠️</div>
+                    <h3 class="tool-title">Compliance Communications</h3>
+                    <p class="tool-description">Jurisdiction-specific warnings with penalty calculations. Never miss another deadline again.</p>
+                    <ul class="tool-features">
                         <li>Multi-jurisdiction compliance</li>
                         <li>Penalty cost calculations</li>
                         <li>Automated scheduling</li>
@@ -843,26 +852,11 @@
                     </ul>
                 </div>
                 
-                <div class="template-card">
-                    <div style="position: relative; margin-bottom: 1.5rem;">
-                        <div class="template-icon">💰</div>
-                        <div style="background: #fef3c7; border: 1px solid #fcd34d; border-radius: 8px; padding: 1rem; margin-top: 1rem; font-size: 0.8rem; color: #64748b; font-family: monospace;">
-                            <div style="background: #f59e0b; height: 4px; width: 100%; margin-bottom: 0.5rem; border-radius: 2px;"></div>
-                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                <span>To: owners@mapleheights.ca</span>
-                                <span>💰 Assessment Options</span>
-                            </div>
-                            <div style="border-top: 1px solid #fcd34d; padding-top: 0.5rem;">
-                                <strong>Roof Replacement: 3 Funding Options</strong><br>
-                                Option A: $6,000 immediate assessment<br>
-                                Option B: $35/month for 24 months<br>
-                                Option C: Combination approach...
-                            </div>
-                        </div>
-                    </div>
-                    <h3 class="template-title">Special Assessment Announcements</h3>
-                    <p class="template-description">Professional multi-option funding analysis that owners actually understand. Reduce board meeting drama.</p>
-                    <ul class="template-features">
+                <div class="tool-card">
+                    <div class="tool-icon">💰</div>
+                    <h3 class="tool-title">Assessment Announcements</h3>
+                    <p class="tool-description">Professional multi-option funding analysis that owners actually understand. Reduce board meeting drama.</p>
+                    <ul class="tool-features">
                         <li>Multiple funding scenarios</li>
                         <li>Owner-friendly explanations</li>
                         <li>Cost comparison charts</li>
@@ -870,11 +864,11 @@
                     </ul>
                 </div>
                 
-                <div class="template-card">
-                    <div class="template-icon">🏥</div>
-                    <h3 class="template-title">Owner FAQ Responses</h3>
-                    <p class="template-description">Pre-written answers to common questions. Sound professional even when you're rushing.</p>
-                    <ul class="template-features">
+                <div class="tool-card">
+                    <div class="tool-icon">🏥</div>
+                    <h3 class="tool-title">Owner Communication Library</h3>
+                    <p class="tool-description">Pre-written responses to common questions. Sound professional even when you're rushing.</p>
+                    <ul class="tool-features">
                         <li>Common question database</li>
                         <li>Professional tone</li>
                         <li>Fact-checked answers</li>
@@ -882,23 +876,23 @@
                     </ul>
                 </div>
                 
-                <div class="template-card">
-                    <div class="template-icon">🔔</div>
-                    <h3 class="template-title">Emergency Building Notices</h3>
-                    <p class="template-description">Crisis communications with clear action steps. Keep owners informed during emergencies.</p>
-                    <ul class="template-features">
-                        <li>Crisis communication templates</li>
+                <div class="tool-card">
+                    <div class="tool-icon">🔔</div>
+                    <h3 class="tool-title">Emergency Communications</h3>
+                    <p class="tool-description">Crisis communications with clear action steps. Keep owners informed during emergencies.</p>
+                    <ul class="tool-features">
+                        <li>Crisis communication protocols</li>
                         <li>Clear action steps</li>
                         <li>Safety information</li>
                         <li>Contact protocols</li>
                     </ul>
                 </div>
                 
-                <div class="template-card">
-                    <div class="template-icon">📋</div>
-                    <h3 class="template-title">Board Resolution Notices</h3>
-                    <p class="template-description">Official decisions and governance updates in professional format. Maintain corporate compliance.</p>
-                    <ul class="template-features">
+                <div class="tool-card">
+                    <div class="tool-icon">📋</div>
+                    <h3 class="tool-title">Governance Documentation</h3>
+                    <p class="tool-description">Official decisions and governance updates in professional format. Maintain corporate compliance.</p>
+                    <ul class="tool-features">
                         <li>Legal compliance format</li>
                         <li>Professional language</li>
                         <li>Governance standards</li>
@@ -908,7 +902,7 @@
             </div>
             
             <div style="text-align: center; margin-top: 3rem;">
-                <a href="#" class="btn btn-primary" style="color: #1e3a8a;">🎯 Try All Templates Free</a>
+                <a href="mailto:demo@reserveiq.dev" class="btn btn-primary" style="color: #1e3a8a;">🎯 Try Communication Tools Free</a>
             </div>
         </div>
     </section>
@@ -919,36 +913,27 @@
             <div class="value-grid">
                 <div class="value-content">
                     <h2>From Daily Stress to Strategic Success</h2>
-                    <p>Stop worrying about emails AND financial disasters. Our dual-power platform handles your immediate needs while protecting your long-term reputation. Become the property manager everyone wants to hire.</p>
-                    
-                    <div class="value-stats">
-                        <div class="value-stat">
-                            <span class="value-stat-number">$500-1000</span>
-                            <span class="value-stat-label">Weekly Time Value Saved</span>
-                        </div>
-                        <div class="value-stat">
-                            <span class="value-stat-number">$50K+</span>
-                            <span class="value-stat-label">Crisis Prevention Value</span>
-                        </div>
-                    </div>
+                    <p>Stop worrying about communications AND financial disasters. Our dual-power platform handles your immediate needs while protecting your long-term reputation. Become the property manager everyone wants to hire.</p>
                 </div>
                 
-                <div>
-                    <div style="background: #f8fafc; border-radius: 12px; padding: 2rem; border-left: 4px solid #10b981;">
-                        <h4 style="color: #1e3a8a; margin-bottom: 1rem;">Before ReserveIQ:</h4>
-                        <ul style="color: #64748b; list-style: none; margin-bottom: 2rem;">
-                            <li>❌ Spending hours crafting emails</li>
-                            <li>❌ Surprised by $50K+ emergency assessments</li>
-                            <li>❌ Reactive crisis management</li>
-                            <li>❌ Losing clients due to "unexpected" disasters</li>
+                <div class="value-comparison">
+                    <div class="comparison-section before">
+                        <h4>Before ReserveIQ:</h4>
+                        <ul>
+                            <li>Spending hours crafting emails</li>
+                            <li>Surprised by emergency assessments</li>
+                            <li>Reactive crisis management</li>
+                            <li>Losing clients due to "unexpected" disasters</li>
                         </ul>
-                        
-                        <h4 style="color: #1e3a8a; margin-bottom: 1rem;">After ReserveIQ:</h4>
-                        <ul style="color: #059669; list-style: none;">
-                            <li>✅ Professional emails in 30 seconds</li>
-                            <li>✅ 2-3 years early warning for crises</li>
-                            <li>✅ Proactive financial planning</li>
-                            <li>✅ Hero status with boards and owners</li>
+                    </div>
+                    
+                    <div class="comparison-section after">
+                        <h4>After ReserveIQ:</h4>
+                        <ul>
+                            <li>Professional emails generated instantly</li>
+                            <li>Years advance warning for crises</li>
+                            <li>Proactive financial planning</li>
+                            <li>Hero status with boards and owners</li>
                         </ul>
                     </div>
                 </div>
@@ -956,8 +941,8 @@
         </div>
     </section>
 
-    <!-- Crisis Prevention (Equal Weight) -->
-    <section class="crisis-prevention" id="crisis-prevention">
+    <!-- Crisis Prevention -->
+    <section id="crisis-prevention" class="crisis-prevention">
         <div class="container">
             <div class="crisis-content">
                 <h2>Predict & Prevent $50,000+ Crisis Assessments</h2>
@@ -992,168 +977,107 @@
         </div>
     </section>
 
-    <!-- Pricing Teaser Section - NEW -->
-    <section style="padding: 80px 0; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);" id="pricing">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">ReserveIQ Platform Pricing</h2>
-                <p class="section-subtitle">Transparent pricing that scales with your portfolio. Get personalized ROI calculations in your demo.</p>
-            </div>
-            
-            <div style="background: white; border-radius: 16px; padding: 3rem; box-shadow: 0 8px 30px rgba(0,0,0,0.08); margin-bottom: 3rem;">
-                <h3 style="text-align: center; color: #1e3a8a; font-size: 1.8rem; margin-bottom: 2rem;">All Plans Include:</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
-                    <div style="text-align: center;">
-                        <div style="font-size: 2rem; margin-bottom: 1rem;">📧</div>
-                        <h4 style="color: #1e3a8a; margin-bottom: 0.5rem;">AI Email Templates</h4>
-                        <p style="color: #64748b; font-size: 0.9rem;">12 professional templates save 5-10 hours weekly</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 2rem; margin-bottom: 1rem;">🎯</div>
-                        <h4 style="color: #1e3a8a; margin-bottom: 0.5rem;">Crisis Prevention Tools</h4>
-                        <p style="color: #64748b; font-size: 0.9rem;">AI predicts $50K+ crises 2-3 years early</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 2rem; margin-bottom: 1rem;">📊</div>
-                        <h4 style="color: #1e3a8a; margin-bottom: 0.5rem;">Compliance Dashboard</h4>
-                        <p style="color: #64748b; font-size: 0.9rem;">Multi-jurisdiction deadline tracking</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 2rem; margin-bottom: 1rem;">👥</div>
-                        <h4 style="color: #1e3a8a; margin-bottom: 0.5rem;">Unlimited Users</h4>
-                        <p style="color: #64748b; font-size: 0.9rem;">Your entire team gets full platform access</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
-                <div style="background: white; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 2px solid #e2e8f0;">
-                    <h3 style="color: #3b82f6; margin-bottom: 1rem; font-size: 1.3rem;">Small Portfolios</h3>
-                    <div style="margin-bottom: 1rem;">
-                        <span style="font-size: 2.5rem; font-weight: 700; color: #1e3a8a;">From $250</span>
-                        <span style="color: #64748b;">/month</span>
-                    </div>
-                    <div style="color: #64748b; margin-bottom: 1.5rem;">1-25 buildings</div>
-                    <div style="background: #f8fafc; padding: 1rem; border-radius: 8px;">
-                        <div style="font-size: 0.9rem; color: #64748b;">Perfect for independent property managers</div>
-                    </div>
-                </div>
-                
-                <div style="background: white; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 2px solid #10b981;">
-                    <h3 style="color: #059669; margin-bottom: 1rem; font-size: 1.3rem;">Mid-Size Portfolios</h3>
-                    <div style="margin-bottom: 1rem;">
-                        <span style="font-size: 2.5rem; font-weight: 700; color: #1e3a8a;">From $500</span>
-                        <span style="color: #64748b;">/month</span>
-                    </div>
-                    <div style="color: #64748b; margin-bottom: 1.5rem;">25-100 buildings</div>
-                    <div style="background: #f0fdf4; padding: 1rem; border-radius: 8px;">
-                        <div style="font-size: 0.9rem; color: #059669;">Most popular for growing PM companies</div>
-                    </div>
-                </div>
-                
-                <div style="background: white; border-radius: 12px; padding: 2rem; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 2px solid #f59e0b;">
-                    <h3 style="color: #d97706; margin-bottom: 1rem; font-size: 1.3rem;">Large Portfolios</h3>
-                    <div style="margin-bottom: 1rem;">
-                        <span style="font-size: 2.5rem; font-weight: 700; color: #1e3a8a;">Custom</span>
-                        <span style="color: #64748b;">Quote</span>
-                    </div>
-                    <div style="color: #64748b; margin-bottom: 1.5rem;">100+ buildings</div>
-                    <div style="background: #fef3c7; padding: 1rem; border-radius: 8px;">
-                        <div style="font-size: 0.9rem; color: #d97706;">Enterprise features & dedicated support</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%); border-radius: 16px; padding: 2rem; text-align: center; margin-bottom: 2rem; border: 2px solid #f59e0b;">
-                <div style="font-size: 1.8rem; margin-bottom: 1rem;">🎉</div>
-                <h3 style="color: #92400e; font-size: 1.5rem; margin-bottom: 1rem;">Special Founding Partner Incentive</h3>
-                <p style="color: #b45309; font-size: 1.2rem; margin-bottom: 1rem;"><strong>15% off your first 12 months</strong></p>
-                <p style="color: #92400e;">Plus commission earnings: <strong>$20-30 per building/month</strong></p>
-                <div style="margin-top: 1.5rem;">
-                    <span style="background: #92400e; color: white; padding: 0.5rem 1rem; border-radius: 6px; font-size: 0.9rem;">Limited Time - First 50 Partners Only</span>
-                </div>
-            </div>
-            
-            <div style="text-align: center;">
-                <a href="#" style="display: inline-block; background: linear-gradient(135deg, #1e3a8a 0%, #10b981 100%); color: white; padding: 1.25rem 2.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem; margin: 0 1rem 1rem 0;">📊 Get Your Personalized ROI Demo</a>
-                <a href="#" style="display: inline-block; background: transparent; color: #1e3a8a; padding: 1.25rem 2.5rem; border: 2px solid #1e3a8a; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1.1rem;">📞 Talk to Pricing Specialist</a>
-            </div>
-            
-            <div style="text-align: center; margin-top: 2rem; padding: 1.5rem; background: #f8fafc; border-radius: 8px;">
-                <p style="color: #64748b; font-size: 1rem;"><strong>Book a 15-minute demo</strong> to see exact pricing customized to your portfolio size and get your personalized ROI calculations.</p>
-            </div>
-        </div>
-    </section>
-
     <!-- Partner Program Model -->
-    <section class="white-label" id="partner-program">
+    <section id="partner-program" class="partner-program">
         <div class="container">
-            <div class="white-label-content">
-                <h2>Earn Commissions as a ReserveIQ Partner</h2>
-                <p>Join our partner program and earn recurring commissions for every building you bring to ReserveIQ. Your clients get the best platform, you get ongoing revenue.</p>
+            <div class="partner-content">
+                <h2>Earn Recurring Commissions as a ReserveIQ Partner</h2>
+                <p>Join our partner program and earn ongoing revenue for every building you bring to ReserveIQ. Your clients get the best platform, you get ongoing commissions.</p>
                 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 3rem 0;">
-                    <div style="background: white; color: #1e3a8a; border-radius: 12px; padding: 2rem; text-align: center;">
-                        <h3 style="color: #3b82f6; margin-bottom: 1rem;">Bronze Partner</h3>
-                        <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
-                            <div style="font-size: 2rem; font-weight: 700; color: #059669;">$20</div>
-                            <div style="font-size: 0.9rem; color: #64748b;">Commission per building/month</div>
-                        </div>
-                        <div style="color: #64748b; font-size: 0.9rem;">5-10 buildings minimum</div>
+                <div class="partner-tiers">
+                    <div class="tier-card">
+                        <div class="tier-icon">🥉</div>
+                        <h3>Bronze Partner</h3>
+                        <p>Recurring commission for each building. Perfect for independent property managers starting their partnership journey.</p>
                     </div>
                     
-                    <div style="background: white; color: #1e3a8a; border-radius: 12px; padding: 2rem; text-align: center; border: 2px solid #10b981;">
-                        <h3 style="color: #059669; margin-bottom: 1rem;">Silver Partner</h3>
-                        <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
-                            <div style="font-size: 2rem; font-weight: 700; color: #059669;">$25</div>
-                            <div style="font-size: 0.9rem; color: #64748b;">Commission per building/month</div>
-                        </div>
-                        <div style="color: #64748b; font-size: 0.9rem;">10-25 buildings minimum</div>
+                    <div class="tier-card featured">
+                        <div class="tier-icon">🥈</div>
+                        <h3>Silver Partner</h3>
+                        <p>Enhanced commission rates plus white-labeled client portals. Ideal for growing property management companies.</p>
                     </div>
                     
-                    <div style="background: white; color: #1e3a8a; border-radius: 12px; padding: 2rem; text-align: center;">
-                        <h3 style="color: #f59e0b; margin-bottom: 1rem;">Gold Partner</h3>
-                        <div style="background: #f0fdf4; padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem;">
-                            <div style="font-size: 2rem; font-weight: 700; color: #059669;">$30</div>
-                            <div style="font-size: 0.9rem; color: #64748b;">Commission per building/month</div>
-                        </div>
-                        <div style="color: #64748b; font-size: 0.9rem;">25+ buildings minimum</div>
+                    <div class="tier-card">
+                        <div class="tier-icon">🥇</div>
+                        <h3>Gold Partner</h3>
+                        <p>Premium commission rates and dedicated support. Perfect for established firms managing multiple buildings.</p>
                     </div>
                 </div>
                 
-                <div class="revenue-example">
+                <div class="revenue-highlight">
                     <div class="revenue-title">Partner Success Example</div>
-                    <div class="revenue-calc">
-                        Silver Partner with 40 buildings:<br>
-                        Monthly commission: 40 × $25 = $1,000<br>
-                        Annual commission income: $12,000
+                    <div class="revenue-example">
+                        Partner with 40 buildings:<br>
+                        Monthly recurring commission income<br>
+                        Annual partner revenue potential: $10,000+
                     </div>
-                    <div class="revenue-total">Plus 15% Founding Partner Bonus!</div>
+                    <div class="revenue-total">Get Custom Commission Quote in Demo!</div>
+                </div>
+                
+                <!-- Pricing Transparency -->
+                <div style="background: white; border-radius: 16px; padding: 2rem; margin-top: 3rem; text-align: center; border: 2px solid #3b82f6; box-shadow: 0 8px 30px rgba(59, 130, 246, 0.1);">
+                    <h3 style="color: #1e3a8a; font-size: 1.4rem; margin-bottom: 1rem;">Transparent Pricing</h3>
+                    <p style="color: #64748b; font-size: 1.1rem; margin-bottom: 1rem;">Plans start around <strong>$250/month</strong> depending on portfolio size.</p>
+                    <p style="color: #64748b; font-size: 1rem;">Custom pricing available. No hidden fees, cancel anytime.</p>
                 </div>
                 
                 <div style="text-align: center; margin-top: 2rem;">
-                    <a href="#" class="btn btn-primary" style="color: #1e3a8a; margin-right: 1rem;">🤝 Apply for Partnership</a>
-                    <a href="#" style="color: #1e3a8a; text-decoration: underline;">📋 Download Partner Kit</a>
+                    <a href="mailto:demo@reserveiq.dev" class="btn btn-primary" style="color: #1e3a8a; margin-right: 1rem;">🤝 Apply for Partnership</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FAQ Section -->
+    <section style="padding: 60px 0; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                <div style="background: white; border-radius: 12px; padding: 2rem; border-left: 4px solid #10b981; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                    <h3 style="color: #1e3a8a; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem;">How long does onboarding take?</h3>
+                    <p style="color: #475569; line-height: 1.6; margin: 0;">Most property managers are live and generating professional communications within 7 days. Crisis prevention monitoring begins immediately.</p>
+                </div>
+                
+                <div style="background: white; border-radius: 12px; padding: 2rem; border-left: 4px solid #10b981; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                    <h3 style="color: #1e3a8a; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem;">Do I need to change how I work?</h3>
+                    <p style="color: #475569; line-height: 1.6; margin: 0;">No, ReserveIQ integrates with your existing workflow. Continue using your current tools while gaining AI-powered communication and crisis prevention capabilities.</p>
+                </div>
+                
+                <div style="background: white; border-radius: 12px; padding: 2rem; border-left: 4px solid #10b981; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                    <h3 style="color: #1e3a8a; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem;">How do I earn partner commissions?</h3>
+                    <p style="color: #475569; line-height: 1.6; margin: 0;">Simply bring your buildings to ReserveIQ and earn recurring monthly commissions. No upfront costs or commitments required.</p>
+                </div>
+                
+                <div style="background: white; border-radius: 12px; padding: 2rem; border-left: 4px solid #10b981; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                    <h3 style="color: #1e3a8a; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem;">What if my clients want to cancel?</h3>
+                    <p style="color: #475569; line-height: 1.6; margin: 0;">No long-term contracts. Buildings can cancel with 30 days notice. We earn retention through value, not contracts.</p>
+                </div>
+                
+                <div style="background: white; border-radius: 12px; padding: 2rem; border-left: 4px solid #10b981; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                    <h3 style="color: #1e3a8a; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem;">Do I need technical expertise?</h3>
+                    <p style="color: #475569; line-height: 1.6; margin: 0;">No technical knowledge required. Our AI handles the complexity—you get simple, actionable tools that make you look like a professional genius.</p>
+                </div>
+                
+                <div style="background: white; border-radius: 12px; padding: 2rem; border-left: 4px solid #10b981; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+                    <h3 style="color: #1e3a8a; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.75rem;">Have questions?</h3>
+                    <p style="color: #475569; line-height: 1.6; margin: 0;">Email us anytime at <strong>demo@reserveiq.dev</strong> — we typically respond within 4 hours during business days.</p>
+                </div>
+            </div>
+        </div>
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>ReserveIQ</h3>
-                    <p>AI-powered portfolio intelligence platform with dual strengths: Save 5-10 hours weekly on professional communications + Predict $50K+ crises 2-3 years early. Earn commissions as our partner.</p>
+                    <p>AI-powered portfolio intelligence platform with dual strengths: Save 5-10 hours weekly on professional communications + Predict crises years early. Earn commissions as our partner.</p>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Quick Links</h3>
-                    <p><a href="#">Email Templates Demo</a></p>
-                    <p><a href="#">Assessment Calculator</a></p>
-                    <p><a href="#">Partner Commission Program</a></p>
-                    <p><a href="#">Support</a></p>
+                    <p><a href="mailto:demo@reserveiq.dev">Communication Tools Demo</a></p>
+                    <p><a href="mailto:demo@reserveiq.dev">Assessment Calculator</a></p>
+                    <p><a href="mailto:demo@reserveiq.dev">Partner Commission Program</a></p>
+                    <p><a href="mailto:demo@reserveiq.dev">Support</a></p>
                 </div>
                 
                 <div class="footer-section">
