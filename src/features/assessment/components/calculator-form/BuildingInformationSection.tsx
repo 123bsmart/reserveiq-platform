@@ -1,5 +1,6 @@
 import { Form } from '@/shared/ui';
 import { CalculatorFormSection } from './CalculatorFormSection';
+import { formatCurrency } from '@/shared/utils';
 
 export const BuildingInformationSection: React.FC = () => {
   return (
@@ -36,13 +37,27 @@ export const BuildingInformationSection: React.FC = () => {
         <Form.Field
           name="currentReserves"
           label="Current Reserve Balance"
-          render={({ field }) => <Form.Input {...field} placeholder="$125,000" />}
+          render={({ field }) => (
+            <Form.Input
+              {...field}
+              placeholder="$125,000"
+              onBlur={() => field.onChange(formatCurrency(field.value))}
+              inputMode="numeric"
+            />
+          )}
           text="Approximate amount"
         />
         <Form.Field
           name="monthlyContribution"
           label="Monthly Contribution"
-          render={({ field }) => <Form.Input {...field} placeholder="$8,500" />}
+          render={({ field }) => (
+            <Form.Input
+              {...field}
+              placeholder="$8,500"
+              onBlur={() => field.onChange(formatCurrency(field.value))}
+              inputMode="numeric"
+            />
+          )}
           text="Total monthly reserves"
         />
       </Form.Row>

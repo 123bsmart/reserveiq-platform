@@ -40,7 +40,7 @@ export const Tooltip: React.FC<TooltipProps> = ({ children, variant }) => {
       <Triangle
         size={10}
         className={cn(
-          'mt-[-4px] rotate-180',
+          '-mt-1 rotate-180',
           variant === 'light' ? 'text-white fill-white' : 'text-gray-800 fill-gray-800'
         )}
       />

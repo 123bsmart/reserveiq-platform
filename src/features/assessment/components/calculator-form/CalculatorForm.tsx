@@ -64,7 +64,7 @@ export const CalculatorForm: React.FC = () => {
           )}
         />
         <ComingSoonWrapper className="w-full">
-          <Form.Button className="w-full">🚀 Get My Free Assessment</Form.Button>
+          <Form.Button className="w-full text-[1.1rem]">🚀 Get My Free Assessment</Form.Button>
         </ComingSoonWrapper>
       </Form>
     </div>

@@ -3,18 +3,18 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/shared/utils/cn';
 
 const buttonVariants = cva(
-  // Base styles applied to all buttons
-  'font-[800] outline-none cursor-pointer text-[#fff] text-[1rem] transition-all duration-300 rounded-[6px] no-underline inline-flex items-center justify-center',
+  'font-bold outline-none cursor-pointer text-white text-base/[1.2] transition-all duration-300 rounded-md no-underline inline-flex items-center justify-center',
   {
     variants: {
       variant: {
-        default: 'bg-[#3b82f6] hover:bg-[#2563eb] hover:-translate-y-[2px] border-none',
-        outline: 'bg-transparent border border-[#cbd5e1] hover:bg-white/10 hover:bg-[#ffffff1a]',
+        default: 'bg-blue hover:bg-[#2563eb] hover:-translate-y-0.5 border-2 border-blue hover:border-[#2563eb',
+        'outline-ghost': 'bg-transparent border-2 border-gray-lighter hover:bg-white/10 hover:bg-[#ffffff1a]',
+        outline: 'bg-transparent text-blue border-2 border-blue hover:bg-blue hover:text-white hover:-translate-y-0.5',
         secondary:
-          'bg-green text-white border-none rounded-lg text-[1.1rem] font-semibold py-4 px-8 w-full hover:bg-green-dark hover:-translate-y-[2px]',
+          'bg-green text-white border-2 border-green rounded-lg font-semibold py-4 px-8 w-full hover:bg-green-dark hover:border-green-dark hover:-translate-y-0.5',
       },
       size: {
-        default: 'py-[12px] px-[20px]',
+        default: 'py-3 px-5',
       },
       fullWidth: {
         true: 'w-full',
@@ -41,7 +41,7 @@ export interface ButtonProps
  * @example
  * ```tsx
  * <Button variant="default" size="large">Click me</Button>
- * <Button variant="outline" fullWidth>Cancel</Button>
+ * <Button variant="outline-ghost" fullWidth>Cancel</Button>
  * <Button variant="secondary" fullWidth>Submit</Button>
  * ```
  */

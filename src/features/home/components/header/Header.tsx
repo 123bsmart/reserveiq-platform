@@ -43,7 +43,7 @@ export const Header: React.FC = () => {
             </Button>
           </ComingSoonWrapper>
           <ComingSoonWrapper>
-            <Button variant="outline" onClick={handleExploreRiskDashboard} className="w-[290px] font-[600]">
+            <Button variant="outline-ghost" onClick={handleExploreRiskDashboard} className="w-[290px] font-[600]">
               Explore Risk Dashboard
             </Button>
           </ComingSoonWrapper>
