@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReserveIQ – Property Managers</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #1e2a78 0%, #1e3a8a 100%);
+        color: white;
+      }
+
+      header {
+        text-align: center;
+        padding: 60px 20px 40px;
+      }
+
+      /* Logo */
+      .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 40px;
+      }
+
+      .logo-icon {
+        width: 60px;
+        height: 60px;
+      }
+
+      .logo-text {
+        font-size: 36px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+      }
+
+      .logo-text .reserve {
+        color: white;
+      }
+
+      .logo-text .iq {
+        color: #10b981;
+      }
+
+      .logo-tagline {
+        color: #ffffffb3;
+        font-size: 15px;
+        font-weight: 400;
+        margin-top: 5px;
+        letter-spacing: 0.5px;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        line-height: 1.2;
+      }
+
+      header p {
+        font-size: 1rem;
+        color: #cbd5e1;
+        margin-bottom: 30px;
+      }
+
+      .cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 16px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+
+      .cta-buttons a {
+        padding: 12px 20px;
+        border-radius: 6px;
+        font-weight: bold;
+        text-decoration: none;
+        color: white;
+        font-size: 1rem;
+        transition: all 0.3s;
+      }
+
+      .primary-btn {
+        background-color: #3b82f6;
+      }
+
+      .primary-btn:hover {
+        background-color: #2563eb;
+        transform: translateY(-2px);
+      }
+
+      .secondary-btn {
+        background-color: transparent;
+        border: 1px solid #cbd5e1;
+      }
+
+      .secondary-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      .dashboard {
+        background: white;
+        color: black;
+        border-radius: 16px;
+        max-width: 600px;
+        margin: 0 auto 60px;
+        padding: 24px;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      }
+
+      .dashboard table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .dashboard th,
+      .dashboard td {
+        text-align: left;
+        padding: 12px 8px;
+        border-bottom: 1px solid #e2e8f0;
+        font-size: 0.95rem;
+      }
+
+      .dashboard th {
+        font-weight: 600;
+        color: #374151;
+      }
+
+      .dashboard td strong {
+        font-weight: 600;
+      }
+
+      .demo-hint {
+        background: #ffffff1a;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 20px auto;
+        max-width: 600px;
+        font-size: 0.9rem;
+        color: #cbd5e1;
+        border: 1px solid #ffffff33;
+      }
+
+      .demo-hint strong {
+        color: #10b981;
+      }
+
+      section.gray-bg {
+        background: #f1f5f9;
+        color: #0f172a;
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      section.dark-gray-bg {
+        background: #e2e8f0;
+        color: #0f172a;
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        margin-bottom: 40px;
+        font-weight: 700;
+      }
+
+      .pain-points,
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .pain-points div,
+      .features-grid div {
+        background: white;
+        padding: 30px 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        transition: transform 0.3s;
+      }
+
+      .pain-points div:hover,
+      .features-grid div:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      .emoji {
+        font-size: 2.5rem;
+        margin-bottom: 16px;
+        display: block;
+      }
+
+      .pain-points h3,
+      .features-grid h3 {
+        margin-top: 0;
+        margin-bottom: 12px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: #1f2937;
+      }
+
+      .pain-points p,
+      .features-grid p {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #6b7280;
+        margin: 0;
+      }
+
+      .quote {
+        font-style: italic;
+        color: #3b82f6;
+        margin-bottom: 8px;
+      }
+
+      .brand-section {
+        margin-top: 40px;
+      }
+
+      .brand-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1f2937;
+      }
+
+      footer {
+        text-align: center;
+        padding: 40px 20px;
+        font-size: 0.9rem;
+        background: rgba(30, 42, 120, 0.8);
+        color: #cbd5e1;
+        line-height: 1.6;
+      }
+
+      footer a {
+        color: #60a5fa;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+
+      footer a:hover {
+        color: #93c5fd;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        header {
+          padding: 40px 20px 30px;
+        }
+
+        header h1 {
+          font-size: 2rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .cta-buttons a {
+          width: 250px;
+          text-align: center;
+        }
+
+        .dashboard {
+          margin: 0 10px 60px;
+          padding: 20px;
+        }
+
+        .logo-text {
+          font-size: 28px;
+        }
+
+        .logo-tagline {
+          font-size: 13px;
+        }
+
+        .pain-points,
+        .features-grid {
+          grid-template-columns: 1fr;
+          gap: 25px;
+        }
+
+        section.gray-bg,
+        section.dark-gray-bg {
+          padding: 50px 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <!-- Logo -->
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+          <!-- Shield background -->
+          <path d="M30 5 L45 10 L45 30 C45 42 30 52 30 52 C30 52 15 42 15 30 L15 10 Z" fill="#3b82f6" stroke="none" />
+
+          <!-- Building elements -->
+          <rect x="20" y="18" width="4" height="12" fill="white" opacity="0.9" />
+          <rect x="26" y="16" width="4" height="14" fill="white" opacity="0.9" />
+          <rect x="32" y="19" width="4" height="11" fill="white" opacity="0.9" />
+          <rect x="38" y="17" width="4" height="13" fill="white" opacity="0.9" />
+
+          <!-- AI symbol -->
+          <circle cx="30" cy="38" r="8" fill="#10b981" />
+          <circle cx="30" cy="38" r="3" fill="white" />
+          <circle cx="26" cy="35" r="1.5" fill="white" />
+          <circle cx="34" cy="35" r="1.5" fill="white" />
+          <circle cx="26" cy="41" r="1.5" fill="white" />
+          <circle cx="34" cy="41" r="1.5" fill="white" />
+
+          <!-- Connection lines -->
+          <line x1="26" y1="35" x2="30" y2="38" stroke="white" stroke-width="1" />
+          <line x1="34" y1="35" x2="30" y2="38" stroke="white" stroke-width="1" />
+          <line x1="26" y1="41" x2="30" y2="38" stroke="white" stroke-width="1" />
+          <line x1="34" y1="41" x2="30" y2="38" stroke="white" stroke-width="1" />
+        </svg>
+
+        <div>
+          <div class="logo-text"><span class="reserve">Reserve</span><span class="iq">IQ</span></div>
+          <div class="logo-tagline">AI-Powered Portfolio Intelligence Platform</div>
+        </div>
+      </div>
+
+      <h1>Predict Problems Before They Cost You Buildings.</h1>
+      <p>AI-powered portfolio intelligence that gives you the oversight boards expect —and the edge over your competitors.</p>
+
+      <div class="cta-buttons">
+        <a href="demo-request.html" class="primary-btn">Book a 15-min Demo</a>
+        <a href="demo.html" class="secondary-btn">Explore Risk Dashboard</a>
+      </div>
+
+      <div class="demo-hint"><strong>👆 Try the Interactive Demo:</strong> Click "Explore Risk Dashboard" to see a live portfolio with real reserve fund data, AI insights, and downloadable reports. No signup required!</div>
+
+      <div class="dashboard">
+        <table>
+          <thead>
+            <tr>
+              <th>Buildings Monitored</th>
+              <th>Reserve Health</th>
+              <th>Alerts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="cursor: pointer" onclick="window.open('/demo', '_blank')">
+              <td><strong>Maple Estates</strong></td>
+              <td>78% Healthy</td>
+              <td><span style="color: #16a34a">Low Risk</span></td>
+            </tr>
+            <tr style="cursor: pointer" onclick="window.open('/demo', '_blank')">
+              <td><strong>Park Towers</strong></td>
+              <td>52% Warning</td>
+              <td><span style="color: #eab308">High Risk</span></td>
+            </tr>
+            <tr style="cursor: pointer" onclick="window.open('/demo', '_blank')">
+              <td><strong>Lakeside Manor</strong></td>
+              <td>31% Critical</td>
+              <td><span style="color: #dc2626">Critical</span></td>
+            </tr>
+            <tr style="cursor: pointer" onclick="window.open('/demo', '_blank')">
+              <td><strong>Sunset Place</strong></td>
+              <td>89% Excellent</td>
+              <td><span style="color: #16a34a">Low Risk</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="text-align: center; margin-top: 15px; color: #6b7280; font-size: 0.9rem">
+          <strong>👆 Click any building to explore the full dashboard</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="gray-bg">
+      <h2>Why Property Managers Lose Buildings</h2>
+      <div class="pain-points">
+        <div>
+          <div class="emoji">😟</div>
+          <h3>Unpredictable Crises</h3>
+          <p class="quote">"We didn't see it coming."</p>
+          <p>Slowly watching problems erupt across your portfolio. Multiple buildings hitting funding crises simultaneously.</p>
+        </div>
+        <div>
+          <div class="emoji">🤷‍♀️</div>
+          <h3>Blame Game from Boards</h3>
+          <p class="quote">"Why weren't we warned?"</p>
+          <p>Upload reserve studies, get board-ready briefings in seconds. Show proactive oversight that keeps boards happy.</p>
+        </div>
+        <div>
+          <div class="emoji">😵‍💫</div>
+          <h3>Manual Chaos</h3>
+          <p class="quote">"15 reports and no clear picture."</p>
+          <p>Instant tech credibility without development cost. White-labeled portals that make clients think you're innovative.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-gray-bg">
+      <h2>Meet ReserveIQ</h2>
+      <div class="features-grid">
+        <div>
+          <div class="emoji">🎯</div>
+          <h3>Portfolio Risk Scorecards</h3>
+          <p>See which building needs attention — before they erupt. Monitor reserve health across your entire portfolio.</p>
+        </div>
+        <div>
+          <div class="emoji">📊</div>
+          <h3>AI-Powered Report Summaries</h3>
+          <p>Upload reserve studies, get board-ready briefs. AI extracts critical timelines, costs, and risk factors.</p>
+        </div>
+        <div>
+          <div class="emoji">✓</div>
+          <h3>Assessment.html Scenario Visualizer</h3>
+          <p>Show boards the cost of waiting, or acting now. Compare different funding approaches with visual impact analysis.</p>
+        </div>
+      </div>
+
+      <div class="brand-section">
+        <div class="brand-title">Your Brand. Our Engine.</div>
+      </div>
+    </section>
+
+    <footer>
+      &copy; 2025 ReserveIQ Inc. All rights reserved.<br /><br />
+      Are you a board member looking for reserve crisis prevention?<br />
+      <a href="/boards.html">See Board Member Solutions →</a>
+    </footer>
+
+    <script>
+      // Analytics tracking for demo interactions
+      function trackDemoClick(source) {
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'demo_click', {
+            event_category: 'Demo',
+            event_label: source,
+          });
+        }
+      }
+
+      // Track button clicks
+      document.querySelector('a[href="/demo"]').addEventListener('click', function () {
+        trackDemoClick('explore_dashboard_button');
+      });
+
+      // Track table row clicks
+      document.querySelectorAll('tr[onclick]').forEach((row) => {
+        row.addEventListener('click', function () {
+          trackDemoClick('building_table_row');
+        });
+      });
+
+      // Add hover effects to building rows
+      document.querySelectorAll('tbody tr').forEach((row) => {
+        row.addEventListener('mouseenter', function () {
+          this.style.backgroundColor = '#f8fafc';
+        });
+
+        row.addEventListener('mouseleave', function () {
+          this.style.backgroundColor = '';
+        });
+      });
+    </script>
+  </body>
+</html>
