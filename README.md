@@ -1,3 +1,5 @@
+<!-- Trigger redeploy -->
+
 # ReserveIQ - AI-Powered Condo Intelligence Platform
 
 ## Phase 1: Foundation & Crisis Prevention - Frontend Complete ✅
