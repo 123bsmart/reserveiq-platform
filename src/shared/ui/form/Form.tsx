@@ -21,7 +21,7 @@ export type FormProps<T extends FieldValues> = {
 } & UseFormReturn<T>;
 
 export const formFieldClasses =
-  'w-full px-4 py-3 h-11 border border-gray-border rounded-lg text-base bg-white transition duration-300 ease-in-out focus:outline-none focus:border-blue focus:ring-4 focus:ring-blue/10';
+  'w-full px-4 py-[14px] border-2 border-[#e2e8f0] bg-[#fafafa] rounded-lg text-base/[1] transition duration-300 ease-in-out focus:outline-none focus:border-blue focus:ring-4 focus:ring-blue/10';
 
 export function Form<T extends FieldValues>({
   children,
@@ -33,7 +33,7 @@ export function Form<T extends FieldValues>({
   ...form
 }: FormProps<T>): React.ReactElement {
   return (
-    <div className={cn('bg-white rounded-2xl py-[30px] px-5 md:p-10 w-full shadow-md mx-auto', containerClassName)}>
+    <div className={cn('w-full mx-auto', containerClassName)}>
       {renderHeader ? renderHeader() : null}
       <FormProvider {...form}>
         <form className={cn(className)} onSubmit={form.handleSubmit(onSubmit)}>

@@ -23,16 +23,10 @@ export function FormField<TFieldValues extends FieldValues = FieldValues>({
     <Controller
       {...props}
       render={({ field, fieldState, formState }) => (
-        <div
-          className={cn(
-            'flex flex-col gap-y-1',
-            fieldState.error && '[&>*:not(div)]:border-error',
-            field.value && !fieldState.error && '[&>*:not(div)]:border-green'
-          )}
-        >
+        <div className={cn('flex flex-col gap-y-1')}>
           {label && (
-            <label htmlFor={htmlFor ?? props.name} className="text-gray-light text-[0.9rem] font-medium mb-0.5">
-              {label} {required ? <span className='text-error'>*</span> : null}
+            <label htmlFor={htmlFor ?? props.name} className="text-gray-light text-[0.9rem] font-semibold mb-0.5">
+              {label} {required ? <span className="text-error">*</span> : null}
             </label>
           )}
           {render({ field, fieldState, formState })}

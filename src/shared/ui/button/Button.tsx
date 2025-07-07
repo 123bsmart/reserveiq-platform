@@ -12,6 +12,8 @@ const buttonVariants = cva(
         outline: 'bg-transparent text-blue border-2 border-blue hover:bg-blue hover:text-white hover:-translate-y-0.5',
         secondary:
           'bg-green text-white border-2 border-green rounded-lg font-semibold py-4 px-8 w-full hover:bg-green-dark hover:border-green-dark hover:-translate-y-0.5',
+        gradient: 'rounded-lg font-semibold transition-all duration-300 bg-[linear-gradient(135deg,_#1e3a8a_0%,_#3b82f6_100%)] hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 active:shadow-none'
+  
       },
       size: {
         default: 'py-3 px-5',
