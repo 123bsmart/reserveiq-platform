@@ -8,7 +8,7 @@ import { signInSchema } from '../form/schema';
 
 type SignInValues = z.infer<typeof signInSchema>;
 
-const SignInForm = () => {
+const SignInForm: React.FC = () => {
   const form = useForm<SignInValues>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -18,8 +18,8 @@ const SignInForm = () => {
     },
   });
 
-  const onSubmit = (data: SignInValues) => {
-    console.log('[SIGN IN]', data);
+  const onSubmit = (data: SignInValues): void => {
+    console.log('[SIGN IN]', data); // eslint-disable-line
     // Call sign-in mutation here
   };
 

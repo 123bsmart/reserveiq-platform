@@ -2,7 +2,7 @@ import AuthForm from "@/features/auth/components/AuthForm";
 import AuthLayout from "@/features/auth/components/AuthLayout";
 import LogoSection from "@/features/auth/components/LogoSection";
 
-const AuthPage = () => {
+const AuthPage: React.FC = () => {
   return (
     <AuthLayout>
       <LogoSection />

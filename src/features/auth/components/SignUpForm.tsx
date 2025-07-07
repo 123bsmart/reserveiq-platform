@@ -5,10 +5,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/shared/ui';
 import { z } from 'zod';
 import { signUpSchema } from '../form/schema';
+import React from 'react';
 
 type SignUpValues = z.infer<typeof signUpSchema>;
 
-const SignUpForm = () => {
+const SignUpForm: React.FC = () => {
   const form = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
@@ -21,8 +22,8 @@ const SignUpForm = () => {
     },
   });
 
-  const onSubmit = (data: SignUpValues) => {
-    console.log('[SIGN UP]', data);
+  const onSubmit = (data: SignUpValues): void => {
+    console.log('[SIGN UP]', data); // eslint-disable-line
     // Call sign-up mutation here
   };
 
