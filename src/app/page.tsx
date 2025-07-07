@@ -1,5 +1,7 @@
 import { redirect } from "next/navigation";
 
-export default function Home(): JSX.Element {
+const Home: React.FC = () => {
   redirect('/auth')
 }
+
+export default Home
