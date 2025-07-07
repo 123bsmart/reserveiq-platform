@@ -1,15 +1,7 @@
-import Header from '@/features/home/components/header/Header';
-import PainPoints from '@/features/home/components/pain-points/PainPoints';
-import Features from '@/features/home/components/features/Features';
-import Footer from '@/features/home/components/footer/Footer';
+import { redirect } from "next/navigation";
 
-export default function Home(): JSX.Element {
-  return (
-    <main className=" bg-gradient-to-b from-background to-background-dark">
-      <Header />
-      <PainPoints />
-      <Features />
-      <Footer />
-    </main>
-  );
+const Home: React.FC = () => {
+  redirect('/auth')
 }
+
+export default Home
