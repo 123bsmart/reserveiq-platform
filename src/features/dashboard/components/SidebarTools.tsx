@@ -7,10 +7,10 @@ type NavItem = {
 type SidebarToolsProps = {
   title: string;
   items: NavItem[];
-  activePath?: string;
+  //   activePath?: string;
 };
 
-const SidebarTools: React.FC<SidebarToolsProps> = ({ title, items, activePath }) => {
+const SidebarTools: React.FC<SidebarToolsProps> = ({ title, items }) => {
   return (
     <aside className="w-64 bg-white shadow-sm border-r">
       <div className="p-4">
@@ -20,7 +20,7 @@ const SidebarTools: React.FC<SidebarToolsProps> = ({ title, items, activePath })
             // const isActive = item.href === activePath;
 
             // isActive with index 0 only for presentation
-            const isActive = index == 0;
+            const isActive = index === 0;
             return (
               <a
                 key={item.href}
