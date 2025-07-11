@@ -73,11 +73,11 @@ const SignUpForm: React.FC = () => {
             label={
               <>
                 I agree to the{' '}
-                <a href="#" className="text-blue-600 hover:underline">
+                <a href="https://www.reserveiq.net/terms.html" className="text-blue-600 hover:underline">
                   Terms of Service
                 </a>{' '}
                 and{' '}
-                <a href="#" className="text-blue-600 hover:underline">
+                <a href="https://www.reserveiq.net/privacy.html" className="text-blue-600 hover:underline">
                   Privacy Policy
                 </a>
               </>
