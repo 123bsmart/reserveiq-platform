@@ -1,9 +1,10 @@
 // File: components/email-templates/EmailTemplatesSidebar.tsx
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import EmailTemplateCard from './TemplateCard';
 import { Audience, EmailTemplate, EmailTemplateType, Tone } from '@/features/email-templates/types';
+import SideDrawer from '@/shared/components/SideDrawer';
 
 interface Props {
   userType: string;
@@ -22,7 +23,7 @@ interface Props {
   userTypes: Record<string, { name: string; description: string }>;
 }
 
-export const EmailTemplatesSidebar: React.FC<Props> = ({
+const EmailTemplateSidebarContent: React.FC<Props> = ({
   userType,
   setUserType,
   searchQuery,
@@ -36,12 +37,10 @@ export const EmailTemplatesSidebar: React.FC<Props> = ({
   setSelectedTone,
   setSelectedAudience,
   userTypes,
-  emailTemplates
+  emailTemplates,
 }) => {
-
-
   return (
-    <aside className="fixed top-0 left-0 h-full w-96 bg-white border-r border-gray-200 shadow-sm overflow-y-auto p-6 space-y-6">
+    <React.Fragment>
       {/* Header */}
       <div>
         <h2 className="text-xl font-bold text-gray-900">Email Templates</h2>
@@ -124,6 +123,29 @@ export const EmailTemplatesSidebar: React.FC<Props> = ({
           </div>
         </div>
       </div>
-    </aside>
+    </React.Fragment>
+  );
+};
+
+export const EmailTemplatesSidebar: React.FC<Props> = (props) => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  return (
+    <React.Fragment>
+      <aside className="fixed top-0 left-0 h-full w-96 bg-white border-r border-gray-200 shadow-sm overflow-y-auto p-6 space-y-6 hidden xl:block">
+        <EmailTemplateSidebarContent {...props} />
+      </aside>
+      <div className="xl:hidden px-5 pt-4">
+        <button onClick={() => setIsSidebarOpen(true)} className="xl:hidden text-gray-600 hover:text-black">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <SideDrawer isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)}>
+          <div className="w-full space-y-6">
+            <EmailTemplateSidebarContent {...props} />
+          </div>
+        </SideDrawer>
+      </div>
+    </React.Fragment>
   );
 };

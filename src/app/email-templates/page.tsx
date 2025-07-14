@@ -9,29 +9,41 @@ import EmailContentHeader from '@/features/email-templates/components/ContentHea
 import EmailAiSettings from '@/features/email-templates/components/EmailAiSettings';
 import GeneratedEmail from '@/features/email-templates/components/GeneratedEmail';
 import QuickActions from '@/features/email-templates/components/QuickActions';
+import GenerateButton from '@/features/email-templates/components/GenerateButton';
+import { generateTemplateContent } from '@/features/email-templates/utils';
+import MainContent from '@/features/email-templates/components/MainContent';
 
 const EmailTemplatesPage: React.FC = () => {
-  const [generatedContent] = useState('Subject: Test Email\n\nThis is a generated preview...');
-  const [isGenerating] = useState(false);
+  const [generatedContent, setGeneratedContent] = useState('Subject: Test Email\n\nThis is a generated preview...');
+  const [isGenerating, setIsGenerating] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<string>('board-update');
   const [userType, setUserType] = useState<EmailTemplateType>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedTone, setSelectedTone] = useState<Tone>('formal');
-  const [selectedAudience, setSelectedAudience] = useState<Audience>('board');
+  const [selectedAudience, setSelectedAudience] = useState<Audience>('board');  
 
   // Filter templates
   const filteredTemplates = Object.entries(emailTemplates).filter(([_, template]) => {
     const matchUserType = userType === 'all' || template.userType === userType;
-    console.log({ template: typeof template.name }); // eslint-disable-line
-
     const matchSearch =
       template.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       template.category.toLowerCase().includes(searchQuery.toLowerCase());
     return matchUserType && matchSearch;
   });
 
+    const generateContent = () => {
+    setIsGenerating(true);
+    
+    // Simulate AI generation delay
+    setTimeout(() => {
+      const content = generateTemplateContent(selectedTemplate);
+      setGeneratedContent(content);
+      setIsGenerating(false);
+    }, 2000);
+  };
+
   return (
-    <div className="flex min-h-screen pl-96">
+    <div className="flex flex-col xl:flex-row min-h-screen xl:pl-96">
       <EmailTemplatesSidebar
         userType={userType}
         setUserType={setUserType}
@@ -50,15 +62,19 @@ const EmailTemplatesPage: React.FC = () => {
       />
 
       {/* You can render the main content area here */}
-      <div className="flex-1 p-10 space-y-8">
-        <EmailContentHeader
-          selectedTemplate={selectedTemplate}
-          emailTemplates={emailTemplates}
-          selectedTone={selectedTone}
-          tones={tones}
-          selectedAudience={selectedAudience}
-          audiences={audiences}
-        />
+      <div className="flex-1 xl:p-10 p-5 space-y-8">
+        <MainContent />
+        <div className="bg-white rounded-lg border border-gray-200 p-6 mb-8">
+          <EmailContentHeader
+            selectedTemplate={selectedTemplate}
+            emailTemplates={emailTemplates}
+            selectedTone={selectedTone}
+            tones={tones}
+            selectedAudience={selectedAudience}
+            audiences={audiences}
+          />
+          <GenerateButton isGenerating={isGenerating} generateContent={generateContent} />
+        </div>
         <EmailAiSettings
           selectedTone={selectedTone}
           setSelectedTone={setSelectedTone}

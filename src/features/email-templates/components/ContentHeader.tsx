@@ -38,9 +38,10 @@ const EmailContentHeader: React.FC<EmailContentHeaderProps> = ({
   const Icon = template.icon;
 
   return (
-    <div className="flex items-center justify-between mb-4">
+    <div className="flex flex-col md:flex-row md:items-center justify-between gap-y-4 mb-4">
       <div className="flex items-center space-x-3">
-        <Icon className="h-6 w-6 text-purple-600" />
+
+        <Icon className="h-6 w-6 shrink-0 text-purple-600" />
         <div>
           <h2 className="text-xl font-semibold text-gray-900">{template.name}</h2>
           <p className="text-gray-600">{template.description}</p>
