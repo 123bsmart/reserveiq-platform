@@ -1,3 +1,5 @@
+import { cn } from '@/shared/utils';
+
 type NavItem = {
   label: string;
   href: string;
@@ -8,11 +10,12 @@ type SidebarToolsProps = {
   title: string;
   items: NavItem[];
   //   activePath?: string;
+  className?: string;
 };
 
-const SidebarTools: React.FC<SidebarToolsProps> = ({ title, items }) => {
+const SidebarTools: React.FC<SidebarToolsProps> = ({ title, items, className }) => {
   return (
-    <aside className="w-64 bg-white shadow-sm border-r">
+    <aside className={cn('w-64 bg-white shadow-sm border-r', className)}>
       <div className="p-4">
         <h3 className="text-lg font-semibold text-gray-900 mb-4">{title}</h3>
         <nav className="space-y-2">

@@ -3,7 +3,8 @@ import InfoCard from './InfoCard';
 
 const BuildingHealthCards: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+    //
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4  gap-6">
       <DonutProgressCard
         title="Reserve Health Score"
         score={68}

@@ -1,5 +1,8 @@
+'use client';
 import { DashboardHeader, DashboardLayout, SidebarTools } from '@/features/dashboard/components';
 import { BuildingAlerts, PortfolioOverview, QuickActions, RecentActivity } from '@/features/dashboard/pm/components';
+import SideDrawer from '@/shared/components/SideDrawer';
+import { useState } from 'react';
 
 const _communication_tools = [
   {
@@ -64,17 +67,33 @@ const _communication_tools = [
 ];
 
 const PMDashboard: React.FC = () => {
+  const [leftMenuOpen, setLeftMenuOpen] = useState(false);
+  const [rightMenuOpen, setRightMenuOpen] = useState(false);
+
   return (
     <DashboardLayout>
-      <DashboardHeader title="Property Manager Dashboard" fullName="Sarah Johnson" />
+      <DashboardHeader
+        title="Property Manager Dashboard"
+        fullName="Sarah Johnson"
+        onLeftMenuClick={() => setLeftMenuOpen(true)}
+        onRightMenuClick={() => setRightMenuOpen(true)}
+      />
+      {/* Mobile Sidebar */}
+      <SideDrawer isOpen={leftMenuOpen} onClose={() => setLeftMenuOpen(false)} position="left">
+        <SidebarTools title="Communication Tools" items={_communication_tools} className="border-none shadow-none" />
+      </SideDrawer>
+      <SideDrawer isOpen={rightMenuOpen} onClose={() => setRightMenuOpen(false)} position="right">
+        <BuildingAlerts className="border-none shadow-none" />
+      </SideDrawer>
+
       <main className="flex min-h-screen">
-        <SidebarTools title="Communication Tools" items={_communication_tools} />
+        <SidebarTools title="Communication Tools" items={_communication_tools} className="hidden lg:block" />
         <div className="flex-1 p-6 space-y-6">
           <PortfolioOverview />
           <QuickActions />
           <RecentActivity />
         </div>
-        <BuildingAlerts />
+        <BuildingAlerts className="hidden lg:block" />
       </main>
     </DashboardLayout>
   );

@@ -54,7 +54,7 @@ const QuickActions: React.FC = () => {
   return (
     <div className="bg-white rounded-lg shadow-sm border p-6">
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-4">
         {quickActionsData.map((item, idx) => (
           <QuickActionButton key={idx} {...item} />
         ))}

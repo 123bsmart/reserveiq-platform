@@ -1,3 +1,4 @@
+import { cn } from '@/shared/utils';
 import Alert from './Alert';
 
 const alertsData = [
@@ -38,9 +39,9 @@ const alertsData = [
   },
 ];
 
-const BuildingAlerts: React.FC = () => {
+const BuildingAlerts: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <div className="w-80 bg-white shadow-sm border-l p-6">
+    <div className={cn('w-80 bg-white shadow-sm border-l p-6', className)}>
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Building Alerts</h3>
       <div className="space-y-4">
         {alertsData.map((alert, idx) => (

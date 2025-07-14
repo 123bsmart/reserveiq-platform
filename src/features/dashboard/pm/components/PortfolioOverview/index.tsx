@@ -59,7 +59,7 @@ const overviewData = [
 
 const PortfolioOverview: React.FC = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div className="flex flex-row flex-wrap justify-between gap-y-3">
       {overviewData.map((card, index) => (
         <OverviewCard key={index} {...card} />
       ))}

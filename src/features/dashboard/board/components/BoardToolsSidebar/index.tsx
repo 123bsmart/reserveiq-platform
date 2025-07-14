@@ -1,6 +1,7 @@
 import QuickActionButton from './QuickActionButton';
 import ComplianceCalendar from './ComplianceCalendar';
 import RecentBoardActivity from './RecentBoardActivity';
+import { cn } from '@/shared/utils';
 
 const quickActionsData = [
   {
@@ -63,9 +64,9 @@ const quickActionsData = [
   },
 ];
 
-const BoardToolsSidebar: React.FC = () => {
+const BoardToolsSidebar: React.FC<{ className?: string }> = ({ className }) => {
   return (
-    <div className="w-80 bg-white shadow-sm border-l p-6">
+    <div className={cn('w-80 bg-white shadow-sm border-l p-6', className)}>
       <h3 className="text-lg font-semibold text-gray-900 mb-4">Board Tools</h3>
 
       <div className="space-y-3 mb-6">

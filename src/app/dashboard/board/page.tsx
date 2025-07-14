@@ -1,3 +1,4 @@
+'use client';
 import { DashboardHeader, DashboardLayout, SidebarTools } from '@/features/dashboard/components';
 import {
   BoardToolsSidebar,
@@ -5,6 +6,8 @@ import {
   CrisisPrevention,
   PriorityAlerts,
 } from '@/features/dashboard/board/components';
+import SideDrawer from '@/shared/components/SideDrawer';
+import { useState } from 'react';
 
 const _financial_oversight = [
   {
@@ -68,21 +71,32 @@ const _financial_oversight = [
 ];
 
 const BoardDashboard: React.FC = () => {
+  const [leftMenuOpen, setLeftMenuOpen] = useState(false);
+  const [rightMenuOpen, setRightMenuOpen] = useState(false);
+
   return (
     <DashboardLayout>
       <DashboardHeader
         title="Board Member Dashboard - Maple Heights Condo"
         fullName="Michael Thompson (Board President)"
       />
+      {/* Mobile Sidebar */}
+      <SideDrawer isOpen={leftMenuOpen} onClose={() => setLeftMenuOpen(false)} position="left">
+        <SidebarTools title="Financial Oversight" items={_financial_oversight} className="border-none shadow-none" />
+      </SideDrawer>
+      <SideDrawer isOpen={rightMenuOpen} onClose={() => setRightMenuOpen(false)} position="right">
+        <BoardToolsSidebar className="border-none shadow-none" />
+      </SideDrawer>
+
       <main className="flex min-h-screen">
-        <SidebarTools title="Financial Oversight" items={_financial_oversight} />
+        <SidebarTools title="Financial Oversight" items={_financial_oversight} className="hidden lg:block" />
         {/* Main Content Area */}
         <div className="flex-1 p-6 space-y-6">
           <BuildingHealth />
           <CrisisPrevention />
           <PriorityAlerts />
         </div>
-        <BoardToolsSidebar />
+        <BoardToolsSidebar className="hidden lg:block" />
       </main>
     </DashboardLayout>
   );
