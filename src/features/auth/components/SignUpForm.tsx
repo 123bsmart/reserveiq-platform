@@ -10,14 +10,13 @@ import { useMutation } from '@tanstack/react-query';
 import { RoleEnum } from '@/shared/enum/auth.enum';
 import { Modal } from '@/shared/ui/modal';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { toast } from 'react-toastify';
 
 type SignUpValues = z.infer<typeof signUpSchema>;
 
 const SignUpForm: React.FC = () => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [captchaValue, setCaptchaValue] = useState<string | null>(null);
-
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const form = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
@@ -43,20 +42,18 @@ const SignUpForm: React.FC = () => {
   });
 
   const onSubmit = async (data: SignUpValues): Promise<void> => {
-    console.log('[SIGN UP]', data); // eslint-disable-line
+    if (!captchaValue) {
+      toast.error('Please complete the reCAPTCHA');
+      return;
+    }
 
-    const token = await recaptchaRef.current?.executeAsync();
-    recaptchaRef.current?.reset();
-
-    console.log('captchaValue', captchaValue);
-
-    console.log('token', token);
     mutation.mutate({
       name: data.fullName,
       email: data.email,
       company: data.companyName,
       role: data.userType,
       password: data.password,
+      captchaValue,
     });
   };
 
@@ -139,7 +136,6 @@ const SignUpForm: React.FC = () => {
           onChange={(token) => {
             setCaptchaValue(token);
           }}
-          ref={recaptchaRef}
         />
         <Form.Button type="submit" className="text-[1.1rem]">
           Create Account

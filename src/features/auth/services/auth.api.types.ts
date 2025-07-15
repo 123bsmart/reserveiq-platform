@@ -7,6 +7,7 @@ export interface ISignUpReq {
   company: string;
   role: RoleEnum;
   password: string;
+  captchaValue: string;
 }
 
 export interface ILoginReq {
