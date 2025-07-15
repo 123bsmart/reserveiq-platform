@@ -103,28 +103,26 @@ const SignUpForm: React.FC = () => {
           label="Password"
           render={({ field }) => <Form.Input {...field} type="password" placeholder="Create a secure password" />}
         />
-
-        <Form.Field
-          name="termsAgree"
-          render={({ field }) => (
-            <Form.Checkbox
-              {...field}
-              label={
-                <>
-                  I agree to the{' '}
-                  <a href="#" className="text-blue-600 hover:underline">
-                    Terms of Service
-                  </a>{' '}
-                  and{' '}
-                  <a href="#" className="text-blue-600 hover:underline">
-                    Privacy Policy
-                  </a>
-                </>
-              }
-            />
-          )}
-        />
-
+      <Form.Field
+        name="termsAgree"
+        render={({ field }) => (
+          <Form.Checkbox
+            {...field}
+            label={
+              <>
+                I agree to the{' '}
+                <a href="https://www.reserveiq.net/terms.html" className="text-blue-600 hover:underline">
+                  Terms of Service
+                </a>{' '}
+                and{' '}
+                <a href="https://www.reserveiq.net/privacy.html" className="text-blue-600 hover:underline">
+                  Privacy Policy
+                </a>
+              </>
+            }
+          />
+        )}
+      />
         <Form.Button type="submit" className="text-[1.1rem]">
           Create Account
         </Form.Button>
