@@ -4,13 +4,14 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Form } from '@/shared/ui';
 import { z } from 'zod';
 import { signUpSchema } from '../form/schema';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import AuthApi from '../services/auth.api';
 import { useMutation } from '@tanstack/react-query';
 import { RoleEnum } from '@/shared/enum/auth.enum';
 import { Modal } from '@/shared/ui/modal';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { toast } from 'react-toastify';
+import { AxiosError } from 'axios';
 
 type SignUpValues = z.infer<typeof signUpSchema>;
 
@@ -36,8 +37,8 @@ const SignUpForm: React.FC = () => {
       setModalOpen(true);
       form.reset();
     },
-    onError: (error) => {
-      console.warn('onError', error);
+    onError: (error: AxiosError<{ message: string }>) => {
+      toast.error(error.response?.data.message || 'Unexpected error');
     },
   });
 
@@ -53,7 +54,7 @@ const SignUpForm: React.FC = () => {
       company: data.companyName,
       role: data.userType,
       password: data.password,
-      captchaValue,
+      recaptchaToken: captchaValue,
     });
   };
 

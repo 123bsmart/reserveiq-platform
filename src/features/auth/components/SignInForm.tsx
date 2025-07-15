@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { AxiosError } from 'axios';
 
 type SignInValues = z.infer<typeof signInSchema>;
 
@@ -40,8 +41,8 @@ const SignInForm: React.FC = () => {
           break;
       }
     },
-    onError: (error) => {
-      console.warn('onError', error);
+    onError: (error: AxiosError<{ message: string }>) => {
+      toast.error(error.response?.data.message || 'Unexpected error');
     },
   });
 
@@ -54,6 +55,7 @@ const SignInForm: React.FC = () => {
     mutation.mutate({
       email: data.email,
       password: data.password,
+      recaptchaToken: captchaValue,
     });
   };
 
