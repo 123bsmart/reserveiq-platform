@@ -15,6 +15,7 @@ type SignUpValues = z.infer<typeof signUpSchema>;
 
 const SignUpForm: React.FC = () => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
 
   const recaptchaRef = useRef<ReCAPTCHA>(null);
 
@@ -46,6 +47,8 @@ const SignUpForm: React.FC = () => {
 
     const token = await recaptchaRef.current?.executeAsync();
     recaptchaRef.current?.reset();
+
+    console.log('captchaValue', captchaValue);
 
     console.log('token', token);
     mutation.mutate({
@@ -131,7 +134,13 @@ const SignUpForm: React.FC = () => {
             />
           )}
         />
-        <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} size="invisible" ref={recaptchaRef} />
+        <ReCAPTCHA
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+          onChange={(token) => {
+            setCaptchaValue(token);
+          }}
+          ref={recaptchaRef}
+        />
         <Form.Button type="submit" className="text-[1.1rem]">
           Create Account
         </Form.Button>
