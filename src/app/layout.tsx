@@ -4,7 +4,8 @@ import { GoogleTagManager } from '@/shared/components/GoogleTagManager';
 import { GoogleTagManagerNoScript } from '@/shared/components/GoogleTagManagerNoScript';
 import { GTM_ID } from '@/shared/config/analytics';
 import { ReactQueryProvider } from '@/shared/providers/ReactQueryProvider';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // Using system font stack from globals.css
 
 export const metadata: Metadata = {
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body>
         <GoogleTagManagerNoScript gtmId={GTM_ID} />
         <ReactQueryProvider>{children}</ReactQueryProvider>
+        <ToastContainer />
       </body>
     </html>
   );
