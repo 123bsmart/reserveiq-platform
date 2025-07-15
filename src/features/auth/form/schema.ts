@@ -1,3 +1,4 @@
+import { RoleEnum } from '@/shared/enum/auth.enum';
 import { z } from 'zod';
 
 export const signInSchema = z.object({
@@ -7,7 +8,7 @@ export const signInSchema = z.object({
 });
 
 export const signUpSchema = z.object({
-  userType: z.string().min(1, 'Role is required'),
+  userType: z.enum([RoleEnum.BOARD_MEMBER, RoleEnum.PROPERTY_MANAGER]),
   fullName: z.string().min(2, 'Full name is required'),
   email: z.string().email('Invalid email address'),
   companyName: z.string().min(2, 'Company or building name is required'),
