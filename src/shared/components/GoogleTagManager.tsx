@@ -1,10 +1,11 @@
 import Script from 'next/script';
 
 interface GoogleTagManagerProps {
-  gtmId: string;
+  gtmId?: string;
 }
 
-export const GoogleTagManager = ({ gtmId }: GoogleTagManagerProps): JSX.Element => {
+export const GoogleTagManager = ({ gtmId }: GoogleTagManagerProps): JSX.Element | null => {
+  if (!gtmId) return null;
   return (
     <>
       {/* Google Tag Manager - Script */}

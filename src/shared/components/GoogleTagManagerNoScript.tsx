@@ -1,8 +1,9 @@
 interface GoogleTagManagerNoScriptProps {
-  gtmId: string;
+  gtmId?: string;
 }
 
-export const GoogleTagManagerNoScript = ({ gtmId }: GoogleTagManagerNoScriptProps): JSX.Element => {
+export const GoogleTagManagerNoScript = ({ gtmId }: GoogleTagManagerNoScriptProps): JSX.Element | null => {
+  if (!gtmId) return null;
   return (
     <noscript>
       <iframe
