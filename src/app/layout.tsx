@@ -6,6 +6,7 @@ import { ReactQueryProvider } from '@/shared/providers/ReactQueryProvider';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { RouteAnalytics } from '@/shared/providers/RouteAnalytics';
+import { Suspense } from 'react';
 // Using system font stack from globals.css
 
 export const metadata: Metadata = {
@@ -27,7 +28,9 @@ export default function RootLayout({
       <body>
         <GoogleTagManagerNoScript gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
         <ReactQueryProvider>
-          <RouteAnalytics />
+          <Suspense fallback={null}>
+            <RouteAnalytics />
+          </Suspense>
           {children}
         </ReactQueryProvider>
         <ToastContainer />
