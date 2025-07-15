@@ -29,7 +29,7 @@ const SignUpForm: React.FC = () => {
 
   const mutation = useMutation({
     mutationFn: AuthApi.signup,
-    onSuccess: (data) => {
+    onSuccess: () => {
       setModalOpen(true);
       form.reset();
     },

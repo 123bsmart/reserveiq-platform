@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 
 const queryClient = new QueryClient();
 
-export function ReactQueryProvider({ children }: { children: React.ReactNode }) {
+export function ReactQueryProvider({ children }: { children: React.ReactNode }): JSX.Element {
   // useState to ensure that the client is created only once on the client
   const [client] = useState(() => queryClient);
 

@@ -5,20 +5,19 @@ import { IUser } from '@/shared/types/user';
 
 class AuthApi {
   async signup(data: ISignUpReq): Promise<IApiResponse<IUser>> {
-    console.log('signup');
     try {
       const response = await axiosInstance.post('auth/sign-up', data);
       return response.data;
-    } catch (error: any) {
-      throw error.response.data;
+    } catch (error: unknown) {
+      throw error;
     }
   }
   async login(data: ILoginReq): Promise<IApiResponse<ILoginRespData>> {
     try {
       const response = await axiosInstance.post('auth/login', data);
       return response.data;
-    } catch (error: any) {
-      throw error.response.data;
+    } catch (error: unknown) {
+      throw error;
     }
   }
 }

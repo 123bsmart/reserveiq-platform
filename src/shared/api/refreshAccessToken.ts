@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { setCookie, deleteCookie } from 'cookies-next';
 
-export default async function refreshAccessToken(refresh_token: string) {
+export default async function refreshAccessToken(refresh_token: string): Promise<string | null> {
   try {
     const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/refresh-token`, {
       refresh_token,
