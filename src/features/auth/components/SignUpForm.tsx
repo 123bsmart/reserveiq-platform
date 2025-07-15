@@ -4,16 +4,19 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Form } from '@/shared/ui';
 import { z } from 'zod';
 import { signUpSchema } from '../form/schema';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import AuthApi from '../services/auth.api';
 import { useMutation } from '@tanstack/react-query';
 import { RoleEnum } from '@/shared/enum/auth.enum';
 import { Modal } from '@/shared/ui/modal';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 type SignUpValues = z.infer<typeof signUpSchema>;
 
 const SignUpForm: React.FC = () => {
   const [isModalOpen, setModalOpen] = useState(false);
+
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const form = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
@@ -38,8 +41,13 @@ const SignUpForm: React.FC = () => {
     },
   });
 
-  const onSubmit = (data: SignUpValues): void => {
+  const onSubmit = async (data: SignUpValues): Promise<void> => {
     console.log('[SIGN UP]', data); // eslint-disable-line
+
+    const token = await recaptchaRef.current?.executeAsync();
+    recaptchaRef.current?.reset();
+
+    console.log('token', token);
     mutation.mutate({
       name: data.fullName,
       email: data.email,
@@ -103,26 +111,27 @@ const SignUpForm: React.FC = () => {
           label="Password"
           render={({ field }) => <Form.Input {...field} type="password" placeholder="Create a secure password" />}
         />
-      <Form.Field
-        name="termsAgree"
-        render={({ field }) => (
-          <Form.Checkbox
-            {...field}
-            label={
-              <>
-                I agree to the{' '}
-                <a href="https://www.reserveiq.net/terms.html" className="text-blue-600 hover:underline">
-                  Terms of Service
-                </a>{' '}
-                and{' '}
-                <a href="https://www.reserveiq.net/privacy.html" className="text-blue-600 hover:underline">
-                  Privacy Policy
-                </a>
-              </>
-            }
-          />
-        )}
-      />
+        <Form.Field
+          name="termsAgree"
+          render={({ field }) => (
+            <Form.Checkbox
+              {...field}
+              label={
+                <>
+                  I agree to the{' '}
+                  <a href="https://www.reserveiq.net/terms.html" className="text-blue-600 hover:underline">
+                    Terms of Service
+                  </a>{' '}
+                  and{' '}
+                  <a href="https://www.reserveiq.net/privacy.html" className="text-blue-600 hover:underline">
+                    Privacy Policy
+                  </a>
+                </>
+              }
+            />
+          )}
+        />
+        <ReCAPTCHA sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY} size="invisible" ref={recaptchaRef} />
         <Form.Button type="submit" className="text-[1.1rem]">
           Create Account
         </Form.Button>
