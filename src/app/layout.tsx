@@ -2,10 +2,11 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { GoogleTagManager } from '@/shared/components/GoogleTagManager';
 import { GoogleTagManagerNoScript } from '@/shared/components/GoogleTagManagerNoScript';
-import { GTM_ID } from '@/shared/config/analytics';
 import { ReactQueryProvider } from '@/shared/providers/ReactQueryProvider';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { RouteAnalytics } from '@/shared/providers/RouteAnalytics';
+import { Suspense } from 'react';
 // Using system font stack from globals.css
 
 export const metadata: Metadata = {
@@ -22,11 +23,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <GoogleTagManager gtmId={GTM_ID} />
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
       </head>
       <body>
-        <GoogleTagManagerNoScript gtmId={GTM_ID} />
-        <ReactQueryProvider>{children}</ReactQueryProvider>
+        <GoogleTagManagerNoScript gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+        <ReactQueryProvider>
+          <Suspense fallback={null}>
+            <RouteAnalytics />
+          </Suspense>
+          {children}
+        </ReactQueryProvider>
         <ToastContainer />
       </body>
     </html>
