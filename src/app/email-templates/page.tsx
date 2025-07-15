@@ -14,7 +14,7 @@ import { generateTemplateContent } from '@/features/email-templates/utils';
 import MainContent from '@/features/email-templates/components/MainContent';
 
 const EmailTemplatesPage: React.FC = () => {
-  const [generatedContent, setGeneratedContent] = useState('Subject: Test Email\n\nThis is a generated preview...');
+  const [generatedContent, setGeneratedContent] = useState(generateTemplateContent('board-update'));
   const [isGenerating, setIsGenerating] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<string>('board-update');
   const [userType, setUserType] = useState<EmailTemplateType>('all');
@@ -31,7 +31,7 @@ const EmailTemplatesPage: React.FC = () => {
     return matchUserType && matchSearch;
   });
 
-    const generateContent = () => {
+    const generateContent = (): void => {
     setIsGenerating(true);
     
     // Simulate AI generation delay
@@ -89,6 +89,7 @@ const EmailTemplatesPage: React.FC = () => {
             generatedContent={generatedContent}
             selectedTone={selectedTone}
             selectedAudience={selectedAudience}
+            selectedTemplate={selectedTemplate}
           />
         )}
         {generatedContent && !isGenerating && <QuickActions />}
