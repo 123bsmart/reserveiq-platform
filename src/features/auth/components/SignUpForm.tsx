@@ -1,19 +1,24 @@
 'use client';
-
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Form } from '@/shared/ui';
+import { Button, Form } from '@/shared/ui';
 import { z } from 'zod';
 import { signUpSchema } from '../form/schema';
-import React from 'react';
+import React, { useState } from 'react';
+import AuthApi from '../services/auth.api';
+import { useMutation } from '@tanstack/react-query';
+import { RoleEnum } from '@/shared/enum/auth.enum';
+import { Modal } from '@/shared/ui/modal';
 
 type SignUpValues = z.infer<typeof signUpSchema>;
 
 const SignUpForm: React.FC = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
   const form = useForm<SignUpValues>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
-      userType: '',
+      userType: undefined,
       fullName: '',
       email: '',
       companyName: '',
@@ -22,49 +27,82 @@ const SignUpForm: React.FC = () => {
     },
   });
 
+  const mutation = useMutation({
+    mutationFn: AuthApi.signup,
+    onSuccess: () => {
+      setModalOpen(true);
+      form.reset();
+    },
+    onError: (error) => {
+      console.warn('onError', error);
+    },
+  });
+
   const onSubmit = (data: SignUpValues): void => {
     console.log('[SIGN UP]', data); // eslint-disable-line
-    // Call sign-up mutation here
+    mutation.mutate({
+      name: data.fullName,
+      email: data.email,
+      company: data.companyName,
+      role: data.userType,
+      password: data.password,
+    });
   };
 
   return (
-    <Form {...form} onSubmit={() => onSubmit(form.getValues())} className="space-y-6">
-      <Form.Field
-        name="userType"
-        label="I am a..."
-        render={({ field }) => (
-          <Form.Select {...field}>
-            <option value="">Select your role</option>
-            <option value="board">Board Member</option>
-            <option value="pm">Property Manager</option>
-          </Form.Select>
-        )}
-      />
+    <>
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Thanks for signing up!"
+        footer={
+          <Button onClick={() => setModalOpen(false)} variant="default">
+            Got it
+          </Button>
+        }
+      >
+        <p>
+          You’re on the early access list — Olivia from ReserveIQ will be in touch shortly. In the meantime, feel free
+          to explore our platform or reply to this email if you have questions. We’ll review your details within 48
+          hours and send your login credentials once approved.
+        </p>
+      </Modal>
+      <Form {...form} onSubmit={() => onSubmit(form.getValues())} className="space-y-6">
+        <Form.Field
+          name="userType"
+          label="I am a..."
+          render={({ field }) => (
+            <Form.Select {...field}>
+              <option>Select your role</option>
+              <option value={RoleEnum.BOARD_MEMBER}>{RoleEnum.BOARD_MEMBER}</option>
+              <option value={RoleEnum.PROPERTY_MANAGER}>{RoleEnum.PROPERTY_MANAGER}</option>
+            </Form.Select>
+          )}
+        />
 
-      <Form.Field
-        name="fullName"
-        label="Full Name"
-        render={({ field }) => <Form.Input {...field} type="text" placeholder="Enter your full name" />}
-      />
+        <Form.Field
+          name="fullName"
+          label="Full Name"
+          render={({ field }) => <Form.Input {...field} type="text" placeholder="Enter your full name" />}
+        />
 
-      <Form.Field
-        name="email"
-        label="Email Address"
-        render={({ field }) => <Form.Input {...field} type="email" placeholder="Enter your email" />}
-      />
+        <Form.Field
+          name="email"
+          label="Email Address"
+          render={({ field }) => <Form.Input {...field} type="email" placeholder="Enter your email" />}
+        />
 
-      <Form.Field
-        name="companyName"
-        label="Company/Building Name"
-        render={({ field }) => <Form.Input {...field} type="text" placeholder="Enter company or building name" />}
-      />
+        <Form.Field
+          name="companyName"
+          label="Company/Building Name"
+          render={({ field }) => <Form.Input {...field} type="text" placeholder="Enter company or building name" />}
+        />
 
-      <Form.Field
-        name="password"
-        label="Password"
-        render={({ field }) => <Form.Input {...field} type="password" placeholder="Create a secure password" />}
-      />
-
+        <Form.Field
+          name="password"
+          label="Password"
+          render={({ field }) => <Form.Input {...field} type="password" placeholder="Create a secure password" />}
+        />
       <Form.Field
         name="termsAgree"
         render={({ field }) => (
@@ -85,11 +123,11 @@ const SignUpForm: React.FC = () => {
           />
         )}
       />
-
-      <Form.Button type="submit" className="text-[1.1rem]">
-        Create Account
-      </Form.Button>
-    </Form>
+        <Form.Button type="submit" className="text-[1.1rem]">
+          Create Account
+        </Form.Button>
+      </Form>
+    </>
   );
 };
 

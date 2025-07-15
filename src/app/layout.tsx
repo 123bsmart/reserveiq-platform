@@ -3,12 +3,14 @@ import './globals.css';
 import { GoogleTagManager } from '@/shared/components/GoogleTagManager';
 import { GoogleTagManagerNoScript } from '@/shared/components/GoogleTagManagerNoScript';
 import { GTM_ID } from '@/shared/config/analytics';
+import { ReactQueryProvider } from '@/shared/providers/ReactQueryProvider';
 
 // Using system font stack from globals.css
 
 export const metadata: Metadata = {
   title: 'ReserveIQ – Property Managers',
-  description: 'AI-powered portfolio intelligence that gives you the oversight boards expect —and the edge over your competitors.',
+  description:
+    'AI-powered portfolio intelligence that gives you the oversight boards expect —and the edge over your competitors.',
 };
 
 export default function RootLayout({
@@ -23,7 +25,7 @@ export default function RootLayout({
       </head>
       <body>
         <GoogleTagManagerNoScript gtmId={GTM_ID} />
-        {children}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
   );

@@ -1,10 +1,13 @@
 'use client';
-
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Form } from '@/shared/ui';
 import { z } from 'zod';
 import { signInSchema } from '../form/schema';
+import { useMutation } from '@tanstack/react-query';
+import AuthApi from '../services/auth.api';
+import { RoleEnum } from '@/shared/enum/auth.enum';
+import { useRouter } from 'next/navigation';
 
 type SignInValues = z.infer<typeof signInSchema>;
 
@@ -18,9 +21,31 @@ const SignInForm: React.FC = () => {
     },
   });
 
+  const router = useRouter();
+
+  const mutation = useMutation({
+    mutationFn: AuthApi.login,
+    onSuccess: (data) => {
+      switch (data.data?.user.role) {
+        case RoleEnum.BOARD_MEMBER:
+          router.push('/dashboard/board');
+          break;
+        case RoleEnum.PROPERTY_MANAGER:
+          router.push('/dashboard/pm');
+          break;
+      }
+    },
+    onError: (error) => {
+      console.warn('onError', error);
+    },
+  });
+
   const onSubmit = (data: SignInValues): void => {
     console.log('[SIGN IN]', data); // eslint-disable-line
-    // Call sign-in mutation here
+    mutation.mutate({
+      email: data.email,
+      password: data.password,
+    });
   };
 
   return (
@@ -28,17 +53,13 @@ const SignInForm: React.FC = () => {
       <Form.Field
         name="email"
         label="Email Address"
-        render={({ field }) => (
-          <Form.Input {...field} type="email" placeholder="Enter your email" />
-        )}
+        render={({ field }) => <Form.Input {...field} type="email" placeholder="Enter your email" />}
       />
 
       <Form.Field
         name="password"
         label="Password"
-        render={({ field }) => (
-          <Form.Input {...field} type="password" placeholder="Enter your password" />
-        )}
+        render={({ field }) => <Form.Input {...field} type="password" placeholder="Enter your password" />}
       />
 
       <Form.Field
