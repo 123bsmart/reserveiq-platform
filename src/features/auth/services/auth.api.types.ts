@@ -7,11 +7,13 @@ export interface ISignUpReq {
   company: string;
   role: RoleEnum;
   password: string;
+  recaptchaToken: string;
 }
 
 export interface ILoginReq {
   email: string;
   password: string;
+  recaptchaToken: string;
 }
 
 export interface ILoginRespData {

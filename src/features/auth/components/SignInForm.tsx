@@ -8,10 +8,16 @@ import { useMutation } from '@tanstack/react-query';
 import AuthApi from '../services/auth.api';
 import { RoleEnum } from '@/shared/enum/auth.enum';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import ReCAPTCHA from 'react-google-recaptcha';
+import { AxiosError } from 'axios';
 
 type SignInValues = z.infer<typeof signInSchema>;
 
 const SignInForm: React.FC = () => {
+  const [captchaValue, setCaptchaValue] = useState<string | null>(null);
+
   const form = useForm<SignInValues>({
     resolver: zodResolver(signInSchema),
     defaultValues: {
@@ -35,16 +41,21 @@ const SignInForm: React.FC = () => {
           break;
       }
     },
-    onError: (error) => {
-      console.warn('onError', error);
+    onError: (error: AxiosError<{ message: string }>) => {
+      toast.error(error.response?.data.message || 'Unexpected error');
     },
   });
 
   const onSubmit = (data: SignInValues): void => {
     console.log('[SIGN IN]', data); // eslint-disable-line
+    if (!captchaValue) {
+      toast.error('Please complete the reCAPTCHA');
+      return;
+    }
     mutation.mutate({
       email: data.email,
       password: data.password,
+      recaptchaToken: captchaValue,
     });
   };
 
@@ -66,7 +77,12 @@ const SignInForm: React.FC = () => {
         name="rememberMe"
         render={({ field }) => <Form.Checkbox {...field} label="Remember me for 30 days" />}
       />
-
+      <ReCAPTCHA
+        sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+        onChange={(token) => {
+          setCaptchaValue(token);
+        }}
+      />
       <Form.Button type="submit" className="text-[1.1rem]">
         Sign In to Platform
       </Form.Button>
