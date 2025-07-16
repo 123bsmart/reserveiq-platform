@@ -110,7 +110,9 @@ const SignUpForm: React.FC = () => {
         <Form.Field
           name="password"
           label="Password"
-          render={({ field }) => <Form.Input {...field} type="password" placeholder="Create a secure password" />}
+          render={({ field }) => (
+            <Form.Input {...field} type="password" placeholder="Create a secure password" togglePassword />
+          )}
         />
         <Form.Field
           name="termsAgree"
