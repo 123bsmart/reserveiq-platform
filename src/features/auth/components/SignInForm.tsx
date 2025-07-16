@@ -70,7 +70,9 @@ const SignInForm: React.FC = () => {
       <Form.Field
         name="password"
         label="Password"
-        render={({ field }) => <Form.Input {...field} type="password" placeholder="Enter your password" />}
+        render={({ field }) => (
+          <Form.Input {...field} type="password" placeholder="Enter your password" togglePassword />
+        )}
       />
 
       <Form.Field

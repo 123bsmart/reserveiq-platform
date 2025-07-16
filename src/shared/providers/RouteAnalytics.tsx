@@ -1,10 +1,9 @@
 'use client';
-
 import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { pushToDataLayer } from '@/shared/components/GoogleTagManager';
 
-export const RouteAnalytics = () => {
+export const RouteAnalytics = (): JSX.Element | null => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
