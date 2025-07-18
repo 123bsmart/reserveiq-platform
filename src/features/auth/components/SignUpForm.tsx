@@ -15,7 +15,11 @@ import { AxiosError } from 'axios';
 
 type SignUpValues = z.infer<typeof signUpSchema>;
 
-const SignUpForm: React.FC = () => {
+type Props = {
+  isPartner: boolean;
+};
+
+const SignUpForm: React.FC<Props> = ({ isPartner }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [captchaValue, setCaptchaValue] = useState<string | null>(null);
 
@@ -70,6 +74,7 @@ const SignUpForm: React.FC = () => {
           </Button>
         }
       >
+        {isPartner && <h2 className="text-lg font-semibold mb-0.5">You're signing up as a partner</h2>}
         <p>
           You’re on the early access list — Olivia from ReserveIQ will be in touch shortly. In the meantime, feel free
           to explore our platform or reply to this email if you have questions. We’ll review your details within 48

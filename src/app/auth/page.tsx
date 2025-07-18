@@ -1,12 +1,20 @@
-import AuthForm from "@/features/auth/components/AuthForm";
-import AuthLayout from "@/features/auth/components/AuthLayout";
-import LogoSection from "@/features/auth/components/LogoSection";
+import AuthForm from '@/features/auth/components/AuthForm';
+import AuthLayout from '@/features/auth/components/AuthLayout';
+import LogoSection from '@/features/auth/components/LogoSection';
 
-const AuthPage: React.FC = () => {
+type Props = {
+  searchParams: {
+    partner?: string;
+  };
+};
+
+const AuthPage: React.FC<Props> = ({ searchParams }) => {
+  const isPartner = searchParams.partner === 'true';
+
   return (
     <AuthLayout>
       <LogoSection />
-      <AuthForm />
+      <AuthForm isPartner={isPartner} />
     </AuthLayout>
   );
 };
