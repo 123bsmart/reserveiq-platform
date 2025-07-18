@@ -66,9 +66,12 @@ export default function Contact(): JSX.Element {
           </div>
         </div>
 
-        <button className="bg-white text-blue-600 px-10 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105">
+        <a
+          href="https://reserveiq-platform.vercel.app/auth"
+          className="bg-white text-blue-600 px-10 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 inline-block text-center"
+        >
           Schedule Partnership Demo
-        </button>
+        </a>
       </div>
     </section>
   );
