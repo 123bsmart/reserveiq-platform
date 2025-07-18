@@ -67,7 +67,7 @@ export default function Contact(): JSX.Element {
         </div>
 
         <a
-          href="https://reserveiq-platform.vercel.app/auth"
+          href="https://reserveiq-platform.vercel.app/auth?partner=true"
           className="bg-white text-blue-600 px-10 py-4 rounded-xl font-semibold text-lg hover:bg-gray-100 transition-all transform hover:scale-105 inline-block text-center"
         >
           Schedule Partnership Demo
