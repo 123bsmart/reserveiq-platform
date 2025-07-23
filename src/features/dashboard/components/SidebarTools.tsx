@@ -1,44 +1,68 @@
 import { cn } from '@/shared/utils';
-
-type NavItem = {
-  label: string;
-  href: string;
-  icon?: React.ReactNode;
-};
+import { Calendar, DollarSign, FileText, TrendingUp, Upload } from 'lucide-react';
+import { Dispatch, SetStateAction } from 'react';
 
 type SidebarToolsProps = {
-  title: string;
-  items: NavItem[];
-  //   activePath?: string;
   className?: string;
+  activeTab: string;
+  setActiveTab: Dispatch<SetStateAction<string>>;
 };
 
-const SidebarTools: React.FC<SidebarToolsProps> = ({ title, items, className }) => {
+const SidebarTools: React.FC<SidebarToolsProps> = ({ className, activeTab, setActiveTab }) => {
   return (
-    <aside className={cn('w-64 bg-white shadow-sm border-r', className)}>
-      <div className="p-4">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">{title}</h3>
-        <nav className="space-y-2">
-          {items?.map((item, index) => {
-            // const isActive = item.href === activePath;
+    <aside className={cn('w-64 bg-white border-r border-gray-200 min-h-screen', className)}>
+      <nav className="p-4 space-y-2">
+        <button
+          onClick={() => setActiveTab('overview')}
+          className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-colors ${
+            activeTab === 'overview' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-50'
+          }`}
+        >
+          <TrendingUp className="w-5 h-5" />
+          <span>Overview</span>
+        </button>
 
-            // isActive with index 0 only for presentation
-            const isActive = index === 0;
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className={`flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors ${
-                  isActive ? 'bg-background-dark text-white' : 'text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                {item.icon && <span className="w-5 h-5">{item.icon}</span>}
-                <span>{item.label}</span>
-              </a>
-            );
-          })}
-        </nav>
-      </div>
+        <button
+          onClick={() => setActiveTab('reserve-studies')}
+          className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-colors ${
+            activeTab === 'reserve-studies' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-50'
+          }`}
+        >
+          <FileText className="w-5 h-5" />
+          <span>Reserve Studies</span>
+          <span className="ml-auto bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full">Premium</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('documents')}
+          className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-colors ${
+            activeTab === 'documents' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-50'
+          }`}
+        >
+          <Upload className="w-5 h-5" />
+          <span>Document Library</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('financial')}
+          className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-colors ${
+            activeTab === 'financial' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-50'
+          }`}
+        >
+          <DollarSign className="w-5 h-5" />
+          <span>Financial Health</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('compliance')}
+          className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-colors ${
+            activeTab === 'compliance' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-50'
+          }`}
+        >
+          <Calendar className="w-5 h-5" />
+          <span>Compliance Tracker</span>
+        </button>
+      </nav>
     </aside>
   );
 };
