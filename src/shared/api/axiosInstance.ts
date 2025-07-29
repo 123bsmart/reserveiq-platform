@@ -11,7 +11,8 @@ axiosInstance.interceptors.request.use(
         config.headers.Authorization = `Bearer ${access_token}`;
       }
       config.headers.Accept = '*/*';
-      config.baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/`;
+      config.baseURL = `${process.env.NEXT_PUBLIC_API_URL}/api/platform`;
+      config.withCredentials = true;
       return config;
     } catch (error) {
       console.error('Error retrieving access token:', error);
