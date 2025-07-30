@@ -1,5 +1,5 @@
 import { cn } from '@/shared/utils';
-import { Calendar, DollarSign, FileText, TrendingUp, Upload } from 'lucide-react';
+import { Calendar, DollarSign, FileText, TrendingUp, Upload, Mails } from 'lucide-react';
 import { Dispatch, SetStateAction } from 'react';
 
 type SidebarToolsProps = {
@@ -61,6 +61,15 @@ const SidebarTools: React.FC<SidebarToolsProps> = ({ className, activeTab, setAc
         >
           <Calendar className="w-5 h-5" />
           <span>Compliance Tracker</span>
+        </button>
+        <button
+          onClick={() => setActiveTab('email-generator')}
+          className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-colors ${
+            activeTab === 'email-generator' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-50'
+          }`}
+        >
+          <Mails className="w-5 h-5" />
+          <span>Email Generator</span>
         </button>
       </nav>
     </aside>

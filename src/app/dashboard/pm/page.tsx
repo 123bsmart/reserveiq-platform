@@ -59,7 +59,7 @@ const PMDashboard: React.FC = () => {
                         <AlertTriangle className="w-8 h-8 text-red-600" />
                       </div>
                       <div className="ml-4">
-                        <p className="text-sm font-medium text-gray-500">Crisis Alerts</p>
+                        <p className="text-sm font-medium text-gray-500">Building Alerts</p>
                         <p className="text-2xl font-bold text-red-600">3</p>
                       </div>
                     </div>
@@ -138,7 +138,7 @@ const PMDashboard: React.FC = () => {
                 <div className="bg-white rounded-lg shadow-sm border p-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
                     <AlertTriangle className="w-5 h-5 text-red-500 mr-2" />
-                    Crisis Alerts
+                    Building Alerts
                   </h3>
                   <div className="space-y-3">
                     <div className="bg-red-50 border border-red-200 rounded-lg p-4">

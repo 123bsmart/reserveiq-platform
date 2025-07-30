@@ -1,5 +1,5 @@
 import { cn } from '@/shared/utils';
-import { Calendar, DollarSign, FileText, TrendingUp, Upload } from 'lucide-react';
+import { Calendar, DollarSign, FileText, Mails, TrendingUp, Upload } from 'lucide-react';
 import { Dispatch, SetStateAction } from 'react';
 
 const BoardToolsSidebar: React.FC<{
@@ -28,7 +28,7 @@ const BoardToolsSidebar: React.FC<{
         >
           <FileText className="w-5 h-5" />
           <span>Reserve Studies</span>
-          <span className="ml-auto bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">Crisis Alert</span>
+          <span className="ml-auto bg-red-100 text-red-800 text-xs px-2 py-1 rounded-full">Building Alerts</span>
         </button>
 
         <button
@@ -59,6 +59,15 @@ const BoardToolsSidebar: React.FC<{
         >
           <Upload className="w-5 h-5" />
           <span>Document Library</span>
+        </button>
+        <button
+          onClick={() => setActiveTab('email-generator')}
+          className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg text-left transition-colors ${
+            activeTab === 'email-generator' ? 'bg-blue-50 text-blue-700' : 'text-gray-700 hover:bg-gray-50'
+          }`}
+        >
+          <Mails className="w-5 h-5" />
+          <span>Email Generator</span>
         </button>
       </nav>
     </div>
