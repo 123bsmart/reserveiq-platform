@@ -25,7 +25,6 @@ const ReserveStudies: React.FC = () => {
   const mutation = useMutation({
     mutationFn: documentsApi.analyzeDocument,
     onSuccess: (data) => {
-      console.log('data', data);
       setIsAnalyzing(false);
       setSelectedFile(null);
       if (data.success && data.data) {

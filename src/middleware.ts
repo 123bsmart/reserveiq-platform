@@ -1,8 +1,7 @@
 import { RoleEnum } from '@/shared/enum/auth.enum';
-import { NextResponse } from 'next/server';
-import type { NextRequest } from 'next/server';
+import { NextResponse, type NextRequest } from 'next/server';
 
-export function middleware(req: NextRequest) {
+export function middleware(req: NextRequest): NextResponse {
   const token = req.cookies.get('access_token');
   const userRole = req.cookies.get('access_token')?.value as RoleEnum;
 
@@ -14,7 +13,7 @@ export function middleware(req: NextRequest) {
   }
 
   if (token && (url.pathname === '/auth' || url.pathname === '/onboarding')) {
-    if (userRole == RoleEnum.BOARD_MEMBER) {
+    if (userRole === RoleEnum.BOARD_MEMBER) {
       url.pathname = '/dashboard/board';
     } else {
       url.pathname = '/dashboard/pm';
