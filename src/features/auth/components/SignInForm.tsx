@@ -9,7 +9,7 @@ import { RoleEnum } from '@/shared/enum/auth.enum';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import { ReCAPTCHA } from 'react-google-recaptcha';
+import ReCAPTCHA from 'react-google-recaptcha';
 import { AxiosError } from 'axios';
 import authApi from '@/shared/services/auth.api';
 
@@ -66,7 +66,6 @@ const SignInForm: React.FC = () => {
         label="Email Address"
         render={({ field }) => <Form.Input {...field} type="email" placeholder="Enter your email" />}
       />
-
       <Form.Field
         name="password"
         label="Password"
@@ -74,7 +73,6 @@ const SignInForm: React.FC = () => {
           <Form.Input {...field} type="password" placeholder="Enter your password" togglePassword />
         )}
       />
-
       <Form.Field
         name="rememberMe"
         render={({ field }) => <Form.Checkbox {...field} label="Remember me for 30 days" />}
@@ -88,7 +86,6 @@ const SignInForm: React.FC = () => {
       <Form.Button type="submit" className="text-[1.1rem]">
         Sign In to Platform
       </Form.Button>
-
       <div className="text-center mt-4">
         <a href="/forgot-password" className="text-sm text-blue-600 hover:underline">
           Forgot your password?
