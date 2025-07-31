@@ -5,13 +5,13 @@ import { Button, Form } from '@/shared/ui';
 import { z } from 'zod';
 import { signUpSchema } from '../form/schema';
 import React, { useState } from 'react';
-import AuthApi from '../services/auth.api';
 import { useMutation } from '@tanstack/react-query';
 import { RoleEnum } from '@/shared/enum/auth.enum';
 import { Modal } from '@/shared/ui/modal';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { toast } from 'react-toastify';
 import { AxiosError } from 'axios';
+import authApi from '@/shared/services/auth.api';
 
 type SignUpValues = z.infer<typeof signUpSchema>;
 
@@ -36,7 +36,7 @@ const SignUpForm: React.FC<Props> = ({ isPartner }) => {
   });
 
   const mutation = useMutation({
-    mutationFn: AuthApi.signup,
+    mutationFn: authApi.signup,
     onSuccess: () => {
       setModalOpen(true);
       form.reset();

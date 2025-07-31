@@ -20,6 +20,14 @@ class AuthApi {
       throw error;
     }
   }
+  async refreshToken(): Promise<IApiResponse<IUser>> {
+    try {
+      const response = await axiosInstance.post('auth/refresh-token');
+      return response.data;
+    } catch (error: unknown) {
+      throw error;
+    }
+  }
 }
 
 const authApi = new AuthApi();

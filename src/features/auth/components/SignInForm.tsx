@@ -5,13 +5,13 @@ import { Form } from '@/shared/ui';
 import { z } from 'zod';
 import { signInSchema } from '../form/schema';
 import { useMutation } from '@tanstack/react-query';
-import AuthApi from '../services/auth.api';
 import { RoleEnum } from '@/shared/enum/auth.enum';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import ReCAPTCHA from 'react-google-recaptcha';
+import { ReCAPTCHA } from 'react-google-recaptcha';
 import { AxiosError } from 'axios';
+import authApi from '@/shared/services/auth.api';
 
 type SignInValues = z.infer<typeof signInSchema>;
 
@@ -30,7 +30,7 @@ const SignInForm: React.FC = () => {
   const router = useRouter();
 
   const mutation = useMutation({
-    mutationFn: AuthApi.login,
+    mutationFn: authApi.login,
     onSuccess: (data) => {
       switch (data.data?.user.role) {
         case RoleEnum.BOARD_MEMBER:

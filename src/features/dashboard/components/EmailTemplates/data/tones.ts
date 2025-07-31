@@ -1,4 +1,4 @@
-import { ToneOption } from '@/features/email-templates/types';
+import { ToneOption } from '../types';
 
 export const tones: Record<string, ToneOption> = {
   formal: {

@@ -1,14 +1,11 @@
-// File: components/email-templates/EmailTemplatesSidebar.tsx
 'use client';
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import EmailTemplateCard from './TemplateCard';
-import { Audience, EmailTemplate, EmailTemplateType, Tone } from '@/features/email-templates/types';
+import { Audience, EmailTemplate, Tone } from '../types';
 import SideDrawer from '@/shared/components/SideDrawer';
 
 interface Props {
-  userType: string;
-  setUserType: (val: EmailTemplateType) => void;
   searchQuery: string;
   setSearchQuery: (val: string) => void;
   selectedTemplate: string;
@@ -20,12 +17,9 @@ interface Props {
   setSelectedTone: (val: Tone) => void;
   setSelectedAudience: (val: Audience) => void;
   emailTemplates: [string, EmailTemplate][];
-  userTypes: Record<string, { name: string; description: string }>;
 }
 
 const EmailTemplateSidebarContent: React.FC<Props> = ({
-  userType,
-  setUserType,
   searchQuery,
   setSearchQuery,
   selectedTemplate,
@@ -36,7 +30,6 @@ const EmailTemplateSidebarContent: React.FC<Props> = ({
   selectedAudience,
   setSelectedTone,
   setSelectedAudience,
-  userTypes,
   emailTemplates,
 }) => {
   return (
@@ -44,22 +37,6 @@ const EmailTemplateSidebarContent: React.FC<Props> = ({
       {/* Header */}
       <div>
         <h2 className="text-xl font-bold text-gray-900">Email Templates</h2>
-      </div>
-
-      {/* Template Type Selector */}
-      <div>
-        <label className="text-sm font-medium text-gray-700 mb-1 block">Template Type</label>
-        <select
-          value={userType}
-          onChange={(e) => setUserType(e.target.value as EmailTemplateType)}
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500 focus:outline-none"
-        >
-          {Object.entries(userTypes).map(([key, type]) => (
-            <option key={key} value={key}>
-              {type.name}
-            </option>
-          ))}
-        </select>
       </div>
 
       {/* Search */}
@@ -131,7 +108,7 @@ export const EmailTemplatesSidebar: React.FC<Props> = (props) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
   return (
     <React.Fragment>
-      <aside className="fixed top-0 left-0 h-full w-96 bg-white border-r border-gray-200 shadow-sm overflow-y-auto p-6 space-y-6 hidden xl:block">
+      <aside className="h-full w-96 bg-white border-r border-gray-200 shadow-sm overflow-y-auto p-6 space-y-6 hidden xl:block">
         <EmailTemplateSidebarContent {...props} />
       </aside>
       <div className="xl:hidden px-5 pt-4">

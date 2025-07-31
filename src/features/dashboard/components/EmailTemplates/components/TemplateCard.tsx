@@ -2,7 +2,7 @@
 
 import { cn } from '@/shared/utils';
 import React from 'react';
-import { EmailTemplate } from '@/features/email-templates/types';
+import { EmailTemplate } from '../types';
 
 interface EmailTemplateCardProps {
   templateKey: string;
@@ -26,12 +26,7 @@ const getUrgencyColor = (urgency: string): string => {
   }
 };
 
-const EmailTemplateCard: React.FC<EmailTemplateCardProps> = ({
-  templateKey,
-  template,
-  selectedTemplate,
-  onSelect,
-}) => {
+const EmailTemplateCard: React.FC<EmailTemplateCardProps> = ({ templateKey, template, selectedTemplate, onSelect }) => {
   const Icon = template.icon;
 
   return (
@@ -45,18 +40,8 @@ const EmailTemplateCard: React.FC<EmailTemplateCardProps> = ({
       )}
     >
       <div className="flex items-start space-x-3">
-        <div
-          className={cn(
-            'p-2 rounded-lg',
-            selectedTemplate === templateKey ? 'bg-blue-100' : 'bg-gray-100'
-          )}
-        >
-          <Icon
-            className={cn(
-              'h-5 w-5',
-              selectedTemplate === templateKey ? 'text-blue-600' : 'text-gray-600'
-            )}
-          />
+        <div className={cn('p-2 rounded-lg', selectedTemplate === templateKey ? 'bg-blue-100' : 'bg-gray-100')}>
+          <Icon className={cn('h-5 w-5', selectedTemplate === templateKey ? 'text-blue-600' : 'text-gray-600')} />
         </div>
         <div className="flex-1 min-w-0">
           <h3 className="font-semibold text-gray-900 text-sm">{template.name}</h3>
@@ -65,12 +50,7 @@ const EmailTemplateCard: React.FC<EmailTemplateCardProps> = ({
             <span className="text-xs text-gray-500">{template.category}</span>
             <span className="text-xs text-gray-500">•</span>
             <span className="text-xs text-gray-500">{template.frequency}</span>
-            <span
-              className={cn(
-                'px-2 py-1 rounded-full text-xs font-medium',
-                getUrgencyColor(template.urgency)
-              )}
-            >
+            <span className={cn('px-2 py-1 rounded-full text-xs font-medium', getUrgencyColor(template.urgency))}>
               {template.urgency}
             </span>
           </div>

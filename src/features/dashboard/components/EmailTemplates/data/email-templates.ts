@@ -1,5 +1,5 @@
-import { AlertTriangle, Calendar, CheckCircle, DollarSign, FileText, Settings, Users } from "lucide-react";
-import { EmailTemplate } from "@/features/email-templates/types";
+import { AlertTriangle, Calendar, CheckCircle, DollarSign, FileText, Settings, Users } from 'lucide-react';
+import { EmailTemplate } from '../types';
 
 export const emailTemplates: Record<string, EmailTemplate> = {
   // PM Templates
@@ -10,7 +10,7 @@ export const emailTemplates: Record<string, EmailTemplate> = {
     frequency: 'Monthly',
     icon: DollarSign,
     urgency: 'routine',
-    userType: 'pm'
+    userType: 'pm',
   },
   'reserve-status': {
     name: 'Reserve Fund Status Notice',
@@ -19,7 +19,7 @@ export const emailTemplates: Record<string, EmailTemplate> = {
     frequency: 'Quarterly',
     icon: AlertTriangle,
     urgency: 'medium',
-    userType: 'pm'
+    userType: 'pm',
   },
   'compliance-reminder': {
     name: 'Compliance Deadline Reminder',
@@ -28,7 +28,7 @@ export const emailTemplates: Record<string, EmailTemplate> = {
     frequency: 'As needed',
     icon: Calendar,
     urgency: 'high',
-    userType: 'pm'
+    userType: 'pm',
   },
   'special-assessment': {
     name: 'Special Assessment Announcement',
@@ -37,7 +37,7 @@ export const emailTemplates: Record<string, EmailTemplate> = {
     frequency: 'As needed',
     icon: AlertTriangle,
     urgency: 'critical',
-    userType: 'pm'
+    userType: 'pm',
   },
   'owner-faq': {
     name: 'Owner FAQ Response',
@@ -46,7 +46,7 @@ export const emailTemplates: Record<string, EmailTemplate> = {
     frequency: 'As needed',
     icon: Users,
     urgency: 'routine',
-    userType: 'pm'
+    userType: 'pm',
   },
   'insurance-update': {
     name: 'Insurance Update Notice',
@@ -55,7 +55,7 @@ export const emailTemplates: Record<string, EmailTemplate> = {
     frequency: 'Annual',
     icon: FileText,
     urgency: 'medium',
-    userType: 'pm'
+    userType: 'pm',
   },
 
   // Board Templates
@@ -66,7 +66,7 @@ export const emailTemplates: Record<string, EmailTemplate> = {
     frequency: 'Monthly',
     icon: Users,
     urgency: 'routine',
-    userType: 'board'
+    userType: 'board',
   },
   'fee-increase-notice': {
     name: 'Fee Increase Notification',
@@ -75,7 +75,7 @@ export const emailTemplates: Record<string, EmailTemplate> = {
     frequency: 'Annual',
     icon: DollarSign,
     urgency: 'high',
-    userType: 'board'
+    userType: 'board',
   },
   'emergency-notification': {
     name: 'Emergency Building Notice',
@@ -84,7 +84,7 @@ export const emailTemplates: Record<string, EmailTemplate> = {
     frequency: 'As needed',
     icon: AlertTriangle,
     urgency: 'critical',
-    userType: 'board'
+    userType: 'board',
   },
   'annual-meeting': {
     name: 'Annual Meeting Announcement',
@@ -93,7 +93,7 @@ export const emailTemplates: Record<string, EmailTemplate> = {
     frequency: 'Annual',
     icon: Calendar,
     urgency: 'high',
-    userType: 'board'
+    userType: 'board',
   },
   'construction-update': {
     name: 'Construction Project Update',
@@ -102,7 +102,7 @@ export const emailTemplates: Record<string, EmailTemplate> = {
     frequency: 'As needed',
     icon: Settings,
     urgency: 'medium',
-    userType: 'board'
+    userType: 'board',
   },
   'board-resolution': {
     name: 'Board Resolution Notice',
@@ -111,6 +111,6 @@ export const emailTemplates: Record<string, EmailTemplate> = {
     frequency: 'As needed',
     icon: CheckCircle,
     urgency: 'medium',
-    userType: 'board'
-  }
+    userType: 'board',
+  },
 };

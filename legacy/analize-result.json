@@ -1,0 +1,879 @@
+{
+  "documentInfo": {
+    "type": "reserve_study",
+    "confidence": 95,
+    "pageCount": 15,
+    "processingTime": 182762
+  },
+  "financialSummary": {
+    "currentReserveBalance": 4037715,
+    "targetReserveBalance": 11645193,
+    "fundingRatio": 34.67,
+    "annualContribution": 1287600,
+    "recommendedContribution": 1450000,
+    "contributionShortfall": 162400,
+    "projectedShortfall": {
+      "oneYear": 7106554,
+      "threeYear": 7672196,
+      "fiveYear": 8075127
+    },
+    "confidence": 0.9,
+    "reviewFlag": false
+  },
+  "riskAssessment": {
+    "overallRiskScore": 46,
+    "financialHealth": "good",
+    "immediateRisks": [
+      "Underground Garage - General Concrete and Structure failure risk",
+      "Balconies & Terrace failure risk",
+      "Exterior Walls - Brickwork failure risk",
+      "HVAC Systems failure risk",
+      "Plumbing Systems failure risk",
+      "Life Safety Systems failure risk"
+    ],
+    "nearTermRisks": [
+      "Corridor Renovation replacement needed",
+      "Building Security Systems replacement needed",
+      "Landscaping replacement needed"
+    ],
+    "longTermRisks": [
+      "Roofing System & Drainage monitoring required",
+      "Garage Exhaust System monitoring required",
+      "Garbage Disposal System monitoring required",
+      "Electrical Systems monitoring required",
+      "Pavement monitoring required",
+      "Site Services monitoring required"
+    ]
+  },
+  "components": [
+    {
+      "name": "Underground Garage - General Concrete and Structure",
+      "category": "structural",
+      "currentAge": 49,
+      "usefulLife": 30,
+      "remainingLife": -19,
+      "replacementCost": 300000,
+      "condition": "Poor",
+      "riskScore": 100,
+      "failureProbability": 1,
+      "predictedFailureDate": "2021",
+      "urgency": "critical",
+      "recommendedAction": "Immediate renovation planned for 2026 and 2027",
+      "annualDeteriorationRate": 3.3
+    },
+    {
+      "name": "Balconies & Terrace",
+      "category": "exterior",
+      "currentAge": 49,
+      "usefulLife": 15,
+      "remainingLife": -34,
+      "replacementCost": 325000,
+      "condition": "Critical",
+      "riskScore": 100,
+      "failureProbability": 1,
+      "predictedFailureDate": "2021",
+      "urgency": "critical",
+      "recommendedAction": "Major renovation planned for 2025",
+      "annualDeteriorationRate": 6.7
+    },
+    {
+      "name": "Exterior Walls - Brickwork",
+      "category": "exterior",
+      "currentAge": 49,
+      "usefulLife": 30,
+      "remainingLife": -19,
+      "replacementCost": 225000,
+      "condition": "Poor",
+      "riskScore": 100,
+      "failureProbability": 1,
+      "predictedFailureDate": "2021",
+      "urgency": "critical",
+      "recommendedAction": "Major renovation planned for 2025, 2026, and 2027",
+      "annualDeteriorationRate": 3
+    },
+    {
+      "name": "Windows",
+      "category": "exterior",
+      "currentAge": 5,
+      "usefulLife": 30,
+      "remainingLife": 25,
+      "replacementCost": 4000000,
+      "condition": "Excellent",
+      "riskScore": 32,
+      "failureProbability": 0.016666666666666666,
+      "predictedFailureDate": "2046",
+      "urgency": "low",
+      "recommendedAction": "Monitor condition, no immediate action required",
+      "annualDeteriorationRate": 0.3
+    },
+    {
+      "name": "Exterior Doors",
+      "category": "exterior",
+      "currentAge": 10,
+      "usefulLife": 30,
+      "remainingLife": 20,
+      "replacementCost": 30000,
+      "condition": "Good",
+      "riskScore": 38,
+      "failureProbability": 0.09999999999999999,
+      "predictedFailureDate": "2041",
+      "urgency": "low",
+      "recommendedAction": "Minor replacements planned for 2024",
+      "annualDeteriorationRate": 1
+    },
+    {
+      "name": "Exterior Caulking & Weatherstripping",
+      "category": "exterior",
+      "currentAge": 3,
+      "usefulLife": 12,
+      "remainingLife": 9,
+      "replacementCost": 225000,
+      "condition": "Good",
+      "riskScore": 45,
+      "failureProbability": 0.075,
+      "predictedFailureDate": "2030",
+      "urgency": "low",
+      "recommendedAction": "Replacement project planned for 2030",
+      "annualDeteriorationRate": 1.7
+    },
+    {
+      "name": "Roofing System & Drainage",
+      "category": "exterior",
+      "currentAge": 11,
+      "usefulLife": 25,
+      "remainingLife": 14,
+      "replacementCost": 553500,
+      "condition": "Fair",
+      "riskScore": 73,
+      "failureProbability": 0.264,
+      "predictedFailureDate": "2035",
+      "urgency": "medium",
+      "recommendedAction": "Monitor condition, no immediate action required",
+      "annualDeteriorationRate": 2
+    },
+    {
+      "name": "Corridor Renovation",
+      "category": "interior",
+      "currentAge": 18,
+      "usefulLife": 20,
+      "remainingLife": 2,
+      "replacementCost": 1375000,
+      "condition": "Fair",
+      "riskScore": 91,
+      "failureProbability": 0.54,
+      "predictedFailureDate": "2023",
+      "urgency": "high",
+      "recommendedAction": "Major renovation planned for 2022 and 2023",
+      "annualDeteriorationRate": 3.5
+    },
+    {
+      "name": "Elevator",
+      "category": "mechanical",
+      "currentAge": 7,
+      "usefulLife": 30,
+      "remainingLife": 23,
+      "replacementCost": 900000,
+      "condition": "Good",
+      "riskScore": 44,
+      "failureProbability": 0.06999999999999999,
+      "predictedFailureDate": "2044",
+      "urgency": "low",
+      "recommendedAction": "Monitor condition, no immediate action required",
+      "annualDeteriorationRate": 0.7
+    },
+    {
+      "name": "Garage Exhaust System",
+      "category": "mechanical",
+      "currentAge": 4,
+      "usefulLife": 10,
+      "remainingLife": 6,
+      "replacementCost": 35000,
+      "condition": "Fair",
+      "riskScore": 61,
+      "failureProbability": 0.24,
+      "predictedFailureDate": "2027",
+      "urgency": "medium",
+      "recommendedAction": "CO2 detectors replacement planned for 2024",
+      "annualDeteriorationRate": 2.5
+    },
+    {
+      "name": "HVAC Systems",
+      "category": "mechanical",
+      "currentAge": 19,
+      "usefulLife": 20,
+      "remainingLife": 1,
+      "replacementCost": 75000,
+      "condition": "Poor",
+      "riskScore": 100,
+      "failureProbability": 0.76,
+      "predictedFailureDate": "2022",
+      "urgency": "critical",
+      "recommendedAction": "Several replacement projects planned for 2022",
+      "annualDeteriorationRate": 4.5
+    },
+    {
+      "name": "Garbage Disposal System",
+      "category": "mechanical",
+      "currentAge": 17,
+      "usefulLife": 20,
+      "remainingLife": 3,
+      "replacementCost": 25000,
+      "condition": "Fair",
+      "riskScore": 79,
+      "failureProbability": 0.51,
+      "predictedFailureDate": "2025",
+      "urgency": "medium",
+      "recommendedAction": "Compactor replacement planned for 2024",
+      "annualDeteriorationRate": 3
+    },
+    {
+      "name": "Plumbing Systems",
+      "category": "mechanical",
+      "currentAge": 29,
+      "usefulLife": 30,
+      "remainingLife": 1,
+      "replacementCost": 2000000,
+      "condition": "Critical",
+      "riskScore": 100,
+      "failureProbability": 0.9183333333333333,
+      "predictedFailureDate": "2022",
+      "urgency": "critical",
+      "recommendedAction": "Major replacement projects for domestic water risers planned for 2022 and 2023",
+      "annualDeteriorationRate": 5
+    },
+    {
+      "name": "Electrical Systems",
+      "category": "electrical",
+      "currentAge": 2,
+      "usefulLife": 5,
+      "remainingLife": 3,
+      "replacementCost": 80000,
+      "condition": "Good",
+      "riskScore": 41,
+      "failureProbability": 0.12,
+      "predictedFailureDate": "2024",
+      "urgency": "medium",
+      "recommendedAction": "Minor repairs/replacements planned in the next three years",
+      "annualDeteriorationRate": 1.5
+    },
+    {
+      "name": "Life Safety Systems",
+      "category": "electrical",
+      "currentAge": 29,
+      "usefulLife": 30,
+      "remainingLife": 1,
+      "replacementCost": 165000,
+      "condition": "Critical",
+      "riskScore": 100,
+      "failureProbability": 0.9183333333333333,
+      "predictedFailureDate": "2022",
+      "urgency": "critical",
+      "recommendedAction": "Replacement of sprinkler heads throughout the building will be completed by the end of 2021",
+      "annualDeteriorationRate": 5
+    },
+    {
+      "name": "Building Security Systems",
+      "category": "electrical",
+      "currentAge": 13,
+      "usefulLife": 15,
+      "remainingLife": 2,
+      "replacementCost": 45000,
+      "condition": "Fair",
+      "riskScore": 80,
+      "failureProbability": 0.52,
+      "predictedFailureDate": "2023",
+      "urgency": "high",
+      "recommendedAction": "Access control system replacement planned for 2023",
+      "annualDeteriorationRate": 3.5
+    },
+    {
+      "name": "Interior Finishes",
+      "category": "interior",
+      "currentAge": 1,
+      "usefulLife": 15,
+      "remainingLife": 14,
+      "replacementCost": 130000,
+      "condition": "Excellent",
+      "riskScore": 28,
+      "failureProbability": 0.006666666666666667,
+      "predictedFailureDate": "2036",
+      "urgency": "low",
+      "recommendedAction": "Monitor condition, no immediate action required",
+      "annualDeteriorationRate": 0.3
+    },
+    {
+      "name": "Pavement",
+      "category": "site",
+      "currentAge": 15,
+      "usefulLife": 20,
+      "remainingLife": 5,
+      "replacementCost": 74250,
+      "condition": "Fair",
+      "riskScore": 75,
+      "failureProbability": 0.44999999999999996,
+      "predictedFailureDate": "2026",
+      "urgency": "medium",
+      "recommendedAction": "Major replacement project planned for 2026 and 2027",
+      "annualDeteriorationRate": 2.5
+    },
+    {
+      "name": "Site Services",
+      "category": "site",
+      "currentAge": 25,
+      "usefulLife": 30,
+      "remainingLife": 5,
+      "replacementCost": 36000,
+      "condition": "Fair",
+      "riskScore": 78,
+      "failureProbability": 0.5,
+      "predictedFailureDate": "2026",
+      "urgency": "medium",
+      "recommendedAction": "Major replacement project planned for 2026 and 2027",
+      "annualDeteriorationRate": 2.5
+    },
+    {
+      "name": "Landscaping",
+      "category": "site",
+      "currentAge": 18,
+      "usefulLife": 20,
+      "remainingLife": 2,
+      "replacementCost": 15000,
+      "condition": "Fair",
+      "riskScore": 81,
+      "failureProbability": 0.54,
+      "predictedFailureDate": "2023",
+      "urgency": "high",
+      "recommendedAction": "General upgrade planned for 2023",
+      "annualDeteriorationRate": 3.5
+    }
+  ],
+  "topProjects": [
+    {
+      "name": "Windows",
+      "category": "exterior",
+      "currentAge": 5,
+      "usefulLife": 30,
+      "remainingLife": 25,
+      "replacementCost": 4000000,
+      "condition": "Excellent",
+      "riskScore": 32,
+      "failureProbability": 0.016666666666666666,
+      "predictedFailureDate": "2046",
+      "urgency": "low",
+      "recommendedAction": "Monitor condition, no immediate action required",
+      "annualDeteriorationRate": 0.3
+    },
+    {
+      "name": "Plumbing Systems",
+      "category": "mechanical",
+      "currentAge": 29,
+      "usefulLife": 30,
+      "remainingLife": 1,
+      "replacementCost": 2000000,
+      "condition": "Critical",
+      "riskScore": 100,
+      "failureProbability": 0.9183333333333333,
+      "predictedFailureDate": "2022",
+      "urgency": "critical",
+      "recommendedAction": "Major replacement projects for domestic water risers planned for 2022 and 2023",
+      "annualDeteriorationRate": 5
+    },
+    {
+      "name": "Corridor Renovation",
+      "category": "interior",
+      "currentAge": 18,
+      "usefulLife": 20,
+      "remainingLife": 2,
+      "replacementCost": 1375000,
+      "condition": "Fair",
+      "riskScore": 91,
+      "failureProbability": 0.54,
+      "predictedFailureDate": "2023",
+      "urgency": "high",
+      "recommendedAction": "Major renovation planned for 2022 and 2023",
+      "annualDeteriorationRate": 3.5
+    },
+    {
+      "name": "Elevator",
+      "category": "mechanical",
+      "currentAge": 7,
+      "usefulLife": 30,
+      "remainingLife": 23,
+      "replacementCost": 900000,
+      "condition": "Good",
+      "riskScore": 44,
+      "failureProbability": 0.06999999999999999,
+      "predictedFailureDate": "2044",
+      "urgency": "low",
+      "recommendedAction": "Monitor condition, no immediate action required",
+      "annualDeteriorationRate": 0.7
+    },
+    {
+      "name": "Roofing System & Drainage",
+      "category": "exterior",
+      "currentAge": 11,
+      "usefulLife": 25,
+      "remainingLife": 14,
+      "replacementCost": 553500,
+      "condition": "Fair",
+      "riskScore": 73,
+      "failureProbability": 0.264,
+      "predictedFailureDate": "2035",
+      "urgency": "medium",
+      "recommendedAction": "Monitor condition, no immediate action required",
+      "annualDeteriorationRate": 2
+    }
+  ],
+  "insights": [
+    {
+      "type": "component_failure",
+      "priority": "critical",
+      "title": "Underground Garage - General Concrete and Structure Requires Immediate Attention",
+      "description": "Component in Poor condition with -19 years remaining life",
+      "impact": "Potential failure could cost $300,000 plus emergency premiums",
+      "actionRequired": "Immediate renovation planned for 2026 and 2027",
+      "timeline": "2021",
+      "costImplication": 300000
+    },
+    {
+      "type": "component_failure",
+      "priority": "critical",
+      "title": "Balconies & Terrace Requires Immediate Attention",
+      "description": "Component in Critical condition with -34 years remaining life",
+      "impact": "Potential failure could cost $325,000 plus emergency premiums",
+      "actionRequired": "Major renovation planned for 2025",
+      "timeline": "2021",
+      "costImplication": 325000
+    },
+    {
+      "type": "component_failure",
+      "priority": "critical",
+      "title": "Exterior Walls - Brickwork Requires Immediate Attention",
+      "description": "Component in Poor condition with -19 years remaining life",
+      "impact": "Potential failure could cost $225,000 plus emergency premiums",
+      "actionRequired": "Major renovation planned for 2025, 2026, and 2027",
+      "timeline": "2021",
+      "costImplication": 225000
+    },
+    {
+      "type": "component_failure",
+      "priority": "critical",
+      "title": "HVAC Systems Requires Immediate Attention",
+      "description": "Component in Poor condition with 1 years remaining life",
+      "impact": "Potential failure could cost $75,000 plus emergency premiums",
+      "actionRequired": "Several replacement projects planned for 2022",
+      "timeline": "2022",
+      "costImplication": 75000
+    },
+    {
+      "type": "component_failure",
+      "priority": "critical",
+      "title": "Plumbing Systems Requires Immediate Attention",
+      "description": "Component in Critical condition with 1 years remaining life",
+      "impact": "Potential failure could cost $2,000,000 plus emergency premiums",
+      "actionRequired": "Major replacement projects for domestic water risers planned for 2022 and 2023",
+      "timeline": "2022",
+      "costImplication": 2000000
+    },
+    {
+      "type": "component_failure",
+      "priority": "critical",
+      "title": "Life Safety Systems Requires Immediate Attention",
+      "description": "Component in Critical condition with 1 years remaining life",
+      "impact": "Potential failure could cost $165,000 plus emergency premiums",
+      "actionRequired": "Replacement of sprinkler heads throughout the building will be completed by the end of 2021",
+      "timeline": "2022",
+      "costImplication": 165000
+    },
+    {
+      "type": "financial_risk",
+      "priority": "high",
+      "title": "Reserve Fund Severely Underfunded",
+      "description": "Current funding ratio of 34.67% is below recommended 70-100%",
+      "impact": "High risk of special assessments for major repairs",
+      "actionRequired": "Increase contributions by $162,400 annually",
+      "timeline": "Immediate action required"
+    },
+    {
+      "type": "opportunity",
+      "priority": "medium",
+      "title": "1 Components in Excellent Condition",
+      "description": "Well-maintained components extending useful life",
+      "impact": "Reduced replacement costs and extended service life",
+      "actionRequired": "Continue current maintenance programs",
+      "timeline": "Ongoing",
+      "preventionSavings": 13000
+    }
+  ],
+  "summaryInsight": "Underground Garage - General Concrete and Structure Requires Immediate Attention",
+  "financialProjections": [
+    {
+      "year": 2025,
+      "openingBalance": 4037715,
+      "contributions": 1287600,
+      "expenditures": 1507089,
+      "closingBalance": 3818226,
+      "inflationAdjustment": 45066,
+      "isShortfall": false,
+      "shortfallAmount": 0,
+      "cumulativeShortfall": 0,
+      "confidence": 0.95,
+      "reviewFlag": false
+    },
+    {
+      "year": 2026,
+      "openingBalance": 3818226,
+      "contributions": 1332666,
+      "expenditures": 2939875,
+      "closingBalance": 2211017,
+      "inflationAdjustment": 46643,
+      "isShortfall": false,
+      "shortfallAmount": 0,
+      "cumulativeShortfall": 0,
+      "confidence": 0.95,
+      "reviewFlag": false
+    },
+    {
+      "year": 2027,
+      "openingBalance": 2211017,
+      "contributions": 1379309,
+      "expenditures": 3110981,
+      "closingBalance": 479345,
+      "inflationAdjustment": 48276,
+      "isShortfall": false,
+      "shortfallAmount": 0,
+      "cumulativeShortfall": 0,
+      "confidence": 0.95,
+      "reviewFlag": false
+    },
+    {
+      "year": 2028,
+      "openingBalance": 479345,
+      "contributions": 1427585,
+      "expenditures": 507639,
+      "closingBalance": 1399291,
+      "inflationAdjustment": 49965,
+      "isShortfall": false,
+      "shortfallAmount": 0,
+      "cumulativeShortfall": 0,
+      "confidence": 0.95,
+      "reviewFlag": false
+    },
+    {
+      "year": 2029,
+      "openingBalance": 1399291,
+      "contributions": 1477551,
+      "expenditures": 131681,
+      "closingBalance": 2745161,
+      "inflationAdjustment": 51714,
+      "isShortfall": false,
+      "shortfallAmount": 0,
+      "cumulativeShortfall": 0,
+      "confidence": 0.95,
+      "reviewFlag": false
+    },
+    {
+      "year": 2030,
+      "openingBalance": 2745161,
+      "contributions": 1529265,
+      "expenditures": 525097,
+      "closingBalance": 3749329,
+      "inflationAdjustment": 53524,
+      "isShortfall": false,
+      "shortfallAmount": 0,
+      "cumulativeShortfall": 0,
+      "confidence": 0.95,
+      "reviewFlag": false
+    },
+    {
+      "year": 2031,
+      "openingBalance": 3749329,
+      "contributions": 1582789,
+      "expenditures": 1829548,
+      "closingBalance": 3502570,
+      "inflationAdjustment": 55398,
+      "isShortfall": false,
+      "shortfallAmount": 0,
+      "cumulativeShortfall": 0,
+      "confidence": 0.95,
+      "reviewFlag": false
+    },
+    {
+      "year": 2032,
+      "openingBalance": 3502570,
+      "contributions": 1638187,
+      "expenditures": 962120,
+      "closingBalance": 4178637,
+      "inflationAdjustment": 57337,
+      "isShortfall": false,
+      "shortfallAmount": 0,
+      "cumulativeShortfall": 0,
+      "confidence": 0.95,
+      "reviewFlag": false
+    },
+    {
+      "year": 2033,
+      "openingBalance": 4178637,
+      "contributions": 1695523,
+      "expenditures": 4683,
+      "closingBalance": 5869477,
+      "inflationAdjustment": 59343,
+      "isShortfall": false,
+      "shortfallAmount": 0,
+      "cumulativeShortfall": 0,
+      "confidence": 0.95,
+      "reviewFlag": false
+    },
+    {
+      "year": 2034,
+      "openingBalance": 5869477,
+      "contributions": 1754867,
+      "expenditures": 487953,
+      "closingBalance": 7136391,
+      "inflationAdjustment": 61420,
+      "isShortfall": false,
+      "shortfallAmount": 0,
+      "cumulativeShortfall": 0,
+      "confidence": 0.95,
+      "reviewFlag": false
+    }
+  ],
+  "fundingScenarios": [
+    {
+      "name": "Current Contribution Plan",
+      "type": "current",
+      "monthlyIncrease": 0,
+      "projections": [],
+      "totalShortfall": 8075127,
+      "riskLevel": "high",
+      "recommendation": "High risk of special assessments due to underfunding"
+    },
+    {
+      "name": "Increased Monthly Contributions",
+      "type": "increased_fees",
+      "monthlyIncrease": 13533.333333333334,
+      "projections": [],
+      "totalShortfall": 0,
+      "riskLevel": "low",
+      "recommendation": "Eliminates funding shortfall and prevents special assessments"
+    },
+    {
+      "name": "Special Assessment",
+      "type": "special_assessment",
+      "monthlyIncrease": 0,
+      "specialAssessment": {
+        "amount": 487285,
+        "perUnit": 4873,
+        "timing": "Within 12 months"
+      },
+      "projections": [],
+      "totalShortfall": 0,
+      "riskLevel": "medium",
+      "recommendation": "One-time payment to address immediate funding gap"
+    }
+  ],
+  "complianceChecks": [
+    {
+      "jurisdiction": "ontario",
+      "requirement": "Reserve Study Update",
+      "status": "compliant",
+      "description": "Study completed within required 3-year period",
+      "deadline": "November 2024"
+    },
+    {
+      "jurisdiction": "ontario",
+      "requirement": "Minimum Funding Requirements",
+      "status": "compliant",
+      "description": "The study includes a plan to ensure the reserve fund is adequately funded over the 30-year period.",
+      "deadline": "Ongoing"
+    },
+    {
+      "jurisdiction": "ontario",
+      "requirement": "Component Analysis Completeness",
+      "status": "compliant",
+      "description": "The study includes a comprehensive list of common elements and their expected repair/replacement costs.",
+      "deadline": "Ongoing"
+    },
+    {
+      "jurisdiction": "ontario",
+      "requirement": "Professional Engineer Certification",
+      "status": "not specified",
+      "description": "The document does not explicitly state certification by a professional engineer.",
+      "deadline": "N/A"
+    },
+    {
+      "jurisdiction": "ontario",
+      "requirement": "Board Disclosure Requirements",
+      "status": "compliant",
+      "description": "The study outlines the need for board review and disclosure to owners as per the Condominium Act.",
+      "deadline": "Within 120 days of receiving the study"
+    }
+  ],
+  "recommendations": {
+    "immediate": [
+      {
+        "name": "Underground Garage - General Concrete and Structure",
+        "urgency": "critical",
+        "replacementCost": 300000,
+        "remainingLife": -19,
+        "riskScore": 100,
+        "recommendedAction": "Schedule immediate inspection and replacement planning for Underground Garage - General Concrete and Structure"
+      },
+      {
+        "name": "Balconies & Terrace",
+        "urgency": "critical",
+        "replacementCost": 325000,
+        "remainingLife": -34,
+        "riskScore": 100,
+        "recommendedAction": "Schedule immediate inspection and replacement planning for Balconies & Terrace"
+      },
+      {
+        "name": "Exterior Walls - Brickwork",
+        "urgency": "critical",
+        "replacementCost": 225000,
+        "remainingLife": -19,
+        "riskScore": 100,
+        "recommendedAction": "Schedule immediate inspection and replacement planning for Exterior Walls - Brickwork"
+      },
+      {
+        "name": "HVAC Systems",
+        "urgency": "critical",
+        "replacementCost": 75000,
+        "remainingLife": 1,
+        "riskScore": 100,
+        "recommendedAction": "Schedule immediate inspection and replacement planning for HVAC Systems"
+      },
+      {
+        "name": "Plumbing Systems",
+        "urgency": "critical",
+        "replacementCost": 2000000,
+        "remainingLife": 1,
+        "riskScore": 100,
+        "recommendedAction": "Schedule immediate inspection and replacement planning for Plumbing Systems"
+      },
+      {
+        "name": "Life Safety Systems",
+        "urgency": "critical",
+        "replacementCost": 165000,
+        "remainingLife": 1,
+        "riskScore": 100,
+        "recommendedAction": "Schedule immediate inspection and replacement planning for Life Safety Systems"
+      },
+      {
+        "name": "Funding",
+        "urgency": "critical",
+        "recommendedAction": "Increase reserve contributions by $162,400 annually"
+      }
+    ],
+    "shortTerm": [
+      {
+        "name": "Corridor Renovation",
+        "urgency": "high",
+        "replacementCost": 1375000,
+        "remainingLife": 2,
+        "riskScore": 91,
+        "recommendedAction": "Plan Corridor Renovation replacement within 2 years"
+      },
+      {
+        "name": "Building Security Systems",
+        "urgency": "high",
+        "replacementCost": 45000,
+        "remainingLife": 2,
+        "riskScore": 80,
+        "recommendedAction": "Plan Building Security Systems replacement within 2 years"
+      },
+      {
+        "name": "Landscaping",
+        "urgency": "high",
+        "replacementCost": 15000,
+        "remainingLife": 2,
+        "riskScore": 81,
+        "recommendedAction": "Plan Landscaping replacement within 2 years"
+      }
+    ],
+    "longTerm": [
+      {
+        "name": "Roofing System & Drainage",
+        "urgency": "medium",
+        "replacementCost": 553500,
+        "remainingLife": 14,
+        "riskScore": 73,
+        "recommendedAction": "Monitor Roofing System & Drainage condition and plan for replacement in 14 years"
+      },
+      {
+        "name": "Garage Exhaust System",
+        "urgency": "medium",
+        "replacementCost": 35000,
+        "remainingLife": 6,
+        "riskScore": 61,
+        "recommendedAction": "Monitor Garage Exhaust System condition and plan for replacement in 6 years"
+      },
+      {
+        "name": "Garbage Disposal System",
+        "urgency": "medium",
+        "replacementCost": 25000,
+        "remainingLife": 3,
+        "riskScore": 79,
+        "recommendedAction": "Monitor Garbage Disposal System condition and plan for replacement in 3 years"
+      },
+      {
+        "name": "Electrical Systems",
+        "urgency": "medium",
+        "replacementCost": 80000,
+        "remainingLife": 3,
+        "riskScore": 41,
+        "recommendedAction": "Monitor Electrical Systems condition and plan for replacement in 3 years"
+      },
+      {
+        "name": "Pavement",
+        "urgency": "medium",
+        "replacementCost": 74250,
+        "remainingLife": 5,
+        "riskScore": 75,
+        "recommendedAction": "Monitor Pavement condition and plan for replacement in 5 years"
+      },
+      {
+        "name": "Site Services",
+        "urgency": "medium",
+        "replacementCost": 36000,
+        "remainingLife": 5,
+        "riskScore": 78,
+        "recommendedAction": "Monitor Site Services condition and plan for replacement in 5 years"
+      }
+    ],
+    "costOptimization": [
+      {
+        "name": "Project bundling",
+        "recommendedAction": "Consider bundling multiple component replacements to achieve economies of scale"
+      }
+    ]
+  },
+  "nextStudyDue": "March 2024",
+  "complianceDeadlines": [
+    {
+      "deadline": "November 2024",
+      "requirement": "Reserve Study Update",
+      "action": "Monitor"
+    },
+    {
+      "deadline": "Ongoing",
+      "requirement": "Minimum Funding Requirements",
+      "action": "Monitor"
+    },
+    {
+      "deadline": "Ongoing",
+      "requirement": "Component Analysis Completeness",
+      "action": "Monitor"
+    },
+    {
+      "deadline": "N/A",
+      "requirement": "Professional Engineer Certification",
+      "action": "Monitor"
+    },
+    {
+      "deadline": "Within 120 days of receiving the study",
+      "requirement": "Board Disclosure Requirements",
+      "action": "Monitor"
+    }
+  ]
+}

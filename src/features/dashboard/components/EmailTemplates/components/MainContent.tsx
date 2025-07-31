@@ -1,5 +1,5 @@
-import { Sparkles } from "lucide-react";
-import { buildingData } from "@/features/email-templates/data";
+import { Sparkles } from 'lucide-react';
+import { buildingData } from '../data';
 
 const MainContent: React.FC = () => {
   return (

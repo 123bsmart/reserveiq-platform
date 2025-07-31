@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Brain } from 'lucide-react';
-import {type Audience, type Tone} from "@/features/email-templates/types"
+import { type Audience, type Tone } from '../types';
 type Option = {
   name: string;
   description?: string;
@@ -41,7 +41,9 @@ const EmailAiSettings: React.FC<EmailAiSettingsProps> = ({
             className="w-full text-xs border border-gray-300 rounded px-2 py-1 focus:ring-1 focus:ring-purple-500"
           >
             {Object.entries(tones).map(([key, tone]) => (
-              <option key={key} value={key}>{tone.name}</option>
+              <option key={key} value={key}>
+                {tone.name}
+              </option>
             ))}
           </select>
         </div>
@@ -54,7 +56,9 @@ const EmailAiSettings: React.FC<EmailAiSettingsProps> = ({
             className="w-full text-xs border border-gray-300 rounded px-2 py-1 focus:ring-1 focus:ring-purple-500"
           >
             {Object.entries(audiences).map(([key, audience]) => (
-              <option key={key} value={key}>{audience.name}</option>
+              <option key={key} value={key}>
+                {audience.name}
+              </option>
             ))}
           </select>
         </div>

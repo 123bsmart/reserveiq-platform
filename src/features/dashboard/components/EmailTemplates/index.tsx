@@ -2,38 +2,41 @@
 
 import React, { useState } from 'react';
 
-import { emailTemplates, tones, audiences, userTypes } from '@/features/email-templates/data';
-import { EmailTemplatesSidebar } from '@/features/email-templates/components/TemplatesSidebar';
-import { Audience, EmailTemplateType, Tone } from '@/features/email-templates/types';
-import EmailContentHeader from '@/features/email-templates/components/ContentHeader';
-import EmailAiSettings from '@/features/email-templates/components/EmailAiSettings';
-import GeneratedEmail from '@/features/email-templates/components/GeneratedEmail';
-import QuickActions from '@/features/email-templates/components/QuickActions';
-import GenerateButton from '@/features/email-templates/components/GenerateButton';
-import { generateTemplateContent } from '@/features/email-templates/utils';
-import MainContent from '@/features/email-templates/components/MainContent';
+import { emailTemplates, tones, audiences } from './data';
+import { EmailTemplatesSidebar } from './components/TemplatesSidebar';
+import { Audience, UserType, Tone } from './types';
+import EmailContentHeader from './components/ContentHeader';
+import EmailAiSettings from './components/EmailAiSettings';
+import GeneratedEmail from './components/GeneratedEmail';
+import QuickActions from './components/QuickActions';
+import GenerateButton from './components/GenerateButton';
+import { generateTemplateContent } from './utils';
+import MainContent from './components/MainContent';
 
-const EmailTemplatesPage: React.FC = () => {
+type Props = {
+  userType: UserType;
+};
+
+const EmailTemplates: React.FC<Props> = ({ userType }) => {
   const [generatedContent, setGeneratedContent] = useState(generateTemplateContent('board-update'));
   const [isGenerating, setIsGenerating] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<string>('board-update');
-  const [userType, setUserType] = useState<EmailTemplateType>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedTone, setSelectedTone] = useState<Tone>('formal');
-  const [selectedAudience, setSelectedAudience] = useState<Audience>('board');  
+  const [selectedAudience, setSelectedAudience] = useState<Audience>('board');
 
   // Filter templates
   const filteredTemplates = Object.entries(emailTemplates).filter(([_, template]) => {
-    const matchUserType = userType === 'all' || template.userType === userType;
+    const matchUserType = template.userType === userType;
     const matchSearch =
       template.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       template.category.toLowerCase().includes(searchQuery.toLowerCase());
     return matchUserType && matchSearch;
   });
 
-    const generateContent = (): void => {
+  const generateContent = (): void => {
     setIsGenerating(true);
-    
+
     // Simulate AI generation delay
     setTimeout(() => {
       const content = generateTemplateContent(selectedTemplate);
@@ -43,10 +46,8 @@ const EmailTemplatesPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col xl:flex-row min-h-screen xl:pl-96">
+    <div className="flex flex-col xl:flex-row min-h-screen">
       <EmailTemplatesSidebar
-        userType={userType}
-        setUserType={setUserType}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         emailTemplates={filteredTemplates}
@@ -56,7 +57,6 @@ const EmailTemplatesPage: React.FC = () => {
         setSelectedTone={setSelectedTone}
         selectedAudience={selectedAudience}
         setSelectedAudience={setSelectedAudience}
-        userTypes={userTypes}
         tones={tones}
         audiences={audiences}
       />
@@ -98,4 +98,4 @@ const EmailTemplatesPage: React.FC = () => {
   );
 };
 
-export default EmailTemplatesPage;
+export default EmailTemplates;

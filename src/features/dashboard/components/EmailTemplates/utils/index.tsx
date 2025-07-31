@@ -1,4 +1,4 @@
-import { emailContent } from '@/features/email-templates/data';
+import { emailContent } from '../data';
 
 export const generateTemplateContent = (selected: string): string => {
   return emailContent[selected as keyof typeof emailContent];

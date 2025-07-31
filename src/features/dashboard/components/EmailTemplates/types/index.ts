@@ -1,7 +1,6 @@
 import { LucideIcon } from 'lucide-react';
 
 export type UserType = 'pm' | 'board';
-export type EmailTemplateType = UserType | 'all';
 export type UrgencyLevel = 'routine' | 'medium' | 'high' | 'critical';
 export type Tone = 'formal' | 'friendly' | 'urgent' | 'reassuring' | 'transparent';
 export type Audience = 'board' | 'owners' | 'vendors' | 'community';
