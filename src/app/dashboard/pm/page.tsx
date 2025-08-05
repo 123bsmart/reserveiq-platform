@@ -27,7 +27,7 @@ const PMDashboard: React.FC = () => {
           setActiveTab={setActiveTab}
         />
         {/* Main Content */}
-        <div className="flex-1 p-6">
+        <div className="flex-1 p-6 overflow-y-auto scrollbar-thin">
           {activeTab === 'overview' && <Overview />}
           {activeTab === 'reserve-studies' && <ReserveStudies />}
           {activeTab === 'documents' && <Documents />}

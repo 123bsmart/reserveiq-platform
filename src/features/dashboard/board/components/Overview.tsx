@@ -9,9 +9,15 @@ import {
   Upload,
   Users,
 } from 'lucide-react';
-import React from 'react';
+import React, { useState } from 'react';
+import ReserveStudyViewer from './ReserveStudyViewer';
+import ScenarioReview from './ScenarioReview';
+import { Modal } from '@/shared/ui/modal';
 
 const Overview: React.FC = () => {
+  const [showReserveStudyViewer, setShowReserveStudyViewer] = useState(false);
+  const [showScenarioReview, setShowScenarioReview] = useState(false);
+
   return (
     <>
       {/* Building Summary */}
@@ -73,7 +79,10 @@ const Overview: React.FC = () => {
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Board Tools</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Priority 1: Reserve Studies Analysis */}
-          <button className="p-6 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl hover:from-red-700 hover:to-red-800 transition-all transform hover:scale-105 shadow-lg">
+          <button
+            onClick={() => setShowReserveStudyViewer(true)}
+            className="p-6 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl hover:from-red-700 hover:to-red-800 transition-all transform hover:scale-105 shadow-lg"
+          >
             <div className="text-center">
               <FileText className="w-8 h-8 mx-auto mb-3" />
               <h3 className="font-semibold text-lg mb-2">🚨 Reserve Crisis</h3>
@@ -81,12 +90,15 @@ const Overview: React.FC = () => {
             </div>
           </button>
 
-          {/* Priority 2: Assessment Calculator */}
-          <button className="p-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all transform hover:scale-105 shadow-lg">
+          {/* Priority 2: Scenario Review */}
+          <button
+            onClick={() => setShowScenarioReview(true)}
+            className="p-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all transform hover:scale-105 shadow-lg"
+          >
             <div className="text-center">
               <Calculator className="w-8 h-8 mx-auto mb-3" />
               <h3 className="font-semibold text-lg mb-2">Compare Options</h3>
-              <p className="text-blue-100 text-sm">Monthly increase vs assessment</p>
+              <p className="text-blue-100 text-sm">Review PM scenarios & decide</p>
             </div>
           </button>
 
@@ -181,6 +193,26 @@ const Overview: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Reserve Study Viewer Modal */}
+      <Modal
+        isOpen={showReserveStudyViewer}
+        onClose={() => setShowReserveStudyViewer(false)}
+        title="📊 Reserve Studies"
+        className="max-w-7xl max-h-[90vh] overflow-y-auto"
+      >
+        <ReserveStudyViewer onClose={() => setShowReserveStudyViewer(false)} />
+      </Modal>
+
+      {/* Scenario Review Modal */}
+      <Modal
+        isOpen={showScenarioReview}
+        onClose={() => setShowScenarioReview(false)}
+        title="📈 Scenario Review"
+        className="max-w-7xl max-h-[90vh] overflow-y-auto"
+      >
+        <ScenarioReview onClose={() => setShowScenarioReview(false)} />
+      </Modal>
     </>
   );
 };

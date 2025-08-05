@@ -7,7 +7,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { RouteAnalytics } from '@/shared/providers/RouteAnalytics';
 import { Suspense } from 'react';
-// Using system font stack from globals.css
 
 export const metadata: Metadata = {
   title: 'ReserveIQ – Property Managers',
@@ -23,17 +22,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+        <GoogleTagManager />
       </head>
       <body>
-        <GoogleTagManagerNoScript gtmId={process.env.NEXT_PUBLIC_GTM_ID} />
+        <GoogleTagManagerNoScript />
         <ReactQueryProvider>
-          <Suspense fallback={null}>
+          <Suspense fallback={<div>Loading...</div>}>
             <RouteAnalytics />
           </Suspense>
           {children}
+          <ToastContainer />
         </ReactQueryProvider>
-        <ToastContainer />
       </body>
     </html>
   );

@@ -20,10 +20,19 @@ class AuthApi {
       throw error;
     }
   }
-  async refreshToken(): Promise<IApiResponse<IUser>> {
+  async refreshToken(): Promise<boolean> {
     try {
       const response = await axiosInstance.post('auth/refresh-token');
-      return response.data;
+      localStorage.setItem('access_token', response.data.data.access_token);
+      return !!response.data.data.access_token;
+    } catch (error: unknown) {
+      throw error;
+    }
+  }
+
+  async logout(): Promise<void> {
+    try {
+      await axiosInstance.post('auth/logout');
     } catch (error: unknown) {
       throw error;
     }

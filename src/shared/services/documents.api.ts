@@ -3,7 +3,7 @@ import { IApiResponse } from '@/shared/types/api';
 import { IAnalyzeDocumentRes } from './documents.api.types';
 
 class DocumentsApi {
-  async analyzeDocument(formData: FormData): Promise<IApiResponse<IAnalyzeDocumentRes>> {
+  async analyzeDocument(formData: FormData): Promise<IApiResponse<{ analysisId: string }>> {
     try {
       const response = await axiosInstance.post('documents/analyze-document', formData, {
         headers: {
@@ -18,6 +18,14 @@ class DocumentsApi {
   async getReserveStudyAnalysis(): Promise<IApiResponse<IAnalyzeDocumentRes[]>> {
     try {
       const response = await axiosInstance.get('documents/reserve-study-analysis');
+      return response.data;
+    } catch (error: unknown) {
+      throw error;
+    }
+  }
+  async getAnalysisResults(analysisId: string): Promise<IApiResponse<IAnalyzeDocumentRes>> {
+    try {
+      const response = await axiosInstance.get(`documents/analysis-results/${analysisId}`);
       return response.data;
     } catch (error: unknown) {
       throw error;

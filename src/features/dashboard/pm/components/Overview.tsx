@@ -9,11 +9,23 @@ import {
   Upload,
   Users,
 } from 'lucide-react';
-import React from 'react';
+import React, { useState } from 'react';
+import AssessmentCalculator from './AssessmentCalculator';
+import EnhancedAssessmentCalculator from './EnhancedAssessmentCalculator';
+import ReserveStudyUpload from './ReserveStudyUpload';
+import DocumentUpload from './DocumentUpload';
+import BoardReports from './BoardReports';
+import { Modal } from '@/shared/ui/modal';
 
 const Overview: React.FC = () => {
+  const [showAssessmentCalculator, setShowAssessmentCalculator] = useState(false);
+  const [showReserveStudyUpload, setShowReserveStudyUpload] = useState(false);
+  const [showDocumentUpload, setShowDocumentUpload] = useState(false);
+  const [showBoardReports, setShowBoardReports] = useState(false);
+
   return (
     <>
+      {/* <AssessmentCalculator /> */}
       {/* Portfolio Summary */}
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-gray-900 mb-4">Portfolio Overview</h1>
@@ -73,7 +85,10 @@ const Overview: React.FC = () => {
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {/* Priority 1: Reserve Studies */}
-          <button className="p-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all transform hover:scale-105 shadow-lg">
+          <button
+            onClick={() => setShowReserveStudyUpload(true)}
+            className="p-6 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all transform hover:scale-105 shadow-lg"
+          >
             <div className="text-center">
               <FileText className="w-8 h-8 mx-auto mb-3" />
               <h3 className="font-semibold text-lg mb-2">🏆 Reserve Studies</h3>
@@ -82,7 +97,10 @@ const Overview: React.FC = () => {
           </button>
 
           {/* Priority 2: Assessment Calculator */}
-          <button className="p-6 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all transform hover:scale-105 shadow-lg">
+          <button
+            onClick={() => setShowAssessmentCalculator(true)}
+            className="p-6 bg-gradient-to-r from-purple-600 to-purple-700 text-white rounded-xl hover:from-purple-700 hover:to-purple-800 transition-all transform hover:scale-105 shadow-lg"
+          >
             <div className="text-center">
               <Calculator className="w-8 h-8 mx-auto mb-3" />
               <h3 className="font-semibold text-lg mb-2">Assessment Calculator</h3>
@@ -91,7 +109,10 @@ const Overview: React.FC = () => {
           </button>
 
           {/* Priority 3: Other Documents */}
-          <button className="p-6 bg-gray-100 border-2 border-gray-200 text-gray-700 rounded-xl hover:bg-gray-200 hover:border-gray-300 transition-all">
+          <button
+            onClick={() => setShowDocumentUpload(true)}
+            className="p-6 bg-gray-100 border-2 border-gray-200 text-gray-700 rounded-xl hover:bg-gray-200 hover:border-gray-300 transition-all"
+          >
             <div className="text-center">
               <Upload className="w-8 h-8 mx-auto mb-3 text-gray-600" />
               <h3 className="font-semibold text-lg mb-2">Other Documents</h3>
@@ -100,7 +121,10 @@ const Overview: React.FC = () => {
           </button>
 
           {/* Priority 4: Board Reports */}
-          <button className="p-6 bg-gray-100 border-2 border-gray-200 text-gray-700 rounded-xl hover:bg-gray-200 hover:border-gray-300 transition-all">
+          <button
+            onClick={() => setShowBoardReports(true)}
+            className="p-6 bg-gray-100 border-2 border-gray-200 text-gray-700 rounded-xl hover:bg-gray-200 hover:border-gray-300 transition-all"
+          >
             <div className="text-center">
               <BarChart3 className="w-8 h-8 mx-auto mb-3 text-gray-600" />
               <h3 className="font-semibold text-lg mb-2">Board Reports</h3>
@@ -189,6 +213,50 @@ const Overview: React.FC = () => {
           </div>
         </div>
       </div>
+      {/* Reserve Study Upload Modal */}
+      <Modal
+        isOpen={showReserveStudyUpload}
+        onClose={() => setShowReserveStudyUpload(false)}
+        title="📊 Reserve Study Analysis"
+        className="max-w-7xl max-h-[90vh] overflow-y-auto"
+      >
+        <ReserveStudyUpload
+          onAnalysisComplete={(analysisData) => {
+            console.log('Analysis complete:', analysisData);
+            // Here you could save the analysis data or trigger other actions
+          }}
+        />
+      </Modal>
+
+      {/* Assessment Calculator Modal */}
+      <Modal
+        isOpen={showAssessmentCalculator}
+        onClose={() => setShowAssessmentCalculator(false)}
+        title="🧮 Assessment Calculator"
+        className="max-w-7xl max-h-[90vh] overflow-y-auto"
+      >
+        <EnhancedAssessmentCalculator onClose={() => setShowAssessmentCalculator(false)} />
+      </Modal>
+
+      {/* Document Upload Modal */}
+      <Modal
+        isOpen={showDocumentUpload}
+        onClose={() => setShowDocumentUpload(false)}
+        title="📄 Document Upload"
+        className="max-w-6xl max-h-[90vh] overflow-y-auto"
+      >
+        <DocumentUpload onClose={() => setShowDocumentUpload(false)} />
+      </Modal>
+
+      {/* Board Reports Modal */}
+      <Modal
+        isOpen={showBoardReports}
+        onClose={() => setShowBoardReports(false)}
+        title="📋 Board Reports"
+        className="max-w-7xl max-h-[90vh] overflow-y-auto"
+      >
+        <BoardReports onClose={() => setShowBoardReports(false)} />
+      </Modal>
     </>
   );
 };

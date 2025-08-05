@@ -1,0 +1,149 @@
+{
+  "editor.colorTheme": "Default Dark+",
+  "editor.fontFamily": "'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+  "editor.fontSize": 14,
+  "editor.lineHeight": 1.5,
+  "editor.fontLigatures": true,
+  "editor.bracketPairColorization.enabled": true,
+  "editor.guides.bracketPairs": true,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": ["comment", "punctuation.definition.comment"],
+        "settings": {
+          "foreground": "#6A9955"
+        }
+      },
+      {
+        "scope": ["string", "string.quoted"],
+        "settings": {
+          "foreground": "#CE9178"
+        }
+      },
+      {
+        "scope": ["constant.numeric"],
+        "settings": {
+          "foreground": "#B5CEA8"
+        }
+      },
+      {
+        "scope": ["keyword", "storage.type", "storage.modifier"],
+        "settings": {
+          "foreground": "#569CD6"
+        }
+      },
+      {
+        "scope": ["entity.name.function", "support.function"],
+        "settings": {
+          "foreground": "#DCDCAA"
+        }
+      },
+      {
+        "scope": ["variable", "variable.other"],
+        "settings": {
+          "foreground": "#9CDCFE"
+        }
+      },
+      {
+        "scope": ["entity.name.class", "entity.name.type"],
+        "settings": {
+          "foreground": "#4EC9B0"
+        }
+      },
+      {
+        "scope": ["constant.language"],
+        "settings": {
+          "foreground": "#569CD6"
+        }
+      },
+      {
+        "scope": ["support.type.primitive"],
+        "settings": {
+          "foreground": "#4EC9B0"
+        }
+      }
+    ]
+  },
+  "workbench.colorCustomizations": {
+    "editor.background": "#1E1E1E",
+    "editor.foreground": "#D4D4D4",
+    "editor.lineHighlightBackground": "#2A2D2E",
+    "editor.selectionBackground": "#264F78",
+    "editor.inactiveSelectionBackground": "#3A3D41",
+    "editor.findMatchBackground": "#515C6A",
+    "editor.findMatchHighlightBackground": "#3A3D41",
+    "editorCursor.foreground": "#AEAFAD",
+    "editorWhitespace.foreground": "#404040",
+    "editorIndentGuide.background": "#404040",
+    "editorIndentGuide.activeBackground": "#707070",
+    "sideBar.background": "#252526",
+    "sideBar.foreground": "#CCCCCC",
+    "sideBarTitle.foreground": "#CCCCCC",
+    "activityBar.background": "#333333",
+    "activityBar.foreground": "#CCCCCC",
+    "activityBar.activeBorder": "#007ACC",
+    "statusBar.background": "#007ACC",
+    "statusBar.foreground": "#FFFFFF",
+    "titleBar.activeBackground": "#3C3C3C",
+    "titleBar.activeForeground": "#CCCCCC",
+    "tab.activeBackground": "#1E1E1E",
+    "tab.activeForeground": "#FFFFFF",
+    "tab.inactiveBackground": "#2D2D30",
+    "tab.inactiveForeground": "#CCCCCC"
+  },
+  "editor.suggestSelection": "first",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.tabCompletion": "on",
+  "editor.wordBasedSuggestions": "off",
+  "editor.parameterHints.enabled": true,
+  "editor.autoClosingBrackets": "always",
+  "editor.autoClosingQuotes": "always",
+  "editor.autoClosingOvertype": "always",
+  "editor.autoClosingDelete": "always",
+  "editor.autoSurround": "quotes",
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.suggest.autoImports": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "javascript.suggest.autoImports": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "emmet.includeLanguages": {
+    "typescript": "html",
+    "typescriptreact": "html"
+  },
+  "files.associations": {
+    "*.tsx": "typescriptreact",
+    "*.ts": "typescript"
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/*.code-search": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.next": true,
+    "**/out": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.next": true,
+    "**/out": true
+  }
+}
