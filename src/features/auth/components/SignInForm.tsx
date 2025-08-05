@@ -12,6 +12,7 @@ import { toast } from 'react-toastify';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { AxiosError } from 'axios';
 import authApi from '@/shared/services/auth.api';
+import { queryClient } from '@/shared/providers/ReactQueryProvider';
 
 type SignInValues = z.infer<typeof signInSchema>;
 
@@ -32,6 +33,11 @@ const SignInForm: React.FC = () => {
   const mutation = useMutation({
     mutationFn: authApi.login,
     onSuccess: (data) => {
+      if (!data.data) {
+        throw new Error('No data');
+      }
+      queryClient.setQueryData(['user'], data.data.user);
+      localStorage.setItem('access_token', data.data.access_token);
       switch (data.data?.user.role) {
         case RoleEnum.BOARD_MEMBER:
           router.push('/dashboard/board');
