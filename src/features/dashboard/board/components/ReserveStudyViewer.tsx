@@ -3,11 +3,7 @@ import React, { useState, useEffect } from 'react';
 import documentsApi from '@/shared/services/documents.api';
 import { IAnalyzeDocumentRes } from '@/shared/services/documents.api.types';
 
-interface ReserveStudyViewerProps {
-  onClose: () => void;
-}
-
-const ReserveStudyViewer: React.FC<ReserveStudyViewerProps> = ({ onClose }) => {
+const ReserveStudyViewer: React.FC = () => {
   const [reserveStudies, setReserveStudies] = useState<IAnalyzeDocumentRes[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedStudy, setSelectedStudy] = useState<IAnalyzeDocumentRes | null>(null);
@@ -17,7 +13,7 @@ const ReserveStudyViewer: React.FC<ReserveStudyViewerProps> = ({ onClose }) => {
     loadReserveStudies();
   }, []);
 
-  const loadReserveStudies = async () => {
+  const loadReserveStudies = async (): Promise<void> => {
     try {
       setLoading(true);
       const response = await documentsApi.getReserveStudyAnalysis();
@@ -77,7 +73,7 @@ const ReserveStudyViewer: React.FC<ReserveStudyViewerProps> = ({ onClose }) => {
     }
   };
 
-  const getStatusColor = (study: IAnalyzeDocumentRes) => {
+  const getStatusColor = (study: IAnalyzeDocumentRes): string => {
     // Mock status logic - in real app this would come from backend
     const statuses = ['New Analysis Available', 'Board Reviewed', 'Action Required'];
     const status = statuses[study.id ? study.id % 3 : 0];
@@ -94,12 +90,12 @@ const ReserveStudyViewer: React.FC<ReserveStudyViewerProps> = ({ onClose }) => {
     }
   };
 
-  const getStatusText = (study: IAnalyzeDocumentRes) => {
+  const getStatusText = (study: IAnalyzeDocumentRes): string => {
     const statuses = ['New Analysis Available', 'Board Reviewed', 'Action Required'];
     return statuses[study.id ? study.id % 3 : 0];
   };
 
-  const getRiskLevel = (study: IAnalyzeDocumentRes) => {
+  const getRiskLevel = (study: IAnalyzeDocumentRes): { text: string; color: string } => {
     const riskScore = study.analyze.riskAssessment?.overallRiskScore || 0;
     if (riskScore >= 70) return { text: 'High Risk', color: 'text-red-600' };
     if (riskScore >= 40) return { text: 'Medium Risk', color: 'text-yellow-600' };
@@ -130,7 +126,7 @@ const ReserveStudyViewer: React.FC<ReserveStudyViewerProps> = ({ onClose }) => {
 
         <div className="bg-white rounded-lg border border-gray-200 p-6">
           <div className="mb-6">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">{selectedStudy.analyze.buildingProfile.name}</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">{selectedStudy.analyze.buildingProfile?.name}</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="bg-blue-50 rounded-lg p-4">
                 <h4 className="text-sm font-medium text-blue-900 mb-1">Funding Ratio</h4>
@@ -207,7 +203,7 @@ const ReserveStudyViewer: React.FC<ReserveStudyViewerProps> = ({ onClose }) => {
               onClick={() => setSelectedStudy(study)}
             >
               <div className="flex items-center justify-between mb-3">
-                <h4 className="font-semibold text-gray-900">{study.analyze.buildingProfile.name}</h4>
+                <h4 className="font-semibold text-gray-900">{study.analyze.buildingProfile?.name}</h4>
                 <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(study)}`}>
                   {getStatusText(study)}
                 </span>
@@ -224,7 +220,7 @@ const ReserveStudyViewer: React.FC<ReserveStudyViewerProps> = ({ onClose }) => {
                 </div>
                 <div>
                   <span className="text-gray-500">Units:</span>
-                  <span className="ml-2 font-medium">{study.analyze.buildingProfile.units}</span>
+                  <span className="ml-2 font-medium">{study.analyze.buildingProfile?.units}</span>
                 </div>
               </div>
             </div>

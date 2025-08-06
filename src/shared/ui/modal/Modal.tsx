@@ -15,13 +15,13 @@ type ModalProps = {
 export const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, className, footer }) => {
   if (!isOpen) return null;
 
-  const handleBackdropClick = (e: React.MouseEvent) => {
+  const handleBackdropClick = (e: React.MouseEvent): void => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent): void => {
     if (e.key === 'Escape') {
       onClose();
     }

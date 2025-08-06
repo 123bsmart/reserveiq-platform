@@ -1,22 +1,60 @@
 'use client';
-import React, { useState, useEffect, useMemo } from 'react';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-} from 'recharts';
+import React, { useState, useMemo } from 'react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Bar } from 'recharts';
+
+interface BaselineAnalysis {
+  fundingStatus?: {
+    currentReserve?: number;
+    targetReserve?: number;
+    monthlyContribution?: number;
+  };
+  upcomingExpenses?: Array<{
+    year: number;
+    cost?: number;
+  }>;
+}
+
+interface InteractiveScenarioPlannerProps {
+  baselineAnalysis: BaselineAnalysis;
+  onScenarioChange?: (scenario: unknown) => void;
+}
 
 // Interactive Scenario Planning Component
-const InteractiveScenarioPlanner = ({ baselineAnalysis, onScenarioChange }: any) => {
+const InteractiveScenarioPlanner: React.FC<InteractiveScenarioPlannerProps> = ({
+  baselineAnalysis,
+  onScenarioChange: _onScenarioChange,
+}) => {
   // Add comprehensive null checks and debugging info
-  console.log('baselineAnalysis', baselineAnalysis);
+  //   console.log('baselineAnalysis', baselineAnalysis);
+
+  // All hooks must be called at the top level, before any conditional returns
+  const [activeScenario, setActiveScenario] = useState('baseline');
+  const [scenarioParams, setScenarioParams] = useState({
+    monthlyIncrease: 0,
+    inflationRate: 3.0,
+    interestRate: 2.0,
+    timeframe: 10,
+    deferCritical: false,
+    emergencyFund: 0,
+  });
+
+  const [showComparison, setShowComparison] = useState(false);
+  const [savedScenarios, setSavedScenarios] = useState<
+    Array<{
+      id: number;
+      name: string;
+      params: typeof scenarioParams;
+      projectedData: ReturnType<typeof calculateProjections>;
+      createdAt: string;
+    }>
+  >([]);
+
+  // Calculate projections based on current parameters - moved to top level
+  const projectedData = useMemo(() => {
+    if (!baselineAnalysis) return [];
+    return calculateProjections(baselineAnalysis, scenarioParams);
+  }, [baselineAnalysis, scenarioParams]);
+
   if (!baselineAnalysis) {
     return (
       <div className="bg-white rounded-lg shadow-lg p-6">
@@ -47,19 +85,6 @@ const InteractiveScenarioPlanner = ({ baselineAnalysis, onScenarioChange }: any)
     );
   }
 
-  const [activeScenario, setActiveScenario] = useState('baseline');
-  const [scenarioParams, setScenarioParams] = useState({
-    monthlyIncrease: 0,
-    inflationRate: 3.0,
-    interestRate: 2.0,
-    timeframe: 10,
-    deferCritical: false,
-    emergencyFund: 0,
-  });
-
-  const [showComparison, setShowComparison] = useState(false);
-  const [savedScenarios, setSavedScenarios] = useState([]);
-
   // Predefined scenario templates
   const scenarioTemplates = {
     conservative: {
@@ -85,7 +110,23 @@ const InteractiveScenarioPlanner = ({ baselineAnalysis, onScenarioChange }: any)
   };
 
   // Calculate the financial impact - moved before useMemo
-  const calculateProjections = (baseline, params) => {
+  const calculateProjections = (
+    baseline: BaselineAnalysis,
+    params: {
+      timeframe: number;
+      monthlyIncrease: number;
+      inflationRate: number;
+      interestRate: number;
+      emergencyFund: number;
+    }
+  ): Array<{
+    year: number;
+    balance: number;
+    contribution: number;
+    expenses: number;
+    target: number;
+    baseline: number;
+  }> => {
     // Add safe access with defaults
     const currentBalance = baseline?.fundingStatus?.currentReserve || 0;
     const targetReserve = baseline?.fundingStatus?.targetReserve || 0;
@@ -105,7 +146,7 @@ const InteractiveScenarioPlanner = ({ baselineAnalysis, onScenarioChange }: any)
       // Estimate annual expenses
       const annualExpenses = upcomingExpenses
         .filter((expense) => expense.year === year)
-        .reduce((sum, expense) => sum + (expense.cost || 0), 0);
+        .reduce((sum: number, expense) => sum + (expense.cost || 0), 0);
 
       const projectedBalance = Math.max(
         0,
@@ -129,13 +170,15 @@ const InteractiveScenarioPlanner = ({ baselineAnalysis, onScenarioChange }: any)
     return years;
   };
 
-  // Calculate projections based on current parameters
-  const projectedData = useMemo(() => {
-    return calculateProjections(baselineAnalysis, scenarioParams);
-  }, [baselineAnalysis, scenarioParams]);
-
   // Calculate scenario impact summary - moved before usage
-  const getScenarioImpact = () => {
+  const getScenarioImpact = (): {
+    finalBalance: number;
+    totalContributions: number;
+    totalExpenses: number;
+    averageBalance: number;
+    shortfallYears: number;
+    specialAssessmentRisk: string;
+  } => {
     if (!projectedData || projectedData.length === 0) {
       return {
         finalBalance: 0,
@@ -166,14 +209,16 @@ const InteractiveScenarioPlanner = ({ baselineAnalysis, onScenarioChange }: any)
   const scenarioImpact = getScenarioImpact();
 
   // Apply scenario template
-  const applyTemplate = (templateKey) => {
-    const template = scenarioTemplates[templateKey];
-    setScenarioParams((prev) => ({ ...prev, ...template.params }));
-    setActiveScenario(templateKey);
+  const applyTemplate = (templateKey: string): void => {
+    const template = scenarioTemplates[templateKey as keyof typeof scenarioTemplates];
+    if (template) {
+      setScenarioParams((prev) => ({ ...prev, ...template.params }));
+      setActiveScenario(templateKey);
+    }
   };
 
   // Save current scenario
-  const saveScenario = () => {
+  const saveScenario = (): void => {
     const scenarioName = prompt('Enter a name for this scenario:');
     if (scenarioName) {
       const newScenario = {
@@ -543,7 +588,7 @@ const InteractiveScenarioPlanner = ({ baselineAnalysis, onScenarioChange }: any)
 export default InteractiveScenarioPlanner;
 
 // Example usage with mock data for testing
-export const InteractiveScenarioPlannerDemo = () => {
+export const InteractiveScenarioPlannerDemo = (): JSX.Element => {
   const mockBaselineAnalysis = {
     fundingStatus: {
       currentReserve: 450000,
@@ -558,5 +603,5 @@ export const InteractiveScenarioPlannerDemo = () => {
     ],
   };
 
-  return <InteractiveScenarioPlanner baselineAnalysis={mockBaselineAnalysis} onScenarioChange={null} />;
+  return <InteractiveScenarioPlanner baselineAnalysis={mockBaselineAnalysis} onScenarioChange={undefined} />;
 };

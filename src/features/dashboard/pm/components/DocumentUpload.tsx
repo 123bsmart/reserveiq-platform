@@ -1,10 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { Upload, FileText, CheckCircle, AlertTriangle, X } from 'lucide-react';
-
-interface DocumentUploadProps {
-  onClose?: () => void;
-}
+import { Upload, FileText, CheckCircle, AlertTriangle } from 'lucide-react';
 
 interface UploadedDocument {
   id: string;
@@ -15,7 +11,7 @@ interface UploadedDocument {
   status: 'uploaded' | 'processing' | 'completed' | 'error';
 }
 
-const DocumentUpload: React.FC<DocumentUploadProps> = ({ onClose }) => {
+const DocumentUpload: React.FC = () => {
   const [uploadedDocuments, setUploadedDocuments] = useState<UploadedDocument[]>([]);
   const [isUploading, setIsUploading] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -27,7 +23,7 @@ const DocumentUpload: React.FC<DocumentUploadProps> = ({ onClose }) => {
     { id: 'other', name: 'Other', icon: '📄' },
   ];
 
-  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
     const file = event.target.files?.[0];
     if (!file || !selectedCategory) return;
 
@@ -54,7 +50,7 @@ const DocumentUpload: React.FC<DocumentUploadProps> = ({ onClose }) => {
     }, 1500);
   };
 
-  const getStatusIcon = (status: string) => {
+  const getStatusIcon = (status: string): React.ReactNode => {
     switch (status) {
       case 'uploaded':
         return <CheckCircle className="w-4 h-4 text-green-500" />;
@@ -69,7 +65,7 @@ const DocumentUpload: React.FC<DocumentUploadProps> = ({ onClose }) => {
     }
   };
 
-  const getStatusText = (status: string) => {
+  const getStatusText = (status: string): string => {
     switch (status) {
       case 'uploaded':
         return 'Uploaded successfully';

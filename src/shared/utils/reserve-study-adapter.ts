@@ -16,7 +16,6 @@ export interface BaselineAnalysis {
 }
 
 export const adaptReserveStudyToBaselineAnalysis = (analysis: IAnalyze): BaselineAnalysis => {
-  console.log('adaptReserveStudyToBaselineAnalysis analysis', analysis);
   const { financialSummary, topProjects } = analysis;
 
   const fundingStatus = {

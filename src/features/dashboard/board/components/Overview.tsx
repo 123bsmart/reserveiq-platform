@@ -201,7 +201,7 @@ const Overview: React.FC = () => {
         title="📊 Reserve Studies"
         className="max-w-7xl max-h-[90vh] overflow-y-auto"
       >
-        <ReserveStudyViewer onClose={() => setShowReserveStudyViewer(false)} />
+        <ReserveStudyViewer />
       </Modal>
 
       {/* Scenario Review Modal */}

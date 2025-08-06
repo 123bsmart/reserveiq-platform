@@ -38,8 +38,8 @@ const AssessmentCalculator: React.FC<AssessmentCalculatorProps> = ({ onClose }) 
       currentDeficit,
       totalUnits,
       currentMonthlyContribution,
-      specialAssessmentAmount,
-      monthlyIncreaseAmount,
+      //   specialAssessmentAmount,
+      //   monthlyIncreaseAmount,
       paybackMonths,
     } = calculatorParams;
 
@@ -52,8 +52,8 @@ const AssessmentCalculator: React.FC<AssessmentCalculatorProps> = ({ onClose }) 
     const monthlyIncreaseTotal = monthlyIncreasePerUnit * totalUnits * paybackMonths;
 
     // Monthly payment comparison
-    const currentMonthlyTotal = currentMonthlyContribution * totalUnits;
-    const newMonthlyTotal = (currentMonthlyContribution + monthlyIncreasePerUnit) * totalUnits;
+    // const currentMonthlyTotal = currentMonthlyContribution * totalUnits;
+    // const newMonthlyTotal = (currentMonthlyContribution + monthlyIncreasePerUnit) * totalUnits;
 
     // Generate monthly data for chart
     const monthlyData = Array.from({ length: paybackMonths }, (_, i) => {

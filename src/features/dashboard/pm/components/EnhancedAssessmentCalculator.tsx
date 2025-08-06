@@ -1,25 +1,7 @@
 'use client';
 import React, { useState, useMemo } from 'react';
-import {
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  PieChart,
-  Pie,
-  Cell,
-} from 'recharts';
-import { Calculator, DollarSign, TrendingUp, AlertTriangle, CheckCircle, X } from 'lucide-react';
-
-interface EnhancedAssessmentCalculatorProps {
-  onClose?: () => void;
-}
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { AlertTriangle, CheckCircle } from 'lucide-react';
 
 interface FundingScenario {
   id: string;
@@ -34,7 +16,7 @@ interface FundingScenario {
   cons: string[];
 }
 
-const EnhancedAssessmentCalculator: React.FC<EnhancedAssessmentCalculatorProps> = ({ onClose }) => {
+const EnhancedAssessmentCalculator: React.FC = () => {
   const [calculatorParams, setCalculatorParams] = useState({
     currentDeficit: 500000,
     totalUnits: 50,
@@ -45,56 +27,59 @@ const EnhancedAssessmentCalculator: React.FC<EnhancedAssessmentCalculatorProps> 
   const [selectedScenario, setSelectedScenario] = useState<string>('monthly');
 
   // 4 Funding Scenarios as requested by client
-  const fundingScenarios: FundingScenario[] = [
-    {
-      id: 'monthly',
-      name: 'Monthly Increase',
-      description: 'Gradual monthly contribution increase',
-      icon: '📈',
-      color: 'from-blue-600 to-blue-700',
-      monthlyIncrease: 660,
-      specialAssessment: 0,
-      paybackMonths: 12,
-      pros: ['No immediate financial burden', 'Predictable cash flow', 'Owner-friendly approach'],
-      cons: ['Takes longer to recover', 'May not address urgent needs'],
-    },
-    {
-      id: 'special',
-      name: 'Special Assessment',
-      description: 'One-time assessment payment',
-      icon: '💰',
-      color: 'from-purple-600 to-purple-700',
-      monthlyIncrease: 0,
-      specialAssessment: 10000,
-      paybackMonths: 1,
-      pros: ['Immediate funding', 'Quick recovery', 'No ongoing burden'],
-      cons: ['High immediate cost', 'Owner resistance', 'Collection challenges'],
-    },
-    {
-      id: 'hybrid',
-      name: 'Hybrid Approach',
-      description: 'Combination of monthly increase and small assessment',
-      icon: '⚖️',
-      color: 'from-green-600 to-green-700',
-      monthlyIncrease: 330,
-      specialAssessment: 5000,
-      paybackMonths: 6,
-      pros: ['Balanced approach', 'Reduces immediate burden', 'Faster recovery than monthly only'],
-      cons: ['Still requires upfront payment', 'More complex to implement'],
-    },
-    {
-      id: 'crisis',
-      name: 'Crisis Response',
-      description: 'Maximum funding for emergency situations',
-      icon: '🚨',
-      color: 'from-red-600 to-red-700',
-      monthlyIncrease: 1000,
-      specialAssessment: 15000,
-      paybackMonths: 3,
-      pros: ['Maximum funding speed', 'Addresses critical needs', 'Comprehensive solution'],
-      cons: ['High financial impact', 'Significant owner resistance', 'Risk of non-payment'],
-    },
-  ];
+  const fundingScenarios: FundingScenario[] = useMemo(
+    () => [
+      {
+        id: 'monthly',
+        name: 'Monthly Increase',
+        description: 'Gradual monthly contribution increase',
+        icon: '📈',
+        color: 'from-blue-600 to-blue-700',
+        monthlyIncrease: 660,
+        specialAssessment: 0,
+        paybackMonths: 12,
+        pros: ['No immediate financial burden', 'Predictable cash flow', 'Owner-friendly approach'],
+        cons: ['Takes longer to recover', 'May not address urgent needs'],
+      },
+      {
+        id: 'special',
+        name: 'Special Assessment',
+        description: 'One-time assessment payment',
+        icon: '💰',
+        color: 'from-purple-600 to-purple-700',
+        monthlyIncrease: 0,
+        specialAssessment: 10000,
+        paybackMonths: 1,
+        pros: ['Immediate funding', 'Quick recovery', 'No ongoing burden'],
+        cons: ['High immediate cost', 'Owner resistance', 'Collection challenges'],
+      },
+      {
+        id: 'hybrid',
+        name: 'Hybrid Approach',
+        description: 'Combination of monthly increase and small assessment',
+        icon: '⚖️',
+        color: 'from-green-600 to-green-700',
+        monthlyIncrease: 330,
+        specialAssessment: 5000,
+        paybackMonths: 6,
+        pros: ['Balanced approach', 'Reduces immediate burden', 'Faster recovery than monthly only'],
+        cons: ['Still requires upfront payment', 'More complex to implement'],
+      },
+      {
+        id: 'crisis',
+        name: 'Crisis Response',
+        description: 'Maximum funding for emergency situations',
+        icon: '🚨',
+        color: 'from-red-600 to-red-700',
+        monthlyIncrease: 1000,
+        specialAssessment: 15000,
+        paybackMonths: 3,
+        pros: ['Maximum funding speed', 'Addresses critical needs', 'Comprehensive solution'],
+        cons: ['High financial impact', 'Significant owner resistance', 'Risk of non-payment'],
+      },
+    ],
+    []
+  );
 
   // Calculate all scenarios
   const scenarioCalculations = useMemo(() => {
@@ -146,8 +131,6 @@ const EnhancedAssessmentCalculator: React.FC<EnhancedAssessmentCalculatorProps> 
   }, [calculatorParams, fundingScenarios]);
 
   const selectedScenarioData = scenarioCalculations.find((s) => s.id === selectedScenario);
-
-  const COLORS = ['#3b82f6', '#ef4444', '#10b981', '#f59e0b'];
 
   return (
     <div className="w-full">

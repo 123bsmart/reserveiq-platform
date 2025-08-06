@@ -11,7 +11,7 @@ import { IAnalyze } from '@/shared/services/documents.api.types';
 
 interface ReserveStudyAnalyzerProps {
   analysisData: IAnalyze;
-  onScenarioChange?: (scenario: any) => void;
+  onScenarioChange?: (scenario: unknown) => void;
 }
 
 const ReserveStudyAnalyzer: React.FC<ReserveStudyAnalyzerProps> = ({ analysisData, onScenarioChange }) => {
@@ -64,7 +64,11 @@ const ReserveStudyAnalyzer: React.FC<ReserveStudyAnalyzerProps> = ({ analysisDat
       {/* Interactive Scenario Planner */}
       <InteractiveScenarioPlanner
         baselineAnalysis={baselineAnalysis}
-        onScenarioChange={React.useCallback(onScenarioChange || (() => {}), [onScenarioChange])}
+        onScenarioChange={React.useCallback(() => {
+          if (onScenarioChange) {
+            onScenarioChange({});
+          }
+        }, [onScenarioChange])}
       />
     </div>
   );

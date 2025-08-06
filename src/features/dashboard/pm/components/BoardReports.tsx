@@ -1,10 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { FileText, Download, Eye, X, CheckCircle } from 'lucide-react';
-
-interface BoardReportsProps {
-  onClose?: () => void;
-}
+import { FileText, Download, Eye, CheckCircle } from 'lucide-react';
 
 interface ReportTemplate {
   id: string;
@@ -14,10 +10,18 @@ interface ReportTemplate {
   estimatedTime: string;
 }
 
-const BoardReports: React.FC<BoardReportsProps> = ({ onClose }) => {
+interface GeneratedReport {
+  id: string;
+  name: string;
+  generatedAt: Date;
+  size: string;
+  status: string;
+}
+
+const BoardReports: React.FC = () => {
   const [selectedReport, setSelectedReport] = useState<string>('');
   const [isGenerating, setIsGenerating] = useState(false);
-  const [generatedReports, setGeneratedReports] = useState<any[]>([]);
+  const [generatedReports, setGeneratedReports] = useState<GeneratedReport[]>([]);
 
   const reportTemplates: ReportTemplate[] = [
     {
@@ -64,7 +68,7 @@ const BoardReports: React.FC<BoardReportsProps> = ({ onClose }) => {
     },
   ];
 
-  const generateReport = async (reportId: string) => {
+  const generateReport = async (reportId: string): Promise<void> => {
     setIsGenerating(true);
 
     // Simulate report generation
@@ -84,7 +88,7 @@ const BoardReports: React.FC<BoardReportsProps> = ({ onClose }) => {
     }, 3000);
   };
 
-  const downloadReport = (reportId: string) => {
+  const downloadReport = (reportId: string): void => {
     // Simulate download
     const link = document.createElement('a');
     link.href = '#';

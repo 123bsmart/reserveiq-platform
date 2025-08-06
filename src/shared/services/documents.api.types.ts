@@ -61,7 +61,7 @@ export interface IAnalyze {
     name: string;
     type: string;
     monthlyIncrease: number;
-    projections: any[];
+    projections: unknown[];
     totalShortfall: number;
     riskLevel: string;
     recommendation: string;

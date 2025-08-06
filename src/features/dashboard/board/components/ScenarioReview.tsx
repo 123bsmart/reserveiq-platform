@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { FileText, Eye, CheckCircle, XCircle, Clock, X, TrendingUp, AlertTriangle } from 'lucide-react';
+import { Eye, CheckCircle, XCircle, Clock, TrendingUp, AlertTriangle } from 'lucide-react';
 
 interface ScenarioReviewProps {
   onClose?: () => void;
@@ -75,7 +75,7 @@ const ScenarioReview: React.FC<ScenarioReviewProps> = ({ onClose }) => {
     },
   ];
 
-  const getStatusIcon = (status: string) => {
+  const getStatusIcon = (status: string): React.ReactNode => {
     switch (status) {
       case 'pending':
         return <Clock className="w-4 h-4 text-yellow-500" />;
@@ -90,7 +90,7 @@ const ScenarioReview: React.FC<ScenarioReviewProps> = ({ onClose }) => {
     }
   };
 
-  const getStatusText = (status: string) => {
+  const getStatusText = (status: string): string => {
     switch (status) {
       case 'pending':
         return 'Pending Review';
@@ -105,7 +105,7 @@ const ScenarioReview: React.FC<ScenarioReviewProps> = ({ onClose }) => {
     }
   };
 
-  const getTypeIcon = (type: string) => {
+  const getTypeIcon = (type: string): string => {
     switch (type) {
       case 'monthly':
         return '📈';
@@ -120,22 +120,22 @@ const ScenarioReview: React.FC<ScenarioReviewProps> = ({ onClose }) => {
     }
   };
 
-  const getTypeColor = (type: string) => {
-    switch (type) {
-      case 'monthly':
-        return 'bg-blue-100 text-blue-800';
-      case 'special':
-        return 'bg-purple-100 text-purple-800';
-      case 'hybrid':
-        return 'bg-green-100 text-green-800';
-      case 'crisis':
-        return 'bg-red-100 text-red-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
-    }
-  };
+  //   const getTypeColor = (type: string) => {
+  //     switch (type) {
+  //       case 'monthly':
+  //         return 'bg-blue-100 text-blue-800';
+  //       case 'special':
+  //         return 'bg-purple-100 text-purple-800';
+  //       case 'hybrid':
+  //         return 'bg-green-100 text-green-800';
+  //       case 'crisis':
+  //         return 'bg-red-100 text-red-800';
+  //       default:
+  //         return 'bg-gray-100 text-gray-800';
+  //     }
+  //   };
 
-  const viewScenario = (scenarioId: string) => {
+  const viewScenario = (scenarioId: string): void => {
     setSelectedScenario(scenarioId);
     setShowDetails(true);
   };
@@ -213,7 +213,13 @@ const ScenarioReview: React.FC<ScenarioReviewProps> = ({ onClose }) => {
         <div className="border-t pt-6">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-semibold text-gray-900">{selectedScenarioData.name}</h3>
-            <button onClick={() => setShowDetails(false)} className="text-gray-500 hover:text-gray-700">
+            <button
+              onClick={() => {
+                setShowDetails(false);
+                onClose?.();
+              }}
+              className="text-gray-500 hover:text-gray-700"
+            >
               Close Details
             </button>
           </div>

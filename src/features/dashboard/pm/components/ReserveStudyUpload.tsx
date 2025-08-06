@@ -5,7 +5,7 @@ import documentsApi from '@/shared/services/documents.api';
 import { IAnalyzeDocumentRes } from '@/shared/services/documents.api.types';
 
 interface ReserveStudyUploadProps {
-  onAnalysisComplete?: (analysisData: any) => void;
+  onAnalysisComplete?: (analysisData: unknown) => void;
 }
 
 const ReserveStudyUpload: React.FC<ReserveStudyUploadProps> = ({ onAnalysisComplete }) => {
@@ -33,7 +33,7 @@ const ReserveStudyUpload: React.FC<ReserveStudyUploadProps> = ({ onAnalysisCompl
     }
   };
 
-  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
     const file = event.target.files?.[0];
     if (!file) return;
 
@@ -104,7 +104,7 @@ const ReserveStudyUpload: React.FC<ReserveStudyUploadProps> = ({ onAnalysisCompl
     }
   };
 
-  const fetchAnalysisResults = async (analysisId: string) => {
+  const fetchAnalysisResults = async (analysisId: string): Promise<void> => {
     try {
       const response = await documentsApi.getAnalysisResults(analysisId);
       if (response.success && response.data) {
@@ -117,23 +117,23 @@ const ReserveStudyUpload: React.FC<ReserveStudyUploadProps> = ({ onAnalysisCompl
     }
   };
 
-  const handleDragOver = (event: React.DragEvent) => {
+  const handleDragOver = (event: React.DragEvent): void => {
     event.preventDefault();
   };
 
-  const handleDrop = async (event: React.DragEvent) => {
+  const handleDrop = async (event: React.DragEvent): Promise<void> => {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
     if (file) {
       const input = document.createElement('input');
       input.type = 'file';
       input.files = event.dataTransfer.files;
-      await handleFileUpload({ target: { files: [file] } } as any);
+      await handleFileUpload({ target: { files: [file] } } as unknown as React.ChangeEvent<HTMLInputElement>);
     }
   };
 
   if (analysisData) {
-    console.log('if analysisData', analysisData);
+    // console.log('if analysisData', analysisData);
     return (
       <div className="space-y-6">
         <ReserveStudyAnalyzer analysisData={analysisData.analyze} />

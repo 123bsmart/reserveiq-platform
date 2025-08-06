@@ -10,7 +10,6 @@ import {
   Users,
 } from 'lucide-react';
 import React, { useState } from 'react';
-import AssessmentCalculator from './AssessmentCalculator';
 import EnhancedAssessmentCalculator from './EnhancedAssessmentCalculator';
 import ReserveStudyUpload from './ReserveStudyUpload';
 import DocumentUpload from './DocumentUpload';
@@ -221,8 +220,8 @@ const Overview: React.FC = () => {
         className="max-w-7xl max-h-[90vh] overflow-y-auto"
       >
         <ReserveStudyUpload
-          onAnalysisComplete={(analysisData) => {
-            console.log('Analysis complete:', analysisData);
+          onAnalysisComplete={() => {
+            // console.log('Analysis complete:', analysisData);
             // Here you could save the analysis data or trigger other actions
           }}
         />
@@ -235,7 +234,7 @@ const Overview: React.FC = () => {
         title="🧮 Assessment Calculator"
         className="max-w-7xl max-h-[90vh] overflow-y-auto"
       >
-        <EnhancedAssessmentCalculator onClose={() => setShowAssessmentCalculator(false)} />
+        <EnhancedAssessmentCalculator />
       </Modal>
 
       {/* Document Upload Modal */}
@@ -245,7 +244,7 @@ const Overview: React.FC = () => {
         title="📄 Document Upload"
         className="max-w-6xl max-h-[90vh] overflow-y-auto"
       >
-        <DocumentUpload onClose={() => setShowDocumentUpload(false)} />
+        <DocumentUpload />
       </Modal>
 
       {/* Board Reports Modal */}
@@ -255,7 +254,7 @@ const Overview: React.FC = () => {
         title="📋 Board Reports"
         className="max-w-7xl max-h-[90vh] overflow-y-auto"
       >
-        <BoardReports onClose={() => setShowBoardReports(false)} />
+        <BoardReports />
       </Modal>
     </>
   );

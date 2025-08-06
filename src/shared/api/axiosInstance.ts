@@ -17,11 +17,9 @@ axiosInstance.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
-    console.log('🚀 Request:', config.method?.toUpperCase(), config.url);
     return config;
   },
   (error) => {
-    console.error('❌ Request Error:', error);
     return Promise.reject(error);
   }
 );
@@ -29,26 +27,20 @@ axiosInstance.interceptors.request.use(
 // Response interceptor with proper 401 handling
 axiosInstance.interceptors.response.use(
   (response) => {
-    console.log('✅ Response:', response.status, response.config.url);
     return response;
   },
   async (error) => {
     const originalRequest = error.config;
     const status = error?.response?.status;
 
-    console.log('❌ Response Error:', status, error.config?.url);
-
     // Handle 401 (Unauthorized) - attempt token refresh
     if (status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
 
       try {
-        console.log('🔄 Attempting token refresh...');
         await authApi.refreshToken();
-        console.log('✅ Token refreshed successfully');
         return axiosInstance(originalRequest);
-      } catch (refreshError) {
-        console.error('❌ Token refresh failed:', refreshError);
+      } catch {
         localStorage.removeItem('access_token');
         await authApi.logout();
 

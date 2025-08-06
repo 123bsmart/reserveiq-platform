@@ -16,7 +16,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ type, onLeftMenuClick
   const router = useRouter();
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
+    const handleClickOutside = (event: MouseEvent): void => {
       if (settingsRef.current && !settingsRef.current.contains(event.target as Node)) {
         setIsSettingsOpen(false);
       }
@@ -28,7 +28,7 @@ const DashboardHeader: React.FC<DashboardHeaderProps> = ({ type, onLeftMenuClick
     };
   }, []);
 
-  const handleLogout = async () => {
+  const handleLogout = async (): Promise<void> => {
     try {
       await authApi.logout();
       router.push('/auth');

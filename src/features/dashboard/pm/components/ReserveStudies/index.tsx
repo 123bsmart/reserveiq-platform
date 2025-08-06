@@ -6,14 +6,14 @@ import { AxiosError } from 'axios';
 import { Upload } from 'lucide-react';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import Link from 'next/link';
+// import Link from 'next/link';
 import StudiesLibrary from './StudiesLibrary';
 
 const ReserveStudies: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysisResult, setAnalysisResult] = useState<IAnalyze | null>();
-  const [fileUrl, setFileUrl] = useState<string | null>(null);
+  //   const [fileUrl, setFileUrl] = useState<string | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const file = e.target.files?.[0];
@@ -28,8 +28,8 @@ const ReserveStudies: React.FC = () => {
       setIsAnalyzing(false);
       setSelectedFile(null);
       if (data.success && data.data) {
-        setAnalysisResult(data.data.analyze);
-        setFileUrl(data.data.file_url);
+        // setAnalysisResult(data.data.analyze);
+        // setFileUrl(data.data.file_url);
       }
     },
     onError: (error: AxiosError<{ message: string }>) => {
@@ -127,7 +127,7 @@ const ReserveStudies: React.FC = () => {
 
             {/* 📥 Download Summary Button */}
             <div className="mt-6 flex justify-between">
-              {fileUrl && (
+              {/* {fileUrl && (
                 <Link
                   href={fileUrl}
                   target="_blank"
@@ -135,7 +135,7 @@ const ReserveStudies: React.FC = () => {
                 >
                   Download Summary PDF
                 </Link>
-              )}
+              )} */}
 
               <button
                 onClick={() => setAnalysisResult(null)}
