@@ -39,6 +39,67 @@ const InteractiveScenarioPlanner: React.FC<InteractiveScenarioPlannerProps> = ({
   });
 
   const [showComparison, setShowComparison] = useState(false);
+  // Calculate the financial impact - moved before useMemo
+  const calculateProjections = (
+    baseline: BaselineAnalysis,
+    params: {
+      timeframe: number;
+      monthlyIncrease: number;
+      inflationRate: number;
+      interestRate: number;
+      emergencyFund: number;
+    }
+  ): Array<{
+    year: number;
+    balance: number;
+    contribution: number;
+    expenses: number;
+    target: number;
+    baseline: number;
+  }> => {
+    // Add safe access with defaults
+    const currentBalance = baseline?.fundingStatus?.currentReserve || 0;
+    const targetReserve = baseline?.fundingStatus?.targetReserve || 0;
+    const monthlyContribution = baseline?.fundingStatus?.monthlyContribution || 0;
+    const upcomingExpenses = baseline?.upcomingExpenses || [];
+
+    const years = Array.from({ length: params.timeframe }, (_, i) => {
+      const year = new Date().getFullYear() + i;
+      const annualIncrease = params.monthlyIncrease * 12;
+      const baseContribution = monthlyContribution * 12;
+
+      // Calculate projected balance with new parameters
+      const totalContribution = baseContribution + annualIncrease * i;
+      const inflationFactor = Math.pow(1 + params.inflationRate / 100, i);
+      const interestEarned = currentBalance * (params.interestRate / 100) * i;
+
+      // Estimate annual expenses
+      const annualExpenses = upcomingExpenses
+        .filter((expense) => expense.year === year)
+        .reduce((sum: number, expense) => sum + (expense.cost || 0), 0);
+
+      const projectedBalance = Math.max(
+        0,
+        currentBalance +
+          totalContribution * i +
+          interestEarned -
+          annualExpenses * inflationFactor +
+          (i === 0 ? params.emergencyFund : 0)
+      );
+
+      return {
+        year,
+        balance: projectedBalance,
+        contribution: totalContribution,
+        expenses: annualExpenses * inflationFactor,
+        target: targetReserve * inflationFactor,
+        baseline: currentBalance + monthlyContribution * 12 * i,
+      };
+    });
+
+    return years;
+  };
+
   const [savedScenarios, setSavedScenarios] = useState<
     Array<{
       id: number;
@@ -107,67 +168,6 @@ const InteractiveScenarioPlanner: React.FC<InteractiveScenarioPlannerProps> = ({
       description: 'Crisis mode, maximum funding',
       params: { monthlyIncrease: 300, inflationRate: 4.0, interestRate: 1.0, emergencyFund: 100000 },
     },
-  };
-
-  // Calculate the financial impact - moved before useMemo
-  const calculateProjections = (
-    baseline: BaselineAnalysis,
-    params: {
-      timeframe: number;
-      monthlyIncrease: number;
-      inflationRate: number;
-      interestRate: number;
-      emergencyFund: number;
-    }
-  ): Array<{
-    year: number;
-    balance: number;
-    contribution: number;
-    expenses: number;
-    target: number;
-    baseline: number;
-  }> => {
-    // Add safe access with defaults
-    const currentBalance = baseline?.fundingStatus?.currentReserve || 0;
-    const targetReserve = baseline?.fundingStatus?.targetReserve || 0;
-    const monthlyContribution = baseline?.fundingStatus?.monthlyContribution || 0;
-    const upcomingExpenses = baseline?.upcomingExpenses || [];
-
-    const years = Array.from({ length: params.timeframe }, (_, i) => {
-      const year = new Date().getFullYear() + i;
-      const annualIncrease = params.monthlyIncrease * 12;
-      const baseContribution = monthlyContribution * 12;
-
-      // Calculate projected balance with new parameters
-      const totalContribution = baseContribution + annualIncrease * i;
-      const inflationFactor = Math.pow(1 + params.inflationRate / 100, i);
-      const interestEarned = currentBalance * (params.interestRate / 100) * i;
-
-      // Estimate annual expenses
-      const annualExpenses = upcomingExpenses
-        .filter((expense) => expense.year === year)
-        .reduce((sum: number, expense) => sum + (expense.cost || 0), 0);
-
-      const projectedBalance = Math.max(
-        0,
-        currentBalance +
-          totalContribution * i +
-          interestEarned -
-          annualExpenses * inflationFactor +
-          (i === 0 ? params.emergencyFund : 0)
-      );
-
-      return {
-        year,
-        balance: projectedBalance,
-        contribution: totalContribution,
-        expenses: annualExpenses * inflationFactor,
-        target: targetReserve * inflationFactor,
-        baseline: currentBalance + monthlyContribution * 12 * i,
-      };
-    });
-
-    return years;
   };
 
   // Calculate scenario impact summary - moved before usage

@@ -63,8 +63,10 @@ const ReserveStudyUpload: React.FC<ReserveStudyUploadProps> = ({ onAnalysisCompl
       eventSource = new EventSource(
         `${process.env.NEXT_PUBLIC_API_URL}/api/platform/documents/analysis-progress/${analysisId}`
       );
+      console.log('eventSource', eventSource);
 
       eventSource.onmessage = (event) => {
+        console.log('eventSource.onmessage', event);
         const progress = JSON.parse(event.data);
         // console.log('progress', progress);
         // Update progress based on actual server progress
@@ -133,7 +135,7 @@ const ReserveStudyUpload: React.FC<ReserveStudyUploadProps> = ({ onAnalysisCompl
   };
 
   if (analysisData) {
-    // console.log('if analysisData', analysisData);
+    console.log('if analysisData', analysisData);
     return (
       <div className="space-y-6">
         <ReserveStudyAnalyzer analysisData={analysisData.analyze} />
