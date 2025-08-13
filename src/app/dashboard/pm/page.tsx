@@ -7,6 +7,7 @@ import ReserveStudies from '@/features/dashboard/pm/components/ReserveStudies';
 import SideDrawer from '@/shared/components/SideDrawer';
 import { RoleEnum } from '@/shared/enum/auth.enum';
 import { useState } from 'react';
+import FinancialHealth from '@/features/dashboard/board/components/FinancialHealth';
 
 const PMDashboard: React.FC = () => {
   const [leftMenuOpen, setLeftMenuOpen] = useState(false);
@@ -30,6 +31,7 @@ const PMDashboard: React.FC = () => {
         <div className="flex-1 p-6 overflow-y-auto scrollbar-thin">
           {activeTab === 'overview' && <Overview />}
           {activeTab === 'reserve-studies' && <ReserveStudies />}
+          {activeTab === 'financial' && <FinancialHealth />}
           {activeTab === 'documents' && <Documents />}
           {activeTab === 'email-templates' && <EmailTemplates userType={'pm'} />}
         </div>

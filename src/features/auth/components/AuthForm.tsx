@@ -17,7 +17,13 @@ const AuthForm: React.FC<Props> = ({ isPartner }) => {
     <div className="w-full max-w-[500px] mx-auto">
       <Tabs active={activeTab} setActive={setActiveTab} />
 
-      <div className="mt-8">{activeTab === 'signin' ? <SignInForm /> : <SignUpForm isPartner={isPartner} />}</div>
+      <div className="mt-8">
+        {activeTab === 'signin' ? (
+          <SignInForm />
+        ) : (
+          <SignUpForm isPartner={isPartner} onModalClose={() => setActiveTab('signin')} />
+        )}
+      </div>
 
       <div className="text-center text-gray-muted text-sm mt-8 mb-4 relative">
         <div className="absolute inset-x-0 top-1/2 border-t border-gray-200 z-0" />

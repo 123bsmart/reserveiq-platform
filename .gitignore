@@ -28,6 +28,10 @@ yarn-error.log*
 # But do not ignore .env.example
 !.env.example
 
+# local dev-only routes (do not commit)
+/src/app/test/
+/src/app/legacy/
+
 # vercel
 .vercel
 

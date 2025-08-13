@@ -17,9 +17,10 @@ type SignUpValues = z.infer<typeof signUpSchema>;
 
 type Props = {
   isPartner: boolean;
+  onModalClose?: () => void;
 };
 
-const SignUpForm: React.FC<Props> = ({ isPartner }) => {
+const SignUpForm: React.FC<Props> = ({ isPartner, onModalClose }) => {
   const [isModalOpen, setModalOpen] = useState(false);
   const [captchaValue, setCaptchaValue] = useState<string | null>(null);
 
@@ -62,14 +63,19 @@ const SignUpForm: React.FC<Props> = ({ isPartner }) => {
     });
   };
 
+  const handleModalClose = (): void => {
+    setModalOpen(false);
+    onModalClose?.();
+  };
+
   return (
     <>
       <Modal
         isOpen={isModalOpen}
-        onClose={() => setModalOpen(false)}
+        onClose={handleModalClose}
         title="Thanks for signing up!"
         footer={
-          <Button onClick={() => setModalOpen(false)} variant="default">
+          <Button onClick={handleModalClose} variant="default">
             Got it
           </Button>
         }
