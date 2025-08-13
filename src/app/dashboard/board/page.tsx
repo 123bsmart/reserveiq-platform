@@ -4,7 +4,7 @@ import { BoardToolsSidebar } from '@/features/dashboard/board/components';
 import SideDrawer from '@/shared/components/SideDrawer';
 import { useState } from 'react';
 import { RoleEnum } from '@/shared/enum/auth.enum';
-import Overview from '@/features/dashboard/board/components/Overview';
+import BoardOverviewV2 from '@/features/dashboard/board/components/BoardOverviewV2';
 import ReserveStudies from '@/features/dashboard/board/components/ReserveStudies';
 import Documents from '@/features/dashboard/board/components/Documents';
 import EmailTemplates from '@/features/dashboard/components/EmailTemplates';
@@ -31,7 +31,7 @@ const BoardDashboard: React.FC = () => {
 
           {/* Main Content */}
           <div className="flex-1 p-6 overflow-y-auto scrollbar-thin">
-            {activeTab === 'overview' && <Overview />}
+            {activeTab === 'overview' && <BoardOverviewV2 />}
             {activeTab === 'reserve-studies' && <ReserveStudies />}
             {activeTab === 'financial' && <FinancialHealth />}
             {activeTab === 'documents' && <Documents />}

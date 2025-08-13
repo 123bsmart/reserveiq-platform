@@ -1,6 +1,7 @@
 'use client';
 import { DashboardHeader, DashboardLayout, SidebarTools } from '@/features/dashboard/components';
 import EmailTemplates from '@/features/dashboard/components/EmailTemplates';
+import PMEmailGenerator from '@/features/dashboard/pm/components/PMEmailGenerator';
 import Documents from '@/features/dashboard/pm/components/Documents';
 import Overview from '@/features/dashboard/pm/components/Overview';
 import ReserveStudies from '@/features/dashboard/pm/components/ReserveStudies';
@@ -33,7 +34,7 @@ const PMDashboard: React.FC = () => {
           {activeTab === 'reserve-studies' && <ReserveStudies />}
           {activeTab === 'financial' && <FinancialHealth />}
           {activeTab === 'documents' && <Documents />}
-          {activeTab === 'email-templates' && <EmailTemplates userType={'pm'} />}
+          {activeTab === 'email-templates' && <PMEmailGenerator />}
         </div>
       </div>
     </DashboardLayout>
