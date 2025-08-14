@@ -9,6 +9,7 @@ import ReserveStudies from '@/features/dashboard/board/components/ReserveStudies
 import Documents from '@/features/dashboard/board/components/Documents';
 import EmailTemplates from '@/features/dashboard/components/EmailTemplates';
 import FinancialHealth from '@/features/dashboard/board/components/FinancialHealth';
+import Compliance from '@/features/dashboard/board/components/Compliance';
 
 const BoardDashboard: React.FC = () => {
   const [activeTab, setActiveTab] = useState('overview');
@@ -31,11 +32,12 @@ const BoardDashboard: React.FC = () => {
 
           {/* Main Content */}
           <div className="flex-1 p-6 overflow-y-auto scrollbar-thin">
-            {activeTab === 'overview' && <BoardOverviewV2 />}
+            {activeTab === 'overview' && <BoardOverviewV2 onNavigate={setActiveTab} />}
             {activeTab === 'reserve-studies' && <ReserveStudies />}
             {activeTab === 'financial' && <FinancialHealth />}
             {activeTab === 'documents' && <Documents />}
             {activeTab === 'email-templates' && <EmailTemplates userType={'board'} />}
+            {activeTab === 'compliance' && <Compliance />}
           </div>
         </div>
       </div>

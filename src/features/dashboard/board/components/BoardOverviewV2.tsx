@@ -9,7 +9,6 @@ import {
   BarChart3,
   Eye,
 } from "lucide-react";
-import { div } from "framer-motion/client";
 
 const StatCard: React.FC<{
   title: string;
@@ -38,7 +37,8 @@ const ToolTile: React.FC<{
   desc: string;
   color: "blue" | "green" | "purple" | "orange";
   icon: React.ReactNode;
-}> = ({ title, desc, color, icon }) => {
+  onClick?: () => void;
+}> = ({ title, desc, color, icon, onClick }) => {
   const colorMap: Record<string, string> = {
     blue: "bg-blue-100 text-blue-600 hover:bg-blue-200",
     green: "bg-green-100 text-green-600 hover:bg-green-200",
@@ -46,7 +46,7 @@ const ToolTile: React.FC<{
     orange: "bg-amber-100 text-amber-600 hover:bg-amber-200",
   };
   return (
-    <div className={`p-4 rounded-lg cursor-pointer transition-colors ${colorMap[color]}`}>
+    <div onClick={onClick} className={`p-4 rounded-lg cursor-pointer transition-colors ${colorMap[color]}`}>
       <div className="w-8 h-8 mb-3">{icon}</div>
       <h3 className="font-semibold mb-1">{title}</h3>
       <p className="text-sm opacity-80 mb-2">{desc}</p>
@@ -64,7 +64,7 @@ const Badge: React.FC<{ children: React.ReactNode; color?: string }> = ({ childr
   return <span className={`px-2 py-1 ${classMap[color]} text-xs font-medium rounded-full`}>{children}</span>;
 };
 
-const BoardOverviewV2: React.FC = () => {
+const BoardOverviewV2: React.FC<{ onNavigate?: (tab: string) => void }> = ({ onNavigate }) => {
   return (
     <>
       <h1 className="text-2xl font-bold text-gray-900 mb-4">Board Dashboard Overview</h1>
@@ -120,24 +120,28 @@ const BoardOverviewV2: React.FC = () => {
                 desc="View AI health score and risk analysis"
                 color="blue"
                 icon={<Shield className="w-8 h-8" />}
+                onClick={() => onNavigate?.('financial')}
               />
               <ToolTile
                 title="Funding Scenarios"
                 desc="Compare assessment and funding options"
                 color="green"
                 icon={<BarChart3 className="w-8 h-8" />}
+                onClick={() => onNavigate?.('reserve-studies')}
               />
               <ToolTile
                 title="Documents"
                 desc="AI analyzed files"
                 color="purple"
                 icon={<FileText className="w-8 h-8" />}
+                onClick={() => onNavigate?.('documents')}
               />
               <ToolTile
                 title="Compliance"
                 desc="Policies and notices"
                 color="orange"
                 icon={<Eye className="w-8 h-8" />}
+                onClick={() => onNavigate?.('compliance')}
               />
             </div>
           </div>
@@ -208,6 +212,7 @@ const BoardOverviewV2: React.FC = () => {
           </div>
         </div>
       </div>
+
     </>
   );
 };

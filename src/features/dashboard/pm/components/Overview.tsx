@@ -15,12 +15,15 @@ import ReserveStudyUpload from './ReserveStudyUpload';
 import DocumentUpload from './DocumentUpload';
 import BoardReports from './BoardReports';
 import { Modal } from '@/shared/ui/modal';
+import AddBuildingForm from '@/features/onboarding/AddBuildingForm';
+import { Building2 } from 'lucide-react';
 
 const Overview: React.FC = () => {
   const [showAssessmentCalculator, setShowAssessmentCalculator] = useState(false);
   const [showReserveStudyUpload, setShowReserveStudyUpload] = useState(false);
   const [showDocumentUpload, setShowDocumentUpload] = useState(false);
   const [showBoardReports, setShowBoardReports] = useState(false);
+  const [showAddBuilding, setShowAddBuilding] = useState(false);
 
   return (
     <>
@@ -83,6 +86,19 @@ const Overview: React.FC = () => {
       <div className="mb-8">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Add Building */}
+          <button
+            onClick={() => setShowAddBuilding(true)}
+            className="p-6 bg-white border rounded-xl hover:bg-gray-50 transition-all text-left"
+          >
+            <div className="flex items-center gap-3">
+              <Building2 className="w-8 h-8 text-blue-600" />
+              <div>
+                <h3 className="font-semibold text-gray-900">Add Building</h3>
+                <p className="text-sm text-gray-600">Create a new building in your portfolio</p>
+              </div>
+            </div>
+          </button>
           {/* Priority 1: Reserve Studies */}
           <button
             onClick={() => setShowReserveStudyUpload(true)}
@@ -255,6 +271,22 @@ const Overview: React.FC = () => {
         className="max-w-7xl max-h-[90vh] overflow-y-auto"
       >
         <BoardReports />
+      </Modal>
+
+      {/* Add Building Modal */}
+      <Modal
+        isOpen={showAddBuilding}
+        onClose={() => setShowAddBuilding(false)}
+        title="🏢 Add Building"
+        className="max-w-3xl"
+      >
+        <AddBuildingForm
+          onClose={() => setShowAddBuilding(false)}
+          onSubmit={(payload) => {
+            // client-only stub
+            console.log('AddBuilding payload', payload);
+          }}
+        />
       </Modal>
     </>
   );

@@ -1,7 +1,12 @@
 import { AlertTriangle, BarChart3, Calculator, Download, FileText, Mail } from 'lucide-react';
-import React from 'react';
+import React, { useState } from 'react';
+import { Modal } from '@/shared/ui/modal';
+import BoardReportsGenerator from './BoardReportsGenerator';
+import BoardAssessmentCalculator from './BoardAssessmentCalculator';
 
 const ReserveStudies: React.FC = () => {
+  const [showReports, setShowReports] = useState(false);
+  const [showCalculator, setShowCalculator] = useState(false);
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
@@ -102,13 +107,19 @@ const ReserveStudies: React.FC = () => {
 
       {/* Action Buttons */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <button className="p-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+        <button
+          className="p-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          onClick={() => setShowCalculator(true)}
+        >
           <Calculator className="w-6 h-6 mx-auto mb-2" />
           <span className="font-medium">Compare Funding Options</span>
           <p className="text-sm text-blue-100 mt-1">Monthly increase vs special assessment</p>
         </button>
 
-        <button className="p-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+        <button
+          className="p-4 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+          onClick={() => setShowReports(true)}
+        >
           <BarChart3 className="w-6 h-6 mx-auto mb-2" />
           <span className="font-medium">Generate Board Report</span>
           <p className="text-sm text-green-100 mt-1">Professional presentation for owners</p>
@@ -120,6 +131,25 @@ const ReserveStudies: React.FC = () => {
           <p className="text-sm text-purple-100 mt-1">Draft notice about funding options</p>
         </button>
       </div>
+      {/* Modal: Assessment Calculator */}
+      <Modal
+        isOpen={showCalculator}
+        onClose={() => setShowCalculator(false)}
+        title="🧮 Assessment Calculator"
+        className="max-w-6xl max-h-[90vh] overflow-y-auto"
+      >
+        <BoardAssessmentCalculator />
+      </Modal>
+
+      {/* Modal: Board Reports Generator */}
+      <Modal
+        isOpen={showReports}
+        onClose={() => setShowReports(false)}
+        title="📊 Board Reports Generator"
+        className="max-w-6xl max-h-[90vh] overflow-y-auto"
+      >
+        <BoardReportsGenerator />
+      </Modal>
     </div>
   );
 };

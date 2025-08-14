@@ -9,6 +9,7 @@ import SideDrawer from '@/shared/components/SideDrawer';
 import { RoleEnum } from '@/shared/enum/auth.enum';
 import { useState } from 'react';
 import FinancialHealth from '@/features/dashboard/board/components/FinancialHealth';
+import ComplianceTracker from '@/features/dashboard/pm/components/ComplianceTracker';
 
 const PMDashboard: React.FC = () => {
   const [leftMenuOpen, setLeftMenuOpen] = useState(false);
@@ -35,6 +36,7 @@ const PMDashboard: React.FC = () => {
           {activeTab === 'financial' && <FinancialHealth />}
           {activeTab === 'documents' && <Documents />}
           {activeTab === 'email-templates' && <PMEmailGenerator />}
+          {activeTab === 'compliance' && <ComplianceTracker />}
         </div>
       </div>
     </DashboardLayout>
