@@ -8,6 +8,7 @@ import {
   FileText,
   Upload,
   Users,
+  Building2,
 } from 'lucide-react';
 import React, { useState } from 'react';
 import EnhancedAssessmentCalculator from './EnhancedAssessmentCalculator';
@@ -16,7 +17,6 @@ import DocumentUpload from './DocumentUpload';
 import BoardReports from './BoardReports';
 import { Modal } from '@/shared/ui/modal';
 import AddBuildingForm from '@/features/onboarding/AddBuildingForm';
-import { Building2 } from 'lucide-react';
 
 const Overview: React.FC = () => {
   const [showAssessmentCalculator, setShowAssessmentCalculator] = useState(false);

@@ -14,7 +14,6 @@ const BoardAssessmentCalculator: React.FC = () => {
   });
 
   const calculateResults = () => {
-    const shortfall = formData.targetReserve - formData.reserveBalance;
 
     if (selectedScenario === 'special-assessment') {
       const totalRaised = formData.assessmentAmount * formData.unitCount;

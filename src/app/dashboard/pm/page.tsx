@@ -1,6 +1,5 @@
 'use client';
 import { DashboardHeader, DashboardLayout, SidebarTools } from '@/features/dashboard/components';
-import EmailTemplates from '@/features/dashboard/components/EmailTemplates';
 import PMEmailGenerator from '@/features/dashboard/pm/components/PMEmailGenerator';
 import Documents from '@/features/dashboard/pm/components/Documents';
 import Overview from '@/features/dashboard/pm/components/Overview';
